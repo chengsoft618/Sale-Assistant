@@ -1,0 +1,103 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="windowActionModeOverlay">true</item>
+
+        <item name="actionModeBackground">@color/colorPrimaryDark</item>
+        <item name="actionModeStyle">@style/ActionModeStyle</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+
+        <item name="android:actionModeStyle">@style/ActionModeStyle</item>
+
+    </style>
+
+
+    <style name="ActionModeStyle" parent="@style/Widget.AppCompat.ActionMode">
+        <item name="background">@color/colorPrimary</item>
+        <item name="titleTextStyle">@style/ActionModeTitleTextStyle</item>
+    </style>
+
+    <style name="ActionModeTitleTextStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionMode.Title">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <!--===========================================-->
+
+    <style name="Card">
+        <item name="android:padding">8dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="CardIcon">
+        <item name="android:width">@dimen/card_icon_size</item>
+        <item name="android:height">@dimen/card_icon_size</item>
+        <item name="android:layout_marginLeft">@dimen/card_icon_margin</item>
+        <item name="android:layout_marginRight">@dimen/card_icon_margin</item>
+    </style>
+
+
+    <style name="Title" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/textDarkPrimary</item>
+        <item name="android:textSize">@dimen/font_size_title</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SubTitle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/md_grey_500</item>
+        <item name="android:textSize">@dimen/font_card_item</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SubHeading" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/textDarkSecondary</item>
+        <item name="android:textSize">@dimen/font_size_subheading</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
+    </style>
+
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="MainTabLayout" parent="Widget.Design.TabLayout">
+        <!--<item name="android:background">@color/md_white_1000</item>-->
+        <!--<item name="tabTextAppearance">@style/MainTabText</item>-->
+        <!--<item name="tabSelectedTextColor">@color/md_blue_grey_500</item>-->
+        <!--<item name="tabIndicatorColor">@color/md_blue_grey_700</item>-->
+        <!--<item name="tabIndicatorHeight">@dimen/tab_indicator_height</item>-->
+    </style>
+
+    <style name="MainTabText" parent="TextAppearance.AppCompat.Button">
+        <item name="android:fontFamily">@font/byekan</item>
+        <item name="android:textSize">@dimen/font_toolbar_item</item>
+        <item name="android:textColor">@color/textDarkSecondary</item>
+    </style>
+
+
+</resources>

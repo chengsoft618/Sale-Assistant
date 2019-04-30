@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="request_list_customer_info_html">
+        {0} ( {1} )
+    </string>
+    <string name="request_list_customer_info_html1">
+       <![CDATA[ <h1>{0}</h1><h4>کد: {1}</h4><h6>{2}</h6>]]>
+    </string>
+</resources>

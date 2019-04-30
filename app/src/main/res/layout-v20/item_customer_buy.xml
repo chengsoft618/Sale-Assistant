@@ -1,0 +1,107 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    tools:ignore="RtlCompat,UnusedAttribute"
+    app:cardUseCompatPadding="true"
+    >
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:paddingBottom="10dp">
+
+        <!-- TODO: Update blank fragment layout -->
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.45"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/txtYearTypeID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/byekan"
+            android:text="@string/year"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtAmountBuyThisYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/AmountBuyThisYear"
+            android:fontFamily="@font/byekan"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintRight_toRightOf="@+id/txtYearTypeID"
+            app:layout_constraintTop_toBottomOf="@+id/txtYearTypeID" />
+
+        <TextView
+            android:id="@+id/txtQtyMainUnitBuyThisYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/QtyMainBuyThisYear"
+            android:fontFamily="@font/byekan"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintRight_toRightOf="@+id/txtAmountBuyThisYear"
+            app:layout_constraintTop_toBottomOf="@+id/txtAmountBuyThisYear"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/txtQtySubUnitBuyThisYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:fontFamily="@font/byekan"
+            android:text="@string/QtySubBuyThisYear"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtYearTypeID" />
+
+        <TextView
+            android:id="@+id/txtAmountBuyReturnedThisYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/byekan"
+            android:textSize="@dimen/font_card_item"
+            android:text="@string/AmountBuyReturnedThisYear"
+            app:layout_constraintRight_toRightOf="@+id/txtQtySubUnitBuyThisYear"
+            app:layout_constraintTop_toTopOf="@+id/txtAmountBuyThisYear" />
+
+        <TextView
+            android:id="@+id/txtQtyMainUnitBuyReturnedThisYear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/byekan"
+            android:textSize="@dimen/font_card_item"
+            android:text="@string/QtyMainUnitBuyReturnedThisYear"
+            app:layout_constraintRight_toRightOf="@+id/txtAmountBuyReturnedThisYear"
+            app:layout_constraintTop_toTopOf="@+id/txtQtyMainUnitBuyThisYear" />
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

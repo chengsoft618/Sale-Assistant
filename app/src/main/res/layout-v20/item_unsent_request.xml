@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/cardview_default_radius"
+    app:cardElevation="@dimen/cardview_default_elevation"
+    app:cardUseCompatPadding="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:animateLayoutChanges="true"
+    tools:ignore="MissingPrefix,UnusedAttribute"
+    android:clickable="true"
+    >
+
+    <android.support.constraint.ConstraintLayout
+        style="@style/Card"
+        android:id="@+id/whole_path_card">
+
+        <CheckBox
+            android:id="@+id/chkSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="75dp"
+            android:layout_height="68dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/chkSelect"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_shop_24dp" />
+
+        <TextView
+            android:id="@+id/txt_customer_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mj_text"
+            android:text="TextView"
+            android:textColor="@color/textDarkPrimary"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintEnd_toStartOf="@+id/imageView4"
+            app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+        <TextView
+            android:gravity="left"
+            android:id="@+id/txt_path"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/mj_text"
+            android:text="TextView"
+            android:textColor="@color/textDarkPrimary"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintEnd_toStartOf="@+id/txt_customer_info"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+        <TextView
+            android:textColor="@color/colorAccent"
+            android:id="@+id/txt_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/mj_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txt_customer_info"
+            app:layout_constraintStart_toStartOf="@+id/txt_path"
+            app:layout_constraintTop_toBottomOf="@+id/txt_customer_info" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.v7.widget.CardView>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_button_size">20sp</dimen>
+    <dimen name="notification_margin">2dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_height">200dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="text_header_size">18sp</dimen>
+    <dimen name="card_path_height">120dp</dimen>
+    <!--================================-->
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_icon_size">48dp</dimen>
+    <dimen name="card_icon_margin">16dp</dimen>
+    <dimen name="font_size_title">20sp</dimen>
+    <dimen name="font_card_item">18sp</dimen>
+    <dimen name="font_toolbar_item">14sp</dimen>
+    <dimen name="tab_indicator_height">20dp</dimen>
+    <dimen name="font_size_subheading">14sp</dimen>
+
+    <dimen name="widget_margin">8dp</dimen>
+    <dimen name="keypad_padding">0dp</dimen>
+    <dimen name="keypad_margin">0dp</dimen>
+    <dimen name="font_keypad_num">28sp</dimen>
+    <dimen name="font_request_num">28sp</dimen>
+    <dimen name="font_request_letter">16sp</dimen>
+    <dimen name="font_card_index_item">20sp</dimen>
+    <integer name="font_card_index_header">10</integer>
+
+    <dimen name="keypad_button_height">74dp</dimen>
+
+    <dimen name="font_pager_tab">15sp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+
+    <integer name="recycler_grid_small_col_number">1</integer>
+    <integer name="recycler_grid_large_col_number">1</integer>
+
+    <integer name="order_detail_header_percent">50</integer>
+    <integer name="order_detail_body_percent">50</integer>
+    <dimen name="text_margin">16dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="text_small">14sp</dimen>
+</resources>

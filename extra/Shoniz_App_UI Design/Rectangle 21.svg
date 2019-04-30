@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1020 44 250 730">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #9e9e9e;
+        stroke: #95989a;
+      }
+
+      .cls-2 {
+        stroke: none;
+      }
+
+      .cls-3 {
+        fill: none;
+      }
+    </style>
+  </defs>
+  <g id="Rectangle_21" data-name="Rectangle 21" class="cls-1" transform="translate(1020 44)">
+    <path class="cls-2" d="M0,0H250a0,0,0,0,1,0,0V700a30,30,0,0,1-30,30H30A30,30,0,0,1,0,700V0A0,0,0,0,1,0,0Z"/>
+    <path class="cls-3" d="M1,.5H249a.5.5,0,0,1,.5.5V700A29.5,29.5,0,0,1,220,729.5H30A29.5,29.5,0,0,1,.5,700V1A.5.5,0,0,1,1,.5Z"/>
+  </g>
+</svg>

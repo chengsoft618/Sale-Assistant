@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_order_details"
+        android:icon="@drawable/ic_send"
+        android:orderInCategory="102"
+        android:title="@string/order_edit"
+        app:actionLayout="@layout/switch_item" />
+
+    <item
+        android:id="@+id/action_delete_order"
+        android:icon="@drawable/ic_cancel"
+        android:orderInCategory="102"
+        android:title="@string/order_delete"
+        app:actionLayout="@layout/switch_item" />
+</menu>

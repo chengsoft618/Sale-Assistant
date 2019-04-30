@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="recycler_grid_small_col_number">2</integer>
+    <integer name="recycler_grid_large_col_number">1</integer>
+    <dimen name="nav_header_height">200dp</dimen>
+</resources>

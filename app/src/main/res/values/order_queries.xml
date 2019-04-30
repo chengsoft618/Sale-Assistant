@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="order_pivot_details">
+		SELECT
+			Shortcut,
+			OrderNo,
+			sum(QtyCarton) RequestCarton,
+			sum(QtyPackge) RequestPackage,
+			PersonId,
+			RegDate
+		FROM
+			(
+				SELECT
+					CASE D1.UnitId
+						WHEN 1 THEN
+							qty
+						ELSE
+							0
+						END QtyCarton,
+						CASE D1.UnitId
+					WHEN 2 THEN
+						qty
+					ELSE
+						0
+					END QtyPackge,
+					Shortcut,
+					O1.OrderNo,
+					PersonId,
+					RegDate
+				FROM
+					\"Order\" AS O1
+				INNER JOIN OrderDetail AS D1 ON O1.OrderNo = D1.OrderNo
+				AND O1.OrderNo = {0}
+				WHERE D1.IsBonus = 0
+			)
+		GROUP BY Shortcut
+	</string>
+    <string name="get_order_header">
+		SELECT *
+
+		FROM \"Order\" o
+		WHERE o.OrderNo = {0}
+    </string>
+    <string name="order_detail">
+		select B.Shortcut Shortcut,
+		C.ProductName ProductName,
+		B.IsBonus IsBonus,
+		Sum(QtyCartoon) QtyCartoon,
+			sum(QtyPackage) QtyPackage,
+		Sum(PriceCartoon) PriceCartoon,
+		sum(PricePackage) PricePackage,
+		OrderNo
+		FROM(
+				SELECT
+					OrderNo,
+					Shortcut,
+					IsBonus,
+					CASE WHEN UnitID = 1 Then Qty else 0 END QtyCartoon,
+					CASE WHEN UnitID = 2 Then Qty else 0 END QtyPackage,
+					CASE WHEN UnitID = 1 Then Price else 0 END PriceCartoon,
+					CASE WHEN UnitID = 2 Then Price else 0 END PricePackage
+				 FROM OrderDetail
+				WHERE OrderNo = {0}
+		) B
+		INNER JOIN Coding C on B.Shortcut = C.Shortcut
+		GROUP BY C.Shortcut, C.ProductName, IsBonus
+	</string>
+    <string name="order_header">
+		    SELECT DISTINCT
+			cb.PersonID,
+			o.OrderNo,
+			o.RegDate,
+			o.TotalAmount,
+			o.IsIssued,
+			o.AccDesc,
+			o.SalesDesc,
+			o.ChequeDuration,
+			o.InvoiceRemains,
+			o.OrderWeight,
+			cb.CustomerID,
+			cb.PersonName,
+			cb.Address,
+			cb.TelNo,
+			cb.CellNo,
+			cb.ContactName,
+			cb.PathCode,
+			cb.PathName,
+			o.Varity,
+			o.SenderId,
+			o.ActionId,
+			o.ActionDate,
+			o.Comment,
+			o.UserID,
+			ifnull(p.IsActive, 0) InPath,
+			(select sum(Price) FROM OrderDetail od where od.OrderNo = {0} AND od.IsBonus=1) BonusAmount
+		FROM
+			main.CustomerBase AS cb
+			LEFT JOIN Path p ON cb.PathCode = p.PathCode
+			LEFT JOIN \"Order\" o ON o.PersonID = cb.PersonID
+		WHERE o.OrderNo = {0}
+	</string>
+    <string name="delete_order">
+		DELETE FROM \"Order\" WHERE OrderNo={0};
+		DELETE FROM \"OrderDetail\" WHERE OrderNo={0};
+	</string>
+    <string name="orders_statistics">
+				SELECT
+			sum(TotalAmount) TotalPrice,
+			sum(IFNULL(OrderWeight, 0)) TotalWeight,
+		    sum(IFNULL(OrderNetWeight, 0)) TotalNetWeight,
+			sum(QtyCartoon) TotalQtyCarton,
+			sum(QtyPackage) TotalQtyPackage,
+			sum(
+				CASE
+				WHEN CB.CustomerTypeID = 1 THEN
+					1
+				ELSE
+					0
+				END
+			) TotalWholesalerCount,
+			sum(
+				CASE
+				WHEN CB.CustomerTypeID = 2 THEN
+					1
+				ELSE
+					0
+				END
+			) TotalRetailerCount
+		FROM
+			\"Order\" o
+		INNER JOIN CustomerBase CB ON O.PersonID = CB.PersonID
+		INNER JOIN (
+			SELECT
+				od.OrderNo,
+				sum(CASE
+			WHEN od.UnitID = 1 THEN
+				od.Qty
+			ELSE
+				0
+			END) QtyCartoon,
+			sum(CASE
+		WHEN od.UnitID = 2 THEN
+			 od.Qty
+		ELSE
+			0
+		END) QtyPackage
+		FROM
+			OrderDetail od
+		GROUP BY
+			od.OrderNo
+		) od ON od.OrderNo = o.OrderNo
+		Where 1 = 1 {0} {1}
+	</string>
+</resources>

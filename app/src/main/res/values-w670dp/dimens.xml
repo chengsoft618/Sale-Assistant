@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_icon_size">55dp</dimen>
+    <dimen name="font_card_index_item">24sp</dimen>
+    <integer name="font_card_index_header">13</integer>
+    <dimen name="font_request_num">20sp</dimen>
+    <dimen name="font_pager_tab">15sp</dimen>
+    <dimen name="font_toolbar_item">14sp</dimen>
+
+
+    <integer name="order_detail_header_percent">40</integer>
+    <integer name="order_detail_body_percent">60</integer>
+</resources>

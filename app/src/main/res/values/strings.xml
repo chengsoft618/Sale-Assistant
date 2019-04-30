@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">مدیریت فروش</string>
+
+    <string name="get_branch">بارگذاری مراکز</string>
+
+    <string name="get_employee">در حال دریافت اطلاعات کاربری</string>
+    <string name="connect_to_server">در حال دریافت اطلاعات کاربری</string>
+    <string name="yes">موافقم</string>
+    <string name="no">بی خیال</string>
+    <string name="title_activity_main">داشبورد من</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="nav_path">مسیر ویزیت</string>
+    <string name="nav_orders">درخواست ها</string>
+    <string name="nav_catalog">کاتالوگ</string>
+    <string name="nav_customers">لیست مشتریان</string>
+    <string name="nav_report">گزارشات</string>
+    <string name="nav_setting">تنظیمات</string>
+    <string name="nav_about">درباره برنامه</string>
+    <string name="main_thread_error">خطای اجرایی کد همزمانی</string>
+    <string name="get_visit_path">در حال دریافت اطلاعات مسیرها</string>
+    <string name="file_not_found_error"> فایل مورد نظر پیدا نشد</string>
+    <string name="txt_customer_name">نام مشتری</string>
+    <string name="chequeSerialNumber">سریال چک</string>
+    <string name="bank_name">نام بانک</string>
+    <string name="BankBranchName">نام شعبه</string>
+    <string name="chequePersonName">بنام</string>
+    <string name="c">مبلغ کل</string>
+    <string name="FlowDate">تاریخ</string>
+    <string name="ReasonName">دلیل</string>
+    <string name="TypeCheque">نوع چک</string>
+    <string name="TotalAmount"> مبلغ</string>
+    <string name="address">آدرس</string>
+    <string name="customer_card_address">{0} - شماره تماس {1} </string>
+    <string name="year">سال</string>
+    <string name="empty_carton_package">"لطفا تعداد کارتن و بسته را وارد کنید."</string>
+
+    <string name="AmountBuyThisYear">مبلغ خرید سال</string>
+    <string name="get_customer_base">در حال دریافت اطلاعات پایه مشتریان</string>
+    <string name="get_customer_buy">در حال دریافت اطلاعات خرید و برگشت از خرید مشتریان</string>
+    <string name="get_customer_cheque">در حال دریافت اطلاعات چک مشتریان</string>
+    <string name="get_customer_credit">در حال دریافت اطلاعات اعتباری مشتریان</string>
+    <string name="show_update_path">در حال واکشی لیست مسیرها</string>
+    <string name="get_path_lists">در حال دریافت لیست مسیر ها</string>
+    <string name="progress_status">({0}/{1})</string>
+    <string name="select_branch_from_list">لطفا مرکز پخش خود را انتخاب کنید</string>
+    <string name="access_denied_permissions">مجوز استفاده از دسترسی های زیر داده نشده است
+                                             {0}</string>
+    <!--   ...............ERROR....................... -->
+    <string name="error_message_api_not_found">آدرس مورد نظر پیدا نشد</string>
+    <string name="error_message_api_server">خطا سمت سرور</string>
+    <string name="dialog_icon_description">آیکن دیالوگ</string>
+
+    <string name="error_message_unknown">یک خطای ناشناخته بوجود آمده است. لطفا با واحد انفورماتیک تماس بگیرید.</string>
+    <string name="error_message_timeout">ظاهرا ارتباط با مرکز برقرار نیست</string>
+    <string name="error_message_io">خطای دسترسی به فایل</string>
+    <string name="error_message_sqlite">خطا در اجرای اسکریپت اس کیو ال</string>
+    <string name="error_message_constraint">خطای در درج رکورد:</string>
+    <string name="select_branch">انتخاب دفتر</string>
+    <string name="selected_branch">   دفتر انتخاب شده: {0}</string>
+    <string name="error_message_url">آدرس اشتباه</string>
+    <string name="error_message_connection">خطا در دسترسی به شبکه داخلی و اینترنت</string>
+    <!--   ...............ERROR....................... -->
+    <!--   ...............MENU....................... -->
+    <string name="path_update_menu">بروز رسانی کل مسیرها</string>
+    <string name="customer_update_menu">بروز رسانی کل مشتری ها</string>
+    <string name="customer_update_selected_menu">بروز رسانی مشتریان انتخاب شده</string>
+    <string name="try_again">تلاش مجدد</string>
+    <string name="get_coding_info">در حال دریافت اطلاعات محصولات</string>
+    <string name="get_shortcut_image"> (%3$d/%2$d) در حال دریافت تصویر با کد میانبر %1$d </string>
+    <string name="get_resource"> ( %3$d / %2$d) در حال دریافت منابع شماره %1$d </string>
+    <string name="path_resource">{0}/{1}{2}.jpg</string>
+    <string name="menu_update_coding">بروز رسانی اطلاعات محصولات</string>
+    <string name="get_profile_category">در حال دریافت پروفایل کاتالوگ ها</string>
+    <string name="get_category">در حال دریافت کاتالوگ های سیستمی</string>
+    <string name="get_sub_category">در حال گرفتن گروه بندی سطح 2</string>
+    <string name="get_sub_category_detail">در حال گرفتن گروه بندی سطح 3</string>
+
+    <string name="title_activity_fullscreen">CatalogActivity</string>
+    <string name="QtyMainBuyThisYear">تعداد کارتن خریدی سال</string>
+    <string name="QtySubBuyThisYear">تعداد بسته خریدی سال</string>
+    <string name="AmountBuyReturnedThisYear">مبلغ برگشت از خرید</string>
+    <string name="QtyMainUnitBuyReturnedThisYear">تعداد کارتن برگشتی</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="get_order_list">دریافت اطلاعات خرید</string>
+    <string name="sale_desc">توضیحات فروش</string>
+    <string name="acc_desc">توضیحات حسابداری</string>
+    <string name="send_request">ارسال درخواست</string>
+    <string name="send_request_prompt">ارسال درخواست</string>
+
+    <string name="title_activity_xxxxxxx">XXXXXXXActivity</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="request_list_title">لیست درخواست ها</string>
+    <string name="noti_send_order">ارسال درخواست :{1}({0})</string>
+    <string name="title_activity_order_detail">OrderDetailActivity</string>
+    <string name="order_edit">ویرایش درخواست</string>
+    <string name="order_delete">حذف درخواست</string>
+    <string name="product_name">نام</string>
+    <string name="order_carton">کارتن</string>
+    <string name="order_package">بسته</string>
+    <string name="order_package_price">مبلغ بسته</string>
+    <string name="order_carton_price">مبلغ کارتن</string>
+    <string name="shortcut">کد</string>
+    <string name="reports">گزارشات</string>
+
+
+    <!--++++++++++++++++++++++++++-->
+    <!--added on API 16 (JB - 4.1)-->
+    <!--++++++++++++++++++++++++++-->
+    <!--the default font-->
+    <string name="fontFamily__roboto_regular">byekan</string>
+    <string name="fontFamily__roboto_light">byekan</string>
+    <string name="fontFamily__roboto_condensed">byekan</string>
+
+    <!--+++++++++++++++++++++++++++++-->
+    <!--added on API 17 (JBMR1 - 4.2)-->
+    <!--+++++++++++++++++++++++++++++-->
+    <string name="fontFamily__roboto_thin">byekan</string>
+
+    <!--+++++++++++++++++++++++++++-->
+    <!--added on Lollipop (LL- 5.0)-->
+    <!--+++++++++++++++++++++++++++-->
+    <string name="fontFamily__roboto_medium">byekan</string>
+    <string name="fontFamily__roboto_black">byekan</string>
+    <string name="fontFamily__roboto_condensed_light">byekan</string>
+    <string name="title_activity_message">پیام ها</string>
+    <string name="message">پیام ها</string>
+    <string name="update_messages">بروز رسانی پیام ها</string>
+    <string name="get_new_message">دریافت پیام های جدید</string>
+    <string name="delete_message">حذف پیام</string>
+    <string name="cancel">لغو</string>
+    <string name="confirm">تایید</string>
+    <string name="ClassNameB">مشتریان B</string>
+    <string name="active_customer">مشتریان فعال</string>
+    <string name="application_version">نسخه برنامه :%1$s</string>
+    <string name="imei">شماره سریال : %1$d</string>
+    <string name="title_activity_oreder_details">OrederDetailsActivity</string>
+    <string name="title_activity_programmer">ProgrammerActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="reg_out_of_path">درخواست خارج مسیر</string>
+    <string name="update_out_of_path">بروزرسانی اطلاعات مشتریان خارج مسیر</string>
+    <string name="price">قیمت {0}</string>
+    <string name="weight">وزن {0}</string>
+    <string name="not_found_shortcut">کد میانبر یافت نشد</string>
+    <string name="customer_credit_first_six_month">اعتبار شش ماهه اول</string>
+    <string name="customer_credit_second_six_month">اعتبار شش ماهه دوم</string>
+    <string name="customer_credit_remain">مانده اعتبار</string>
+    <string name="customer_account_remain">مانده حساب</string>
+    <string name="settlement">تسویه</string>
+    <string name="debtor">بدهکار {0} </string>
+    <string name="creditor">بستانکار {0} </string>
+    <string name="empty_basket">سبد خرید خالی هست</string>
+    <string name="title_activity_order_verify">تایید درخواست</string>
+    <string name="wait">لطفا منتظر باشید</string>
+    <string name="google_cloud_register">ثبت نام پیام رسانی انجام شد</string>
+    <string name="title_activity_settings">تنظیمات برنامه</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string-array name="list_preference_entries">
+        <item>Entry 1</item>
+        <item>Entry 2</item>
+        <item>Entry 3</item>
+    </string-array>
+
+    <string-array name="list_preference_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+    <string name="send_not_sale_resaon">ارسال علت عدم ویزیت مشتریان</string>
+    <string name="get_base_data">درحال دریافت اطلاعات پایه</string>
+    <string name="title_activity_entrance">EntranceActivity</string>
+    <string name="common_bonus_ammount">مبلغ جایزه</string>
+    <string name="common_google_chorme_apk">در حال دانلود Chrome</string>
+    <string name="send_order_operation_title">برای این مشتری درخواست ارسال شده وجود دارد. لطفا عملیات مورد نظر را برای ادامه کار انتخاب نمایید:</string>
+
+
+</resources>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/cardview_default_radius"
+    app:cardElevation="@dimen/cardview_default_elevation"
+    app:cardUseCompatPadding="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:animateLayoutChanges="true"
+    android:clickable="true"
+    tools:ignore="MissingPrefix,UnusedAttribute"
+    >
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/whole_path_card"
+        style="@style/Card">
+
+        <TextView
+            android:id="@+id/txtWholesalerCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:fontFamily="@font/mj_text"
+            android:text="عمده :"
+            app:layout_constraintEnd_toStartOf="@+id/txtCustomerCount"
+            app:layout_constraintTop_toTopOf="@+id/txtCustomerCount" />
+
+        <TextView
+            android:id="@+id/txtRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="@dimen/card_margin"
+            android:fontFamily="@font/mj_text"
+            android:gravity="right"
+            android:textSize="@dimen/text_header_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_order_no"
+            style="@style/Title"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="@dimen/card_margin"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:fontFamily="@font/mj_text"
+            android:gravity="right"
+            android:text="txt_path_name"
+            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintStart_toEndOf="@+id/img_download"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_path_description"
+            style="@style/SubHeading"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/mj_text"
+            android:gravity="right"
+            android:text="txt_path_description"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCustomerCount" />
+
+        <CheckBox
+            android:id="@+id/chkSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            style="@style/CardIcon"
+            android:layout_width="@dimen/card_icon_size"
+            android:layout_height="@dimen/card_icon_size"
+
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/txtRow"
+            app:layout_constraintRight_toLeftOf="@+id/chkSelect"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_path_24dp" />
+
+        <TextView
+            android:id="@+id/txtCustomerCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/mj_text"
+            android:text="کل مشتریان"
+            app:layout_constraintEnd_toEndOf="@+id/txt_order_no"
+            app:layout_constraintTop_toBottomOf="@+id/txt_order_no"
+            tools:text="کل :" />
+
+        <TextView
+            android:id="@+id/txtRetailerCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:fontFamily="@font/mj_text"
+            android:text=" خرده :"
+            app:layout_constraintEnd_toStartOf="@+id/txtWholesalerCount"
+            app:layout_constraintTop_toTopOf="@+id/txtWholesalerCount" />
+
+        <ImageView
+            android:id="@+id/img_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_download" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.v7.widget.CardView>

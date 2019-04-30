@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:orderInCategory="103"></group>
+    <item
+    android:id="@+id/menu_update_coding_info"
+    android:icon="@drawable/ic_refresh_24dp"
+    android:orderInCategory="102"
+    android:title="@string/menu_update_coding"
+    app:actionLayout="@layout/switch_item" />
+
+
+
+</menu>

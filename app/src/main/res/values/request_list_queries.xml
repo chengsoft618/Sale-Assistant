@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="ordered_request_list_header">
+		SELECT
+	O.OrderNo,
+	O.RegDate,
+	O.PersonID,
+	O.TotalAmount Price,
+	O.OrderWeight,
+	O.OrderNetWeight,
+	O.OrderStatus,
+	O.IsIssued,
+	O.ChequeDuration,
+	O.InvoiceRemains,
+	O.SalesDesc,
+	O.AccDesc,
+	O.Varity,
+	CB.PersonName,
+	CB.ContactName,
+	CB.Address,
+	CB.TelNo,
+	CB.CellNo,
+	CB.PathName,
+	CB.CustomerID,
+	CB.CustomerType,
+	CB.MaxCredit,
+	od.QtyCartoon,
+	od.QtyPackage,
+	1 InPath
+FROM
+	\"Order\" O
+INNER JOIN (
+	SELECT
+		OrderNo,
+		sum(QtyCartoon) QtyCartoon,
+		sum(QtyPackage) QtyPackage
+	FROM
+		(
+			SELECT
+				od.OrderNo,
+			sum(	CASE
+			WHEN od.UnitID = 1 THEN
+				od.Qty
+			ELSE
+				0
+			END) QtyCartoon,
+			sum(CASE
+		WHEN od.UnitID = 2 THEN
+			od.Qty
+		ELSE
+			0
+		END) QtyPackage
+		FROM
+			OrderDetail od
+
+		GROUP BY
+			od.OrderNo
+		) a
+	GROUP BY
+		OrderNo
+) od ON o.OrderNo = od.OrderNo
+INNER JOIN CustomerBase CB ON O.PersonID = CB.PersonID
+WHERE
+		O.OrderNo NOT IN (
+		SELECT
+			c.OrderNo
+		FROM
+			CardIndex c
+	) {0} {1} {2}
+		Order by O.OrderNo DESC
+
+
+	</string>
+    <string name="ordered_request_list_details">
+		SELECT
+			\"Order\".OrderNo,
+			OrderDetail.IsBonus,
+			\"Order\".RegDate,
+			\"Order\".PersonID,
+			\"Order\".TotalAmount,
+			\"Order\".IsIssued,
+			\"Order\".ChequeDuration,
+			\"Order\".InvoiceRemains,
+			\"Order\".SalesDesc,
+			\"Order\".AccDesc,
+			CustomerBase.PersonName,
+			CustomerBase.ContactName,
+			CustomerBase.Address,
+			CustomerBase.TelNo,
+			CustomerBase.CellNo,
+			CustomerBase.PathName,
+			CustomerBase.CustomerID,
+			CustomerBase.CustomerType,
+			CustomerBase.MaxCredit,
+			SUM(OrderDetail.Price) Price,
+			SUM(OrderDetail.Qty) Weight
+		FROM
+			\"Order\"
+			INNER JOIN CustomerBase ON \"Order\".PersonID = CustomerBase.PersonID
+			INNER JOIN OrderDetail ON \"Order\".OrderNo = OrderDetail.OrderNo
+		WHERE \"Order\".IsIssued = 0
+		Group By
+			OrderDetail.OrderNo,
+			OrderDetail.IsBonus,
+			\"Order\".RegDate,
+			\"Order\".PersonID,
+			\"Order\".TotalAmount,
+			\"Order\".IsIssued,
+			\"Order\".ChequeDuration,
+			\"Order\".InvoiceRemains,
+			\"Order\".SalesDesc,
+			\"Order\".AccDesc,
+			CustomerBase.PersonName,
+			CustomerBase.ContactName,
+			CustomerBase.Address,
+			CustomerBase.TelNo,
+			CustomerBase.CellNo,
+			CustomerBase.PathName,
+			CustomerBase.CustomerID,
+			CustomerBase.CustomerType,
+			CustomerBase.MaxCredit
+	</string>
+    <string name="unsent_request_list">
+		SELECT
+			ci.OrderNo,
+			ci.ChequeDuration,
+			ci.PersonID,
+			ci.NeedDate,
+		    ci.ErrorMessage,
+			cb.CustomerID,
+			cb.PersonName,
+			cb.Address,
+			cb.TelNo,
+			cb.CellNo,
+			cb.ContactName,
+			cb.PathCode,
+			cb.PathName,
+			ifnull(p.IsActive, 0) InPath
+		FROM
+			CardIndex AS ci
+		INNER JOIN CustomerBase AS cb ON cb.PersonID = ci.PersonID
+		INNER JOIN path p ON cb.PathCode = p.PathCode
+
+	</string>
+    <string name="unvisit_customer_list">
+		SELECT DISTINCT
+			cb.PersonID,
+			cb.CustomerID,
+			cb.PersonName,
+			cb.Address,
+			cb.TelNo,
+			cb.CellNo,
+			cb.ContactName,
+			cb.PathCode,
+			cb.PathName,
+			uc.ErrorMessage,
+			ifnull(p.IsActive, 0) InPath,
+			ifnull(uc.NotSallReasonID, 1) NotSallReasonID,
+			r.NotSallReasonText,
+			uc.IsSent
+		FROM
+			CustomerBase AS cb
+		LEFT JOIN UnvisitedCustomerReason uc ON cb.PersonID = uc.PersonId
+		LEFT JOIN \"Reason\" r ON r.NotSallReasonID = ifnull(uc.NotSallReasonID, 1)
+		INNER JOIN path p ON cb.PathCode = p.PathCode
+		LEFT JOIN \"Order\" o ON o.PersonID = cb.PersonID
+		AND o.IsIssued = 0
+		WHERE
+			p.IsActive = 1
+		AND cb.IsActive = 1
+		AND Ifnull(uc.IsSent, 0) = 0
+		AND cb.ClassNames = \'\'A\'\'
+		AND O.OrderNo Is NULL OR O.OrderNo = 0
+
+	</string>
+
+
+</resources>

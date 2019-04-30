@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.shoniz.saledistributemobility.framework.StringHelper" />
+
+        <variable
+            name="viewModel"
+            type="com.shoniz.saledistributemobility.view.ordering.operation.cancel.VerifyCancelItemViewModel" />
+
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout
+        tools:ignore="UnusedAttribute"
+        android:id="@+id/whole_path_card"
+        style="@style/Card">
+
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:checked="@{viewModel.isSelected()}"
+            android:onCheckedChanged="@{(switch, checked) -> viewModel.onCheckedChanged(checked)}"
+
+
+            app:layout_constraintBottom_toBottomOf="@+id/tableLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:visibility="@{viewModel.isVisible()}" />
+
+        <TextView
+            android:id="@+id/txt_row"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:fontFamily="@font/byekan"
+            android:gravity="center"
+            android:text="@{StringHelper.generateRecyclerItem(@string/general_empty, viewModel.getModel().RowNumber, @string/general_empty)}"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintBottom_toBottomOf="@+id/tableLayout"
+            app:layout_constraintEnd_toStartOf="@+id/btnIsIssued"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="75dp"
+            android:layout_height="68dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tableLayout"
+            app:layout_constraintEnd_toStartOf="@+id/txt_row"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_shop_24dp" />
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_toLeftOf="@+id/imageView4"
+            android:layout_toStartOf="@+id/imageView4"
+            app:layout_constraintEnd_toStartOf="@+id/imageView4"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/txt_price"
+                    style="@style/Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="right"
+                    android:paddingRight="@dimen/card_margin"
+                    android:paddingTop="@dimen/card_margin"
+                    android:text="@{StringHelper.generateRecyclerItem(@string/order_total_amount, viewModel.getModel().TotalAmount, @string/general_empty)}"
+                    android:textSize="@dimen/font_card_item" />
+
+                <TextView
+                    android:id="@+id/txt_customer_info"
+                    style="@style/Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="right"
+                    android:paddingRight="@dimen/card_margin"
+                    android:paddingTop="@dimen/card_margin"
+                    android:text="@{StringHelper.generateRecyclerItem(@string/order_customer_name, viewModel.getModel().CustomerName, @string/general_empty)}"
+                    android:textSize="@dimen/font_card_item" />
+
+                <TextView
+                    android:id="@+id/txt_order_no"
+                    style="@style/Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="right"
+                    android:paddingRight="@dimen/card_margin"
+                    android:paddingTop="@dimen/card_margin"
+                    android:text="@{StringHelper.generateRecyclerItem(@string/order_number, viewModel.getModel().OrderNo, @string/general_empty)}"
+                    android:textSize="@dimen/font_card_item"
+                     />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txt_weight"
+                    style="@style/SubHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="right"
+                    android:paddingRight="@dimen/card_margin"
+                    android:paddingTop="@dimen/card_margin"
+                    android:text="@{StringHelper.generateRecyclerItem(@string/general_empty, viewModel.getModel().OrderWeight, @string/common_weight_unit)}"
+                    android:textSize="@dimen/font_card_item" />
+
+                <TextView
+                    android:id="@+id/txt_variety"
+                    style="@style/SubHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="right"
+                    android:paddingRight="@dimen/card_margin"
+                    android:paddingTop="@dimen/card_margin"
+                    android:text="@{StringHelper.generateRecyclerItem(@string/order_variety, viewModel.getModel().Variety, @string/general_empty)}"
+                    android:textSize="@dimen/font_card_item" />
+
+                <TextView
+                    android:id="@+id/txt_date"
+                    style="@style/SubHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="right"
+                    android:paddingRight="@dimen/card_margin"
+                    android:paddingTop="@dimen/card_margin"
+                    android:text="@{StringHelper.generateRecyclerItem(@string/order_reg_date, viewModel.getModel().RegDate, @string/general_empty)}"
+                    android:textSize="@dimen/font_card_item" />
+
+
+            </TableRow>
+
+
+            <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/SubHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="right"
+                    android:paddingRight="@dimen/card_margin"
+                    android:paddingTop="@dimen/card_margin"
+                    android:text="@{StringHelper.generateRecyclerItem(@string/common_visitor, viewModel.getModel().FullName, @string/general_empty)}"
+                    android:textSize="@dimen/font_card_item" />
+
+                <TextView
+                    style="@style/SubHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="right"
+                    android:paddingRight="@dimen/card_margin"
+                    android:paddingTop="@dimen/card_margin"
+                    android:text="@{StringHelper.generateRecyclerItem(@string/common_path, viewModel.getModel().PathName, @string/general_empty)}"
+                    android:textSize="@dimen/font_card_item" />
+
+
+                <TextView
+                    style="@style/SubHeading"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="right"
+                    android:paddingRight="@dimen/card_margin"
+                    android:paddingTop="@dimen/card_margin"
+                    android:text="@{StringHelper.generateRecyclerItem(@string/general_empty,StringHelper.getDateFromLong(viewModel.getModel().ActionDate), @string/general_empty)}"
+                    android:textSize="@dimen/font_card_item" />
+            </TableRow>
+
+
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/textView17"
+            style="@style/SubHeading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/byekan"
+            android:gravity="right"
+            android:paddingRight="@dimen/card_margin"
+            android:paddingTop="@dimen/card_margin"
+            android:text="@{StringHelper.generateRecyclerItem(@string/common_sender,viewModel.getModel().SenderName, @string/general_empty)}"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+
+        <TextView
+            android:id="@+id/txt_message"
+            style="@style/SubHeading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tableLayout"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_toLeftOf="@+id/imageView4"
+            android:layout_toStartOf="@+id/imageView4"
+            android:fontFamily="@font/mj_text"
+            android:padding="@dimen/card_margin"
+            android:text="@{StringHelper.generateRecyclerItem(@string/common_comment, viewModel.getModel().Comment, @string/general_empty)}"
+            android:textColor="@color/text_error"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView17"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+        <Button
+            android:id="@+id/btnIsIssued"
+            android:layout_width="10dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/md_blue_500"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/tableLayout"
+            app:layout_constraintEnd_toStartOf="@+id/checkbox"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</layout>

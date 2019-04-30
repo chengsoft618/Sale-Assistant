@@ -1,0 +1,57 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="fill_parent"
+    android:layout_height="150dp"
+    android:padding="@dimen/notification_margin"
+    tools:ignore="MissingPrefix,UnusedAttribute">
+
+    <ImageView
+        android:id="@+id/notification_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="10dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/notification_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/notification_margin"
+        android:layout_toEndOf="@+id/notification_icon"
+        android:layout_toRightOf="@+id/notification_icon"
+        android:text="Testing"
+        android:textColor="#000"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/notification_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/notification_title"
+        android:layout_marginTop="@dimen/notification_margin"
+        android:layout_toEndOf="@+id/notification_icon"
+        android:layout_toRightOf="@+id/notification_icon"
+        android:maxLines="4"
+        android:text="Testing is awecome"
+        android:textColor="#000"
+        android:textSize="13dp" />
+
+    <ProgressBar
+        android:id="@+id/notification_progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_toEndOf="@+id/notification_icon"
+        android:layout_toRightOf="@+id/notification_icon"
+        android:indeterminate="true" />
+</RelativeLayout>

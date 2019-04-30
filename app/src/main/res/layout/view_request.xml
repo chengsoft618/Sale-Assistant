@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tableLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txt_amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/ic_keypad_textfield_disable"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:textSize="@dimen/font_request_num" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="TODO"
+            app:srcCompat="@drawable/ic_money" />
+
+        <TextView
+            android:id="@+id/txt_amount_product"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/ic_keypad_textfield_disable"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:textSize="@dimen/font_request_num" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="TODO"
+            app:srcCompat="@drawable/ic_irr" />
+
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txt_carton"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/ic_keypad_textfield_default"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:textSize="@dimen/font_request_num" />
+
+        <ImageView
+            android:id="@+id/imageView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="TODO"
+            app:srcCompat="@drawable/ic_carton" />
+
+        <TextView
+            android:id="@+id/txt_shortcut"
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/ic_keypad_textfield_default"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:textSize="@dimen/font_request_num" />
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="TODO"
+            app:srcCompat="@drawable/ic_shortcut" />
+
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/txt_package"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/ic_keypad_textfield_default"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:textSize="@dimen/font_request_num" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="TODO"
+            app:srcCompat="@drawable/ic_package" />
+
+        <TextView
+            android:id="@+id/txt_cheque_duration"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/ic_keypad_textfield_default"
+            android:gravity="center_vertical"
+            android:lines="1"
+            android:textSize="@dimen/font_request_num" />
+
+        <ImageView
+            android:id="@+id/imageView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_cheque_duration" />
+
+    </TableRow>
+
+    <com.shoniz.saledistributemobility.view.customer.cardindex.KeypadView
+        android:id="@+id/keypadView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        >
+
+        <Button
+            android:id="@+id/btnDelete"
+            style="?android:button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:tag="num"
+            android:text=" حذف"
+            android:textSize="@dimen/font_request_letter" />
+
+        <Button
+            android:id="@+id/btnExistence"
+            style="?android:button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:layout_weight="1"
+            android:tag="num"
+            android:text="موجودی"
+            android:textSize="@dimen/font_request_letter" />
+
+        <Button
+            android:id="@+id/btnRequest"
+            style="?android:button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:layout_weight="1"
+            android:tag="num"
+            android:text="سبد"
+            android:textSize="@dimen/font_request_letter" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnSend"
+            style="?android:button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:text="ارسال اطلاعات"
+            android:textSize="@dimen/font_request_letter" />
+
+
+    </TableRow>
+
+    <ProgressBar
+        android:visibility="invisible"
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:indeterminate="true" />
+</TableLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

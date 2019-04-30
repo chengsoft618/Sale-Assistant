@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.shoniz.saledistributemobility.view.branch.BranchItemViewModel" />
+    </data>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/clLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(view) -> viewModel.onClick(view)}"
+        app:backgroundColor="@{viewModel.itemBackgroundColor}">
+
+        <TextView
+            android:id="@+id/txtBranchName"
+            style="@style/Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="right"
+            android:text="@{viewModel.getModel().branchEntity.BranchPersianName}"
+            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            style="@style/CardIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_branch" />
+
+        <TextView
+            android:id="@+id/txtBranchCode"
+            style="@style/SubHeading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="right"
+            android:text="@{String.valueOf(viewModel.getModel().branchEntity.BranchCode)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/txtBranchName"
+            app:layout_constraintStart_toStartOf="@+id/txtBranchName"
+            app:layout_constraintTop_toBottomOf="@+id/txtBranchName" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

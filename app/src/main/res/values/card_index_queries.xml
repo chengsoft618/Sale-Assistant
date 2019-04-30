@@ -1,0 +1,584 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="card_index_all_query">
+SELECT a.*, co.CartonPrice,
+		co.PackagePrice,
+		co.ProductName,
+		CASE
+			WHEN ifnull(a.RequestCarton, 0) + ifnull(a.RequestPackage, 0) > 0 THEN
+				\'0\'
+			ELSE
+				\'1\'
+			END || a.Shortcut sortlist
+		FROM (
+      SELECT
+		c.Shortcut Shortcut,
+		cnt.QtyCarton1 QtyCarton1,
+		cnt.QtyPackge1 QtyPackge1,
+		cnt.QtyCarton2 QtyCarton2,
+		cnt.QtyPackge2 QtyPackge2,
+		cnt.QtyCarton3 QtyCarton3,
+		cnt.QtyPackge3 QtyPackge3,
+		cnt.OrderNo1 OrderNo1,
+		cnt.OrderNo2 OrderNo2,
+		cnt.OrderNo3 OrderNo3,
+		c.RequestCarton RequestCarton,
+		c.RequestPackage RequestPackage,
+		c.ExistenceCarton ExistenceCarton,
+		c.ExistencePackage ExistencePackage,
+		c.PersonId PersonId
+	FROM
+		(SELECT * FROM CardIndexDetail where personId = {0}) c
+		LEFT JOIN (
+		SELECT
+			Shortcut,
+			SUM(QtyCarton1) QtyCarton1,
+			SUM(QtyPackge1) QtyPackge1,
+			SUM(QtyCarton2) QtyCarton2,
+			SUM(QtyPackge2) QtyPackge2,
+			SUM(QtyCarton3) QtyCarton3,
+			SUM(QtyPackge3) QtyPackge3,
+			SUM(O1) OrderNo1,
+			SUM(O2) OrderNo2,
+			SUM(O3) OrderNo3
+		FROM
+			(
+				SELECT
+					Shortcut,
+					sum(QtyCarton) QtyCarton1,
+					sum(QtyPackge) QtyPackge1,
+					0 QtyCarton2,
+					0 QtyPackge2,
+					0 QtyCarton3,
+					0 QtyPackge3,
+					SUM(OrderNo) O1,
+					0 O2,
+					0 O3
+				FROM
+					(
+						SELECT
+							CASE D1.UnitId
+						WHEN 1 THEN
+							qty
+						ELSE
+							0
+						END QtyCarton,
+						CASE D1.UnitId
+					WHEN 2 THEN
+						qty
+					ELSE
+						0
+					END QtyPackge,
+					Shortcut,
+					O1.OrderNo,
+					RegDate
+				FROM
+					\"Order\" AS O1
+				INNER JOIN OrderDetail AS D1 ON O1.OrderNo = D1.OrderNo
+				WHERE
+					IsBonus = 0
+				AND O1.OrderNo = {1}
+					)
+				GROUP BY
+					Shortcut,
+					OrderNo
+				UNION ALL
+					SELECT
+						Shortcut,
+						0 QtyCarton1,
+						0 QtyPackge1,
+						sum(QtyCarton) QtyCarton2,
+						sum(QtyPackge) QtyPackge2,
+						0 QtyCarton3,
+						0 QtyPackge3,
+						0 O1,
+						SUM(OrderNo) O2,
+						0 O3
+					FROM
+						(
+							SELECT
+								CASE D1.UnitId
+							WHEN 1 THEN
+								qty
+							ELSE
+								0
+							END QtyCarton,
+							CASE D1.UnitId
+						WHEN 2 THEN
+							qty
+						ELSE
+							0
+						END QtyPackge,
+						Shortcut,
+						O1.OrderNo,
+						RegDate
+					FROM
+						\"Order\" AS O1
+					INNER JOIN OrderDetail AS D1 ON O1.OrderNo = D1.OrderNo
+					WHERE
+						IsBonus = 0
+					AND O1.OrderNo = {2}
+						)
+					GROUP BY
+						Shortcut,
+						OrderNo
+					UNION ALL
+						SELECT
+							Shortcut,
+							0 QtyCarton1,
+							0 QtyPackge1,
+							0 QtyCarton2,
+							0 QtyPackge2,
+							sum(QtyCarton) QtyCarton3,
+							sum(QtyPackge) QtyPackge3,
+							0 O1,
+							0 O2,
+							SUM(OrderNo) O3
+						FROM
+							(
+								SELECT
+									CASE D1.UnitId
+								WHEN 1 THEN
+									qty
+								ELSE
+									0
+								END QtyCarton,
+								CASE D1.UnitId
+							WHEN 2 THEN
+								qty
+							ELSE
+								0
+							END QtyPackge,
+							Shortcut,
+							O1.OrderNo,
+							RegDate
+						FROM
+							\"Order\" AS O1
+						INNER JOIN OrderDetail AS D1 ON O1.OrderNo = D1.OrderNo
+						WHERE
+							IsBonus = 0
+						AND O1.OrderNo = {3}
+							)
+						GROUP BY
+							Shortcut,
+							OrderNo
+			) B
+		GROUP BY
+			Shortcut
+	) cnt ON c.Shortcut = cnt.Shortcut
+	WHERE
+		cnt.Shortcut IS NULL
+
+	UNION ALL
+	SELECT
+		cnt.*, c.RequestCarton,
+		c.RequestPackage,
+		c.ExistenceCarton,
+		c.ExistencePackage,
+		c.PersonId
+    FROM
+	(
+		SELECT
+			Shortcut,
+			SUM(QtyCarton1) QtyCarton1,
+			SUM(QtyPackge1) QtyPackge1,
+			SUM(QtyCarton2) QtyCarton2,
+			SUM(QtyPackge2) QtyPackge2,
+			SUM(QtyCarton3) QtyCarton3,
+			SUM(QtyPackge3) QtyPackge3,
+			SUM(O1) OrderNo1,
+			SUM(O2) OrderNo2,
+			SUM(O3) OrderNo3
+		FROM
+			(
+				SELECT
+					Shortcut,
+					sum(QtyCarton) QtyCarton1,
+					sum(QtyPackge) QtyPackge1,
+					0 QtyCarton2,
+					0 QtyPackge2,
+					0 QtyCarton3,
+					0 QtyPackge3,
+					SUM(OrderNo) O1,
+					0 O2,
+					0 O3
+				FROM
+					(
+						SELECT
+							CASE D1.UnitId
+						WHEN 1 THEN
+							qty
+						ELSE
+							0
+						END QtyCarton,
+						CASE D1.UnitId
+					WHEN 2 THEN
+						qty
+					ELSE
+						0
+					END QtyPackge,
+					Shortcut,
+					O1.OrderNo,
+					RegDate
+				FROM
+					\"Order\" AS O1
+				INNER JOIN OrderDetail AS D1 ON O1.OrderNo = D1.OrderNo
+				WHERE
+					IsBonus = 0
+				AND O1.OrderNo = {1}
+					)
+				GROUP BY
+					Shortcut,
+					OrderNo
+				UNION ALL
+					SELECT
+						Shortcut,
+						0 QtyCarton1,
+						0 QtyPackge1,
+						sum(QtyCarton) QtyCarton2,
+						sum(QtyPackge) QtyPackge2,
+						0 QtyCarton3,
+						0 QtyPackge3,
+						0 O1,
+						SUM(OrderNo) O2,
+						0 O3
+					FROM
+						(
+							SELECT
+								CASE D1.UnitId
+							WHEN 1 THEN
+								qty
+							ELSE
+								0
+							END QtyCarton,
+							CASE D1.UnitId
+						WHEN 2 THEN
+							qty
+						ELSE
+							0
+						END QtyPackge,
+						Shortcut,
+						O1.OrderNo,
+						RegDate
+					FROM
+						\"Order\" AS O1
+					INNER JOIN OrderDetail AS D1 ON O1.OrderNo = D1.OrderNo
+					WHERE
+						IsBonus = 0
+					AND O1.OrderNo = {2}
+						)
+					GROUP BY
+						Shortcut,
+						OrderNo
+					UNION ALL
+						SELECT
+							Shortcut,
+							0 QtyCarton1,
+							0 QtyPackge1,
+							0 QtyCarton2,
+							0 QtyPackge2,
+							sum(QtyCarton) QtyCarton3,
+							sum(QtyPackge) QtyPackge3,
+							0 O1,
+							0 O2,
+							SUM(OrderNo) O3
+						FROM
+							(
+								SELECT
+									CASE D1.UnitId
+								WHEN 1 THEN
+									qty
+								ELSE
+									0
+								END QtyCarton,
+								CASE D1.UnitId
+							WHEN 2 THEN
+								qty
+							ELSE
+								0
+							END QtyPackge,
+							Shortcut,
+							O1.OrderNo,
+							RegDate
+						FROM
+							\"Order\" AS O1
+						INNER JOIN OrderDetail AS D1 ON O1.OrderNo = D1.OrderNo
+						WHERE
+							IsBonus = 0
+						AND O1.OrderNo = {3}
+							)
+						GROUP BY
+							Shortcut,
+							OrderNo
+			) B
+		GROUP BY
+			Shortcut
+	) cnt
+    LEFT JOIN (SELECT * FROM CardIndexDetail where personId = {0}) c ON c.Shortcut = cnt.Shortcut
+) a LEFT JOIN (
+	SELECT
+		co.Shortcut,
+		co.SalePrice CartonPrice,
+		ifnull(cp.SalePrice, 0) PackagePrice,
+		co.ProductName
+	FROM
+		Coding co
+	LEFT JOIN Coding cp ON \'0\' \|\| co.Shortcut = cp.Shortcut
+	WHERE
+		substr(co.Shortcut, 1, 1) != \'0\'
+) co ON a.Shortcut = co.Shortcut
+ORDER BY sortlist
+
+
+    </string>
+    <string name="get_order_by_order_no">
+
+		SELECT
+			Shortcut,
+			sum(QtyCarton) QtyCarton1,
+			sum(QtyPackge) QtyPackge1,
+			0 QtyCarton2,
+			0 QtyPackge2,
+			0 QtyCarton3,
+			0 QtyPackge3,
+			SUM(OrderNo) O1
+		FROM
+			(
+				SELECT
+					CASE D1.UnitId
+				WHEN 1 THEN
+					qty
+				ELSE
+					0
+				END QtyCarton,
+				CASE D1.UnitId
+			WHEN 2 THEN
+				qty
+			ELSE
+				0
+			END QtyPackge,
+			Shortcut,
+			O1.OrderNo,
+			RegDate
+		FROM
+			"Order"."Order" AS O1
+		INNER JOIN "Order".OrderDetail AS D1 ON O1.OrderNo = D1.OrderNo
+		WHERE
+			IsBonus = 0
+		AND O1.OrderNo = {0}
+			)
+		GROUP BY
+			Shortcut
+
+	</string>
+    <string name="card_index_dates">
+		SELECT RegDate from \"Order\"
+		WHERE  OrderNo is NOT NULL and PersonID = {0}
+		Order By OrderNo DESC
+	</string>
+
+    <string name="all_card_index_details">
+		SELECT * from CardIndexDetail CID
+		INNER JOIN CardIndex CI ON CI.PersonId = CID.PersonId
+	</string>
+
+    <string name="card_index_details_by_person_id">
+		Select * from CardIndexDetail
+		where PersonId = {0}
+	</string>
+    <string name="card_index_order_no_from_attached_database">
+		SELECT OrderNo from \"Order\"
+		WHERE  OrderNo is NOT NULL and PersonID = {0}
+		Order By OrderNo DESC
+	</string>
+    <string name="get_card_index_detail_by_person_and_shortcut">
+		Select * from CardIndexDetail
+		where PersonId = {0} and Shortcut = {1}
+	</string>
+    <string name="delete_zero_request_existence">
+		Delete from CardIndexDetail
+		Where
+			RequestCarton = 0 AND
+			RequestPackage = 0 AND
+			ExistenceCarton = 0 AND
+			ExistencePackage = 0
+
+	</string>
+    <string name="get_card_index_by_person">
+		Select 	PersonID, AddressID AddressID,
+	NeedDate,
+	OrderNo,
+	ChequeDuration,
+	ErrorMessage,
+	ifnull(AccDesc, \'\' \'\')AccDesc,
+    ifnull(SaleDesc, \'\' \'\') SaleDesc,
+	RegDate from CardIndex
+		where PersonId = {0}
+	</string>
+	<string name="is_empty_card_index">
+		Select 	Count(OrderNo) itemCount from CardIndex
+		where PersonId = {0}
+	</string>
+    <string name="new_card_index">
+		insert into CardIndex
+		(
+			NeedDate,
+			OrderNo,
+			ChequeDuration,
+			PersonID,
+			SaleDesc,
+			AccDesc,
+			RegDate,
+		    AddressID
+		)VALUES(
+			\'\'{0}\'\',
+			{1},
+			{2},
+			{3},
+			\'\'{4}\'\',
+			\'\'{5}\'\',
+			\'\'{6}\'\',
+		    1
+		)
+	</string>
+    <string name="update_card_index_descriptions">
+		UPDATE CardIndex
+		SET  AccDesc = \'\'{0}\'\',SaleDesc =\'\'{1}\'\', AddressID={3}
+		WHERE
+			PersonID ={2}
+	</string>
+    <string name="update_card_index_error_message">
+		UPDATE CardIndex
+		SET  ErrorMessage = \'\'{0}\'\'
+		WHERE
+			PersonID ={1}
+	</string>
+    <string name="update_card_index_order_no">
+		update CardIndex
+		SET
+			OrderNo = {0}
+		WHERE PersonID = {1}
+	</string>
+    <string name="update_card_index_cheque_duration">
+		update CardIndex
+		SET
+			ChequeDuration = {0}
+		WHERE PersonID = {1}
+	</string>
+    <string name="insert_card_index_detail">
+		Insert INTO CardIndexDetail
+		(
+			Shortcut,
+			RequestCarton,
+			RequestPackage,
+			ExistenceCarton,
+			ExistencePackage,
+			PersonId
+		)
+		Values(
+			{0},
+			{1},
+			{2},
+			{3},
+			{4},
+			{5}
+		)
+
+	</string>
+    <string name="update_card_index_request">
+		UPDATE CardIndexDetail
+		SET
+			RequestCarton = {1},
+			RequestPackage = {2}
+		WHERE
+			PersonId = {3} AND Shortcut = {0}
+
+	</string>
+    <string name="update_card_index_existence">
+		UPDATE CardIndexDetail
+		SET
+			ExistenceCarton = {1},
+			ExistencePackage = {2}
+		WHERE
+			PersonId = {3} AND Shortcut = {0}
+
+	</string>
+    <string name="delete_card_index">
+		DELETE FROM CardIndex WHERE PersonID={0}
+	</string>
+    <string name="delete_card_index_detail">
+		DELETE FROM CardIndexDetail WHERE PersonID={0}
+	</string>
+
+    <string name="delete_all_card_index">
+		DELETE FROM CardIndexDetail;
+		DELETE FROM CardIndex;
+	</string>
+
+
+    <string name="insertUnvisitedCustomerReason">
+		INSERT INTO UnvisitedCustomerReason(PersonId, NotSallReasonID,IsSent)
+		VALUES({0}, {1},0)
+	</string>
+    <string name="getUnvisitedCustomerReasons">
+		Select * from UnvisitedCustomerReason
+	</string>
+    <string name="delete_unvisited_customer_reason">
+		DELETE FROM UnvisitedCustomerReason
+		WHERE PersonId = {0}
+	</string>
+    <string name="get_not_sall_reason_id">
+		SELECT
+		cb.PersonID,
+		p.PersianDate,
+		ifnull(uc.NotSallReasonID, 1) NotSallReasonID
+		FROM
+			CustomerBase cb
+		INNER JOIN Path p ON p.PathCode = cb.PathCode
+		LEFT JOIN UnvisitedCustomerReason uc ON uc.PersonId = cb.PersonID
+		WHERE
+			p.IsActive = 1
+		AND cb.PersonId = {0}
+	</string>
+    <string name="get_not_sall_reason_ids">
+		SELECT
+		cb.PersonID,
+		p.PersianDate,
+		ifnull(uc.NotSallReasonID, 1) NotSallReasonID
+		FROM
+			CustomerBase cb
+		INNER JOIN Path p ON p.PathCode = cb.PathCode
+		LEFT JOIN UnvisitedCustomerReason uc ON uc.PersonId = cb.PersonID
+		WHERE
+			p.IsActive = 1
+		AND cb.PersonId in ({0})
+	</string>
+
+    <string name="get_cardIndex_count_record">
+		SELECT count(1) FROM CardIndex
+	</string>
+
+    <string name="get_request_amount">
+		 <![CDATA[ SELECT
+			ifnull(sum(Price),0) Price
+		FROM
+			(
+				SELECT
+					RequestCarton * SalePrice Price
+				FROM
+					CardIndexDetail cd
+				INNER JOIN Coding c ON c.Shortcut = cd.Shortcut
+	    WHERE PersonId={0}
+			UNION ALL
+				SELECT
+					RequestPackage * SalePrice Price
+				FROM
+					CardIndexDetail cd
+				INNER JOIN Coding c ON c.Shortcut = 0 || cd.Shortcut
+		 WHERE PersonId={0}
+		)
+       ]]>
+
+	</string>
+
+</resources>

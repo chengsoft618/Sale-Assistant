@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.shoniz.saledistributemobility.view.dialog.orderdescription.DescriptionDialogViewModel" />
+    </data>
+
+    <LinearLayout
+        android:minWidth="800dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/dialog_header" />
+
+        <EditText
+            android:id="@+id/txt_sale_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:text="@={viewModel.saleDesc}"
+            android:hint="@string/sale_desc"
+            android:inputType="text">
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:text="@={viewModel.accDesc}"
+            android:id="@+id/txt_acc_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="@string/acc_desc"
+            android:inputType="text">
+
+
+        </EditText>
+
+        <Spinner
+            android:id="@+id/spnAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:visibility="invisible"  />
+
+
+    </LinearLayout>
+</layout>

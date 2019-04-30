@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="file_error_title">خطای فایل</string>
+
+
+    <string name="ex_file_not_found_message">فایل %1$s یافت نشد </string>
+    <string name="ex_io_message">دسترسی به %1$s مقدور نمی باشد</string>
+    <string name="ex_uncaught_exception_title">خطای پیش بینی نشده</string>
+</resources>

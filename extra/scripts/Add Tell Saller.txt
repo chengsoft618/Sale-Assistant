@@ -1,0 +1,41 @@
+use salecore
+INSERT INTO dbo.EmployeeType
+(
+    EmployeeTypeID,
+    EmployeeTypeName
+)
+VALUES
+(   10,  -- EmployeeTypeID - tinyint
+    N'??????? ?????' -- EmployeeTypeName - nvarchar(50)
+    )
+
+Go
+
+ 
+INSERT INTO dbo.Employee
+(
+    EmployeeID,
+    EmployeeTypeID,
+    EmployeeRow,
+    EmployeeName,
+	EmployeeMobile,
+    IsActive,
+    OnlineMobile,
+    OnlineType, 
+    UserID,   
+    StartDate 
+)
+SELECT u.EmployeeId,
+       10,
+       (
+           SELECT COUNT(1) + 1
+           FROM dbo.Employee
+           WHERE EmployeeTypeID = 10
+       ),u.FullName,'',1,1,3,u.UserID,dbo.fn_GetPersianDateTime(GETDATE())
+FROM UsersManagements.dbo.Users u
+    INNER JOIN UsersManagements.dbo.UsersInRoles ur
+        ON u.UserID = ur.UserID
+WHERE ur.RoleID = 5
+      AND ur.ProgramID = 2;
+
+

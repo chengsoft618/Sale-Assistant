@@ -1,0 +1,33 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:tint="@color/cardview_light_background"
+    tools:context=".MainActivity">
+
+
+    <item
+        android:id="@+id/action_delete"
+        android:checkable="true"
+        android:icon="@drawable/ic_cancel"
+        android:orderInCategory="100"
+        android:title="حذف"
+        app:showAsAction="ifRoom|withText" />
+
+    <item
+        android:id="@+id/action_send"
+        android:checkable="true"
+        android:icon="@drawable/ic_send"
+        android:orderInCategory="101"
+        android:title="ارسال"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/action_select"
+        android:icon="@drawable/ic_menu_camera"
+        android:orderInCategory="102"
+        android:tint="@color/colorPrimary"
+        android:title="انتخاب همه"
+        app:actionViewClass="android.widget.CheckBox"
+        app:showAsAction="ifRoom|withText" />
+
+
+</menu>

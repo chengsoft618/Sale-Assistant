@@ -1,0 +1,152 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="3dp"
+    tools:ignore="MissingPrefix,UnusedAttribute"
+    app:cardUseCompatPadding="true">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/img_customer"
+            android:layout_width="76dp"
+            android:layout_height="51dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_cheque" />
+
+        <TextView
+            android:id="@+id/txtBankName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/byekan"
+            android:text="@string/bank_name"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintEnd_toStartOf="@+id/img_customer"
+            app:layout_constraintRight_toLeftOf="@+id/img_customer"
+            app:layout_constraintTop_toTopOf="@+id/img_customer" />
+
+        <TextView
+            android:id="@+id/txtBankBranchName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/byekan"
+            android:text="@string/BankBranchName"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintRight_toRightOf="@+id/txtBankName"
+            app:layout_constraintTop_toBottomOf="@+id/txtBankName" />
+
+        <TextView
+            android:id="@+id/txtPersonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/byekan"
+            android:text="@string/chequePersonName"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintEnd_toEndOf="@+id/txtBankBranchName"
+            app:layout_constraintRight_toRightOf="@+id/img_customer"
+            app:layout_constraintTop_toBottomOf="@+id/txtBankBranchName" />
+
+        <TextView
+            android:id="@+id/txtTypeCheque"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/byekan"
+            android:text="@string/TypeCheque"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintRight_toRightOf="@+id/txtPersonName"
+            app:layout_constraintTop_toBottomOf="@+id/txtPersonName" />
+
+        <TextView
+            android:id="@+id/txtTotalPayment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/byekan"
+            android:text="@string/TotalPayment"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintEnd_toStartOf="@+id/divider"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtPaymentDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/byekan"
+            android:text="@string/customer_cheque_payment_date"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintRight_toRightOf="@+id/txtTotalPayment"
+            app:layout_constraintTop_toBottomOf="@+id/txtTotalPayment" />
+
+        <TextView
+            android:id="@+id/txtDueDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/byekan"
+            android:text="@string/customer_cheque_due_date"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintRight_toRightOf="@+id/txtTotalPayment"
+            app:layout_constraintTop_toBottomOf="@+id/txtPaymentDate" />
+
+        <TextView
+            android:id="@+id/txtReasonName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/byekan"
+            android:text="@string/ReasonName"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintRight_toRightOf="@+id/txtTypeCheque"
+            app:layout_constraintTop_toBottomOf="@+id/txtTypeCheque" />
+
+        <TextView
+            android:id="@+id/txtSerialNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/byekan"
+            android:text="@string/chequeSerialNumber"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintEnd_toEndOf="@+id/txtDueDate"
+            app:layout_constraintTop_toBottomOf="@+id/txtDueDate"
+            tools:ignore="MissingConstraints" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="1dp"
+            android:layout_height="137dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </android.support.constraint.ConstraintLayout>
+</android.support.v7.widget.CardView>

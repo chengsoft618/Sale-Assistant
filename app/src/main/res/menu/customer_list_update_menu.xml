@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <!--<item-->
+        <!--android:id="@+id/action_update_customer_menu"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/customer_update_menu"-->
+        <!--app:showAsAction="never" />-->
+    <!--<item-->
+        <!--android:id="@+id/action_update_customer_selected_menu"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/customer_update_selected_menu"-->
+        <!--app:showAsAction="never" />-->
+
+    <item android:id="@+id/action_customer_class_name"
+        android:titleCondensed="Persist"
+        android:title="@string/ClassNameB"
+        android:icon="@drawable/ic_category"
+        android:checkable="true">
+    </item>
+
+    <item android:id="@+id/action_customer_is_active"
+        android:titleCondensed="Persist"
+        android:title="@string/active_customer"
+        android:icon="@drawable/ic_active_users"
+        android:checkable="true">
+    </item>
+    <item android:id="@+id/action_search"
+        android:title="جستجو"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="always"
+        app:actionViewClass="android.widget.SearchView" />
+</menu>

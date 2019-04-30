@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="select_all_messages">
+        SELECT * from Message
+        ORDER BY SendID desc
+    </string>
+
+    <string name="select_seen_messages">
+        SELECT * from Message
+        where (IsSeen = 1) AND (IsRemoved = 0 OR IsRemoved IS NULL)
+    </string>
+
+    <string name="select_removed_messages">
+        SELECT * from Message
+        where IsRemoved = 1
+    </string>
+
+    <string name="select_unseen_messages">
+        SELECT * from Message
+        where (IsSeen = 0 OR IsSeen IS NULL ) AND
+        (IsRemoved = 0 OR IsRemoved IS NULL)
+        AND (MessageTypeId = 0)
+
+    </string>
+
+    <string name="select_un_removed_messages">
+        SELECT * from Message
+        where IsRemoved = 0 OR IsRemoved IS NULL
+    </string>
+
+    <string name="select_message_by_id">
+        SELECT * from Message
+        where MessageId = {0}  AND (IsRemoved = 0 OR IsRemoved IS NULL)
+    </string>
+    <string name="select_message_by_send_id">
+        SELECT * from Message
+        where SendID = {0}  AND (IsRemoved = 0 OR IsRemoved IS NULL)
+    </string>
+
+</resources>

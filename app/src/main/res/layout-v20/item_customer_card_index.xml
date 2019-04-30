@@ -1,0 +1,150 @@
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:elevation="2dp"
+
+    tools:ignore="MissingPrefix,UnusedAttribute"
+    app:cardCornerRadius="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txt_sum_carton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="مجموع"
+                    android:fontFamily="@font/byekan"
+                    android:textSize="@dimen/font_card_index_item"
+                    android:textStyle="bold"
+                    android:layout_margin="2dp"
+                    tools:text="مجموع" />
+
+                <TextView
+                    android:id="@+id/txt_tour3_carton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="center"
+                    android:textSize="@dimen/font_card_index_item"
+                    android:textStyle="bold"
+                    android:layout_margin="2dp"
+                    tools:text="1396/03/01" />
+
+                <TextView
+                    android:id="@+id/txt_tour2_carton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="center"
+                    android:textSize="@dimen/font_card_index_item"
+                    android:textStyle="bold"
+                    android:layout_margin="2dp"
+                    tools:text="1396/02/01" />
+
+
+                <TextView
+                    android:id="@+id/txt_tour1_carton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="center"
+                    android:textSize="@dimen/font_card_index_item"
+                    android:textStyle="bold"
+                    tools:text="1396/01/01" />
+
+                <TextView
+                    android:id="@+id/txt_tour_price"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="2dp"
+                    android:layout_weight="2"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="center"
+                    android:text="قیمت تقریبی"
+                    android:visibility="gone"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="1396/01/01" />
+
+
+                <TextView
+                    android:id="@+id/txt_existence_carton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="center"
+                    android:text="موجودی"
+                    android:textSize="@dimen/font_card_index_item"
+                    android:layout_margin="2dp"
+                    android:textStyle="bold"
+                    tools:text="موجودی" />
+
+                <TextView
+                    android:id="@+id/txt_request_carton"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="center"
+                    android:text="درخواست"
+                    android:textSize="@dimen/font_card_index_item"
+                    android:textStyle="bold"
+                    android:layout_margin="2dp"
+
+                    tools:text="درخواست " />
+
+                <TextView
+                    android:id="@+id/txt_product_name"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="start"
+                    android:text="نام محصول"
+                    android:visibility="gone"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_margin="2dp"
+                    tools:text="کد" />
+
+                <ImageView
+                    android:id="@+id/img_carton_package"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_carton_package" />
+
+
+
+                <TextView
+                    android:id="@+id/txt_code"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/byekan"
+                    android:gravity="center"
+                    android:text="کد"
+                    android:textSize="@dimen/font_card_index_item"
+                    android:textStyle="bold"
+                    android:layout_margin="2dp"
+                    tools:text="کد" />
+
+
+        </LinearLayout>
+</android.support.v7.widget.CardView>
+

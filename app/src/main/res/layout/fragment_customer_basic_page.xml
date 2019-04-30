@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+        <data>
+
+                <variable
+                    name="viewModel"
+                    type="com.shoniz.saledistributemobility.view.customer.info.basic.CustomerBaseViewModel" />
+        </data>
+
+        <ScrollView
+            android:id="@+id/container_scroll_view"
+            android:layout_width="match_parent"
+            android:layoutDirection="rtl"
+            tools:ignore="RtlCompat,UnusedAttribute"
+            android:layout_height="match_parent">
+
+                <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:useDefaultMargins="true">
+
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_person_outline_black_24dp" />
+
+                        <TextView
+                            android:id="@+id/textView"
+                            style="@style/Title"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="مشخصات مشتری"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toStartOf="@+id/imageView3"
+                            app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            style="@style/SubTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="نام مشتری"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/textView"
+                            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+                        <TextView
+                            android:id="@+id/person_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="person_name"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toStartOf="@+id/textView"
+                            app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            style="@style/SubTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/byekan"
+                            android:text="مالک"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/textView2"
+                            app:layout_constraintTop_toTopOf="@+id/contact_name" />
+
+                        <TextView
+                            android:id="@+id/contact_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+
+                            android:fontFamily="@font/byekan"
+                            android:maxWidth="100dp"
+                            android:text="contact_name"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/person_name"
+                            app:layout_constraintTop_toBottomOf="@+id/person_name"
+                            tools:ignore="RtlCompat" />
+
+                        <TextView
+                            android:id="@+id/textView5"
+                            style="@style/SubTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/byekan"
+                            android:text="نوع مالکیت"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/textView3"
+                            app:layout_constraintTop_toTopOf="@+id/owner_type" />
+
+                        <TextView
+                            android:id="@+id/owner_type"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="owner_type"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/contact_name"
+                            app:layout_constraintStart_toStartOf="@+id/contact_name"
+                            app:layout_constraintTop_toBottomOf="@+id/contact_name" />
+
+                        <TextView
+                            android:id="@+id/textView6"
+                            style="@style/SubTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/byekan"
+                            android:text="نوع مشتری"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/textView5"
+                            app:layout_constraintTop_toTopOf="@+id/customer_type" />
+
+                        <TextView
+                            android:id="@+id/customer_type"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="customer_type"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/owner_type"
+                            app:layout_constraintStart_toStartOf="@+id/owner_type"
+                            app:layout_constraintTop_toBottomOf="@+id/owner_type" />
+
+
+                        <ImageView
+                            android:id="@+id/imageView5"
+                            style="@style/SubTitle"
+                            android:layout_width="54dp"
+                            android:layout_height="50dp"
+                            android:layout_marginEnd="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/text_customer_account_remain"
+                            app:srcCompat="@drawable/ic_path_24dp" />
+
+                        <TextView
+                            android:id="@+id/textView7"
+                            style="@style/Title"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="مشخصات آدرس"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toStartOf="@+id/imageView5"
+                            app:layout_constraintTop_toTopOf="@+id/imageView5" />
+
+
+                        <TextView
+                            android:id="@+id/textView8"
+                            style="@style/SubTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="آدرس"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/textView7"
+                            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                    <TextView
+                        android:id="@+id/address"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:fontFamily="@font/byekan"
+                        android:text="address"
+                        android:textSize="@dimen/font_card_item"
+                        app:layout_constraintEnd_toStartOf="@+id/textView8"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        style="@style/SubTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="تلفن"
+                        app:layout_constraintEnd_toEndOf="@+id/textView8"
+                        app:layout_constraintTop_toTopOf="@+id/tel_no" />
+
+                    <TextView
+                        android:id="@+id/tel_no"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/byekan"
+                        android:text="tel_no"
+                        android:textSize="@dimen/font_card_item"
+                        app:layout_constraintEnd_toEndOf="@+id/address"
+                        app:layout_constraintTop_toBottomOf="@+id/address" />
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            style="@style/SubTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="موبایل"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/textView9"
+                            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+                    <TextView
+                        android:id="@+id/cell_no"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/byekan"
+                        android:text="cell_no"
+                        android:textSize="@dimen/font_card_item"
+                        app:layout_constraintEnd_toEndOf="@+id/address"
+                        app:layout_constraintTop_toBottomOf="@+id/tel_no" />
+
+
+                        <ImageView
+                            android:id="@+id/imageView6"
+                            style="@style/SubTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginTop="8dp"
+                            app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_finance" />
+
+                        <TextView
+                            android:id="@+id/textView11"
+                            style="@style/Title"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="مشخصات مالی"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toStartOf="@+id/imageView6"
+                            app:layout_constraintTop_toTopOf="@+id/imageView6" />
+
+
+                        <TextView
+                            android:id="@+id/textView12"
+                            style="@style/SubTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="فصل "
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/textView11"
+                            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+                        <TextView
+                            android:id="@+id/active_season"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="active_season"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toStartOf="@+id/textView15"
+                            app:layout_constraintTop_toTopOf="@+id/textView12" />
+
+                        <TextView
+                            android:id="@+id/textView13"
+                            style="@style/SubTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="حداکثر اعتبار"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/textView14"
+                            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+                        <TextView
+                            android:id="@+id/max_credit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/byekan"
+                            android:text="max_credit"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/not_sale_reason_date"
+                            app:layout_constraintTop_toTopOf="@+id/textView13" />
+
+                        <TextView
+                            android:id="@+id/textView14"
+                            style="@style/SubTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="تاریخ علت عدم فروش"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/textView15"
+                            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+                        <TextView
+                            android:id="@+id/not_sale_reason_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/byekan"
+                            android:text="not_sale_reason_date"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/not_sale_reason_desc"
+                            app:layout_constraintTop_toTopOf="@+id/textView14" />
+
+                        <TextView
+                            android:id="@+id/textView15"
+                            style="@style/SubTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="توضیح علت عدم فروش"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/textView12"
+                            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+                        <TextView
+                            android:id="@+id/not_sale_reason_desc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/byekan"
+                            android:text="not_sale_reason_desc"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/active_season"
+                            app:layout_constraintTop_toTopOf="@+id/textView15" />
+
+                        <TextView
+                            android:id="@+id/sale_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/byekan"
+                            android:textSize="@dimen/font_card_item" />
+
+                        <TextView
+                            android:id="@+id/text_customer_credit_two"
+                            style="@style/SubTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="@string/customer_credit_second_six_month"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/text_customer_credit_one"
+                            app:layout_constraintTop_toBottomOf="@+id/text_customer_credit_one" />
+
+                        <TextView
+                            android:id="@+id/customer_credit_first_six_month"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/byekan"
+                            android:text="customer_credit_first_six_month"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/max_credit"
+                            app:layout_constraintTop_toTopOf="@+id/text_customer_credit_one" />
+
+                        <TextView
+                            android:id="@+id/text_customer_credit_one"
+                            style="@style/SubTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="@string/customer_credit_first_six_month"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/textView13"
+                            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+                        <TextView
+                            android:id="@+id/customer_credit_second_six_month"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/byekan"
+                            android:text="customer_credit_second_six_month"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/customer_credit_first_six_month"
+                            app:layout_constraintTop_toTopOf="@+id/text_customer_credit_two" />
+
+                        <TextView
+                            android:id="@+id/text_customer_credit_remain"
+                            style="@style/SubTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="@string/customer_credit_remain"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/text_customer_credit_two"
+                            app:layout_constraintTop_toBottomOf="@+id/text_customer_credit_two" />
+
+                        <TextView
+                            android:id="@+id/customer_credit_remain"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/byekan"
+                            android:text="customer_credit_remain"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/customer_credit_second_six_month"
+                            app:layout_constraintTop_toTopOf="@+id/text_customer_credit_remain" />
+
+                        <TextView
+                            android:id="@+id/text_customer_account_remain"
+                            style="@style/SubTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/byekan"
+                            android:text="@string/customer_account_remain"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/text_customer_credit_remain"
+                            app:layout_constraintTop_toBottomOf="@+id/text_customer_credit_remain" />
+
+                        <TextView
+                            android:id="@+id/customer_account_remain"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/byekan"
+                            android:text="customer_account_remain"
+                            android:textSize="@dimen/font_card_item"
+                            app:layout_constraintEnd_toEndOf="@+id/customer_credit_remain"
+                            app:layout_constraintTop_toTopOf="@+id/text_customer_account_remain" />
+
+                    <Button
+
+                        android:id="@+id/btn_save_customer_location"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginRight="24dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="ثبت موقعیت مشتری"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/guideline3" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginRight="8dp"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toStartOf="@+id/btn_save_customer_location"
+                            app:layout_constraintTop_toTopOf="@+id/btn_save_customer_location">
+
+                                <TextView
+                                    android:id="@+id/txt_accuracy_status"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="" />
+
+                                <ImageView
+                                    android:id="@+id/img_accuracy_status"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/ic_location_failed" />
+
+
+                        </LinearLayout>
+
+                        <android.support.constraint.Guideline
+                            android:id="@+id/guideline3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.5" />
+
+                </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+
+</layout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_cancel_selected_orders"
+        android:orderInCategory="102"
+        android:title="@string/verify_cancel_selected_order"
+        />
+    <item
+        android:id="@+id/action_select"
+        android:icon="@drawable/ic_menu_camera"
+        android:orderInCategory="100"
+        android:tint="@color/colorPrimary"
+        android:title="@string/action_settings"
+        app:actionViewClass="android.widget.CheckBox"
+        app:showAsAction="always" />
+</menu>

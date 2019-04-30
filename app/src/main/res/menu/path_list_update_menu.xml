@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <item
+        android:id="@+id/action_update_path_menu"
+        android:orderInCategory="100"
+        android:title="@string/path_update_menu"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/action_path_complete_path_visit"
+        android:orderInCategory="101"
+        android:title="@string/path_complete_path_visit"
+        app:showAsAction="never" />
+    <item
+    android:id="@+id/action_reg_out_of_path"
+    android:orderInCategory="102"
+    android:title="@string/reg_out_of_path"
+    app:showAsAction="never" />
+
+
+    <!--<item-->
+        <!--android:id="@+id/action_update_out_of_path"-->
+        <!--android:orderInCategory="101"-->
+        <!--android:title="@string/update_out_of_path"-->
+        <!--app:showAsAction="never" />-->
+</menu>

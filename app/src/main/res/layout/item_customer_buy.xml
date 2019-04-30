@@ -1,0 +1,93 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="MissingPrefix,UnusedAttribute">
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/txtAmountBuyThisYear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/byekan"
+            android:text="@string/AmountBuyThisYear"
+            android:textSize="@dimen/font_card_item" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/txtQtyMainUnitBuyThisYear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/byekan"
+            android:text="@string/QtyMainBuyThisYear"
+            android:textSize="@dimen/font_card_item" />
+
+        <TextView
+            android:id="@+id/txtYearTypeID"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/byekan"
+            android:gravity="center"
+            android:text="@string/year"
+            android:textSize="@dimen/font_card_item" />
+
+        <ImageView
+            android:id="@+id/img_customer_buy"
+
+            android:layout_width="59dp"
+            android:layout_height="55dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/byekan"
+            android:textSize="@dimen/font_card_item"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_buy_statistic" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/txtQtySubUnitBuyThisYear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/byekan"
+            android:text="@string/QtySubBuyThisYear"
+            android:textSize="@dimen/font_card_item" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/txtAmountBuyReturnedThisYear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/byekan"
+            android:text="@string/AmountBuyReturnedThisYear"
+            android:textSize="@dimen/font_card_item" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/txtQtyMainUnitBuyReturnedThisYear"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/byekan"
+            android:text="@string/QtyMainUnitBuyReturnedThisYear"
+            android:textSize="@dimen/font_card_item" />
+    </TableRow>
+</TableLayout>
+
+
+

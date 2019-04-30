@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="verify_menu">تایید درخواست ها</string>
+    <string name="verify_verify_selected_orders">تایید درخواست های انتخاب شده</string>
+    <string name="verify_cancel_selected_order">برگشت درخواست تایید/رد شده</string>
+    <string name="verify_reject_selected_orders">لغو درخواست های انتخاب شده</string>
+    <string name="verify_verify">تایید سفارش</string>
+    <string name="verify_reject">رد سفارش</string>
+    <string name="verify_sent_to">انتقال سفارش به…</string>
+    <string name="verify_sent_to_user">انتقال سفارش به %1$s</string>
+    <string name="verify_verifiable_orders">کارتابل ورودی</string>
+    <string name="verify_verified_orders">کارتابل خروجی</string>
+    <string name="verify_action_date">تاریخ آخرین امضا</string>
+    <string name="verify_verify_question">آیا مطمئنید این درخواست تایید شود؟</string>
+    <string name="verify_sync_orders">در حال بروز رسانی سفارشات</string>
+    <string name="verify_show_order_details">مشاهده جزئیات…</string>
+    <string name="verify_desc_sent">توضیحات ارسال درخواست</string>
+    <string name="verify_desc_reject">توضیحات رد درخواست</string>
+    <string name="verify_back">برگشت امضاء</string>
+
+    <string name="order_customer_name">مشتری</string>
+    <string name="order_number">سفارش</string>
+    <string name="order_variety">تنوع</string>
+    <string name="order_reg_date">تاریخ ثبت</string>
+    <string name="order_total_amount">وزن کل</string>
+
+    <string name="customer_cheque_payment_date">تاریخ دریافت</string>
+    <string name="customer_cheque_due_date">تاریخ سررسید</string>
+
+    <string name="common_comment">توضیحات</string>
+    <string name="common_visitor">فروشنده</string>
+    <string name="common_sender">ارسال کننده</string>
+    <string name="common_weight">وزن</string>
+    <string name="common_count">تعداد</string>
+    <string name="common_is_issued">فاکتور شده</string>
+    <string name="common_not_issued">فاکتور نشده</string>
+    <string name="common_path">مسیر</string>
+    <string name="common_weight_unit">کیلوگرم</string>
+    <string name="common_row">ردیف</string>
+    <string name="common_desc">توضیحات</string>
+    <string name="common_question">سوال</string>
+    <string name="common_price"> مبلغ</string>
+    <string name="common_downloading_file">در حال دانلود فایل</string>
+    <string name="common_download_complete">اتمام دانلود فایل</string>
+    <string name="common_downloading_apk">در حال دریافت نسخه جدید برنامه شونیز</string>
+    <string name="common_google_play_services_apk">در حال دریافت Google Play Services</string>
+    <string name="common_mime_type">application/vnd.android.package-archive</string>
+    <string name="common_download_shoniz">shoniz.apk</string>
+    <string name="common_cloud_not_register">ثبت نام انجام نشد. دوباره تلاش کنید</string>
+    <string name="common_cloud_register">ثبت نام در پیام رسانی انجام شد</string>
+    <string name="common_employee_id_name" >%1$7d - %2$s</string>
+    <string name="common_get_setting">در حال دریافت تنظیمات</string>
+    <string name="common_attention">توجه</string>
+
+    <string name="button_caption_ok">خب</string>
+    <string name="button_caption_cancel">انصراف</string>
+
+    <string name="gps_status_failed">عدم وجود جی پی اس</string>
+    <string name="gps_status_normal">جی پی اس نرمال</string>
+    <string name="gps_status_good">جی پی اس عالی</string>
+    <string name="gps_status_bad">جی پی اس ضعیف</string>
+
+    <string name="general_space">\u0020</string>
+    <string name="general_empty" />
+
+    <string name="pref_setting">Setting</string>
+    <string name="pref_basic_info">basicInfo</string>
+    <string name="pref_key_branch_code">BranchCode</string>
+    <string name="pref_key_branch_name">BranchName</string>
+    <string name="pref_key_branch_branchPersianName">BranchPersianName</string>
+    <string name="pref_key_branch_lanIp">LanIp</string>
+    <string name="pref_key_branch_wanIp1">WanIp1</string>
+    <string name="pref_key_branch_wanIp2">WanIp2</string>
+    <string name="pref_key_branch_service_port">ServicePort</string>
+    <string name="pref_key_branch_reports_port">ReportsPort</string>
+    <string name="pref_key_branch_is_active">IsActive</string>
+    <string name="pref_key_employee_id">EmployeeId</string>
+    <string name="pref_key_download_id">DownloadId</string>
+    <string name="pref_key_employee_name">EmployeeName</string>
+    <string name="pref_key_employee_tel">EmployeeTel</string>
+    <string name="pref_key_employee_photo">EmployeePhoto</string>
+    <string name="pref_key_role_id">RoleId</string>
+    <string name="pref_key_location_interval">LocationInterval</string>
+    <string name="pref_key_tracking_interval">TrackingInterval</string>
+    <string name="pref_key_stop_tracking_after">StopTrackingAfter</string>
+    <string name="pref_key_version_name">VersionName</string>
+    <string name="pref_key_last_daily_update_date">LastDailyUpdateDate</string>
+    <string name="pref_key_show_verification_order">ShowVerificationOrder</string>
+    <string name="pref_key_tracking_mode">TrackingMode</string>
+    <string name="pref_key_sync_interval" >SyncInterval</string>
+    <string name="pref_key_wiolon_ip">WiolonIp</string>
+    <string name="pref_key_wiolon_port">WiolonPort</string>
+    <string name="pref_key_location_max_wait_time">LocationMaxWaitTime</string>
+    <string name="pref_key_start_tracking_time" >StartTrackingTime</string>
+    <string name="pref_key_enable_location_tracking" >EnableLocationTracking</string>
+    <string name="pref_key_stop_tracking_time" >StopTrackingTime</string>
+    <string name="pref_key_is_token_cloud_messaging_save">isTokenCloudMessagingSave</string>
+    <string name="pref_key_is_application_initialed">IsApplicationInitialed</string>
+    <string name="pref_key_location_min_distance">LocationMinDistance</string>
+    <string name="pref_key_cheque_duration_day">ChequeDurationDay</string>
+    <string name="pref_key_customer_location_interval">CustomerLocationInterval</string>
+    <string name="pref_key_is_check_not_send_order">IsCheckNotSendOrder</string>
+    <string name="pref_key_last_Complete_path_visit_desc">LastCompletePathVisitDesc</string>
+    <string name="pref_key_apk_last_version">ApkLastVersion</string>
+    <string name="pref_key_cloud_token">CloudToken</string>
+    <string name="pref_key_is_check_sale_not_reason">IsCheckSaleNotReason</string>
+    <string name="pref_key_google_play_services_download">GooglePlayServices</string>
+    <string name="pref_key_allowance_issue_print_time">AllowanceIssuePrintTime</string>
+    <string name="pref_key_unchanged_order_no_in_cardinde_for_edit">UnchangedOrderNoInCardindeForEdit</string>
+
+    <string name="pref_key_chrome_download">ChromeDownload</string>
+    <string name="pref_xml_title_chrome_download">دانلود Chrome</string>
+
+    <string name="pref_xml_header_general">اصلی</string>
+    <string name="pref_xml_title_cloud_message_recommendations">پیام رسانی</string>
+
+    <string name="pref_xml_description_cloud_message_not_register_recommendations">دستگاه شما قادر به دریافت پیام های ارسالی از طرف سرور نمی باشد لطفا برای ثبت نام ضربه بزنید</string>
+    <string name="pref_xml_description_cloud_message_register_recommendations">دستگاه شما در سیستم پیام رسانی ثبت شده است برای بروز کردن می توانید ضربه بزنید</string>
+
+    <string name="pref_xml_title_cheque_duration_day">مدت چک</string>
+    <string name="pref_xml_description_cheque_duration_day">مدت چک پیش فرض را می توانید از این قسمت تغییر دهید.</string>
+
+    <string name="pref_xml_title_google_play_services_download">دریافت نسخه جدید Google Play Services</string>
+    <string name="pref_xml_description_google_play_services" >Cpu model : %1$s Android Version : %2$s</string>
+
+    <string name="main_menu_visitor_tracking_show">نمایش موقعیت فروشندگان</string>
+    <string name="main_menu_settings">تنظیمات برنامه</string>
+
+    <string name="path_out_of_path_customer">شماره مشتری را وارد نمایید...</string>
+
+    <string name="tracking_deactivate_tracking">غیر فعال کردن موقعیت یابی</string>
+    <string name="tracking_active_tracking">فعال کردن موقعیت یابی</string>
+    <string name="tracking_stop_after">موقعیت یابی بعد از %1$s متوقف خواهد شد</string>
+
+    <string name="error_app_update_pre_path_condition_both">قبل از دریافت اطلاعات، درخواست های مانده و علت عدم ویزیت را مشخص کنید</string>
+    <string name="error_app_update_pre_path_condition_unsent">قبل از دریافت اطلاعات، درخواست های مانده را ارسال یا حذف نمایید.</string>
+    <string name="error_app_update_pre_path_condition_unvisited">قبل از دریافت اطلاعات، علت عدم ویزیت را مشخص کنید</string>
+    <string name="error_dialog_title">خطا</string>
+
+    <string name="path_fragment_title">لیست مسیر ها</string>
+
+
+    <string name="gps_please_enable">لطفا GPS دستگاه خود را روشن کنید</string>
+    <string name="common_payable_amount">مبلغ پرداختنی</string>
+    <string name="common_cheque_duration">مدت چک</string>
+    <string name="TotalPayment">مبلغ</string>
+    <string name="error_find_serialized_object">خطا در یافتن آبجکت سریال شده</string>
+    <string name="pref_xml_description_chrome_download">نصب مرورگر کروم برای دستگاههای قدیمی(اندروید 4.4 به پایین) الزامی است</string>
+    <string name="path_complete_path_visit">اتمام کار</string>
+    <string name="path_complete_path_visit_hint">لطفا توضیحات اتمام کار را وارد کنید</string>
+    <string name="path_send_message_successfully">پیغام شما با موفقیت ارسال گردید.</string>
+    <string name="customer_base_register_point">موقیعت مشتری در سرور ثبت گردید</string>
+
+
+</resources>
