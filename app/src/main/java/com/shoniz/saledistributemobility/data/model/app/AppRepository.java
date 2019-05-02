@@ -21,13 +21,13 @@ public class AppRepository implements IAppRepository {
 
 
 
-//    @Override
-//    public EmployeeInfoEntity getEmployeeInfo() {
-//        return settingRepository.getEmployeeInfoEntity();
-//    }
+    @Override
+    public EmployeeInfoEntity getEmployeeInfo() {
+        return settingRepository.getEmployeeInfoEntity();
+    }
 
-//    @Override
-    public void syncEmployeeInfo() throws BaseException, ApiException {
+    @Override
+    public void syncEmployeeInfo() throws BaseException {
         settingRepository.setEmployeeInfoEntity(appApi.getEmployeeInfoEntity());
     }
 }

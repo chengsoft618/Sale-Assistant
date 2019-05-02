@@ -30,7 +30,7 @@ public class MainViewModel extends BaseViewModel<IMainNavigator> {
 
     private IAppApi appApi;
     private CommonPackage commonPackage;
-    private IFileDownloader fileDownloader;
+//    private IFileDownloader fileDownloader;
     private ISettingRepository settingRepository;
     ICoreApi coreApi;
     public MutableLiveData<String> persianDate = new MutableLiveData<>();
@@ -39,7 +39,7 @@ public class MainViewModel extends BaseViewModel<IMainNavigator> {
     public MainViewModel(CommonPackage commonPackage, ICoreApi coreApi, IAppApi appApi, IFileDownloader fileDownloader, ISettingRepository settingRepository) {
         this.commonPackage = commonPackage;
         this.appApi = appApi;
-        this.fileDownloader = fileDownloader;
+//        this.fileDownloader = fileDownloader;
         this.settingRepository = settingRepository;
         this.coreApi = coreApi;
     }
@@ -53,16 +53,14 @@ public class MainViewModel extends BaseViewModel<IMainNavigator> {
                 settingRepository.removePref(commonPackage.getContext().getString(R.string.pref_key_cheque_duration_day));
             }
             getNavigator().updateData(true);
-                    }
-//        if (settingRepository.getUnchangedOrdersNoInCardindeForEdit() == 0)
-//            settingRepository.setUnchangedOrdersNoInCardindeForEdit(0L);
+        }
+
     }
 
     public void checkLastVersion() {
-       if(!settingRepository.getApkLastVersion().isEmpty()&& !settingRepository.getApkLastVersion().equals(commonPackage.getUtility().getVersionName()))
-       {
-           getNavigator().showNewApkNotification();
-       }
+        if (!settingRepository.getApkLastVersion().isEmpty() && !settingRepository.getApkLastVersion().equals(commonPackage.getUtility().getVersionName())) {
+            getNavigator().showNewApkNotification();
+        }
 
     }
 

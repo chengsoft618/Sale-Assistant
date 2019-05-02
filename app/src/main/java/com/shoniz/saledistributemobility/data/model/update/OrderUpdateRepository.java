@@ -1,10 +1,8 @@
 package com.shoniz.saledistributemobility.data.model.update;
 
 import com.shoniz.saledistributemobility.R;
-import com.shoniz.saledistributemobility.app.repository.update.IOrderUpdateRepository;
+import com.shoniz.saledistributemobility.framework.repository.update.IOrderUpdateRepository;
 import com.shoniz.saledistributemobility.data.database.dao.IPathDao;
-import com.shoniz.saledistributemobility.data.model.cardindex.ICardIndexRepository;
-import com.shoniz.saledistributemobility.data.model.order.IOrderRepository;
 import com.shoniz.saledistributemobility.data.model.order.OrderDetailEntity;
 import com.shoniz.saledistributemobility.data.model.order.OrderEntity;
 import com.shoniz.saledistributemobility.data.model.order.UnvisitedCustomerReasonEntity;
@@ -12,7 +10,6 @@ import com.shoniz.saledistributemobility.data.model.order.api.IOrderApi;
 import com.shoniz.saledistributemobility.data.model.order.db.IOrderDao;
 import com.shoniz.saledistributemobility.data.model.order.db.IOrderDetailDao;
 import com.shoniz.saledistributemobility.data.model.order.db.IUnvisitedCustomerReasonDao;
-import com.shoniz.saledistributemobility.data.sharedpref.ISettingRepository;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
 import com.shoniz.saledistributemobility.view.entity.PathEntity;

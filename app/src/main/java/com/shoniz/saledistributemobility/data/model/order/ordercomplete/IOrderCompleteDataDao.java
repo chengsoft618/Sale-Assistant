@@ -14,6 +14,10 @@ public interface IOrderCompleteDataDao {
             "  0 RowNumber,  " +
             " cb.PersonID,  " +
             " o.OrderNo,  " +
+            " 1 OrderSerial,  " +
+            " 1 ClientOrderNo,  " +
+            " '' SenderName,  " +
+            " '' FullName,  " +
             " o.RegDate,  " +
             " o.OrderTypeID,  " +
             " o.TotalAmount,  " +
@@ -32,7 +36,6 @@ public interface IOrderCompleteDataDao {
             " cb.Address,  " +
             " cb.TelNo,  " +
             " cb.CellNo,  " +
-            " cb.ContactName,  " +
             " cb.PathCode,  " +
             " cb.PathName,  " +
             " o.Varity,  " +

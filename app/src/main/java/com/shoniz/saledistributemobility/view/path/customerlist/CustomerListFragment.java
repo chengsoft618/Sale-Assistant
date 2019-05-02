@@ -1,10 +1,12 @@
 package com.shoniz.saledistributemobility.view.path.customerlist;
 
 import android.app.Dialog;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.ActionMode;
 import android.support.v7.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -16,14 +18,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.SearchView;
 
+import com.shoniz.saledistributemobility.BR;
 import com.shoniz.saledistributemobility.R;
-import com.shoniz.saledistributemobility.base.FileContentModel;
+import com.shoniz.saledistributemobility.view.base.BaseFragment;
 import com.shoniz.saledistributemobility.data.model.cardindex.ICardIndexRepository;
 import com.shoniz.saledistributemobility.data.model.customer.ICustomerRepository;
 import com.shoniz.saledistributemobility.data.model.log.ILogRepository;
 import com.shoniz.saledistributemobility.data.model.order.IOrderRepository;
 import com.shoniz.saledistributemobility.data.model.order.UnvisitedCustomerReasonEntity;
 import com.shoniz.saledistributemobility.data.sharedpref.ISettingRepository;
+import com.shoniz.saledistributemobility.databinding.FragmentCustomerListBinding;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
 import com.shoniz.saledistributemobility.framework.exception.HandleException;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
@@ -35,17 +39,11 @@ import com.shoniz.saledistributemobility.infrastructure.CommonAsyncTask;
 import com.shoniz.saledistributemobility.order.RequestBusiness;
 import com.shoniz.saledistributemobility.order.unvisited.ReasonDto;
 import com.shoniz.saledistributemobility.utility.Common;
-import com.shoniz.saledistributemobility.utility.StringHelper;
 import com.shoniz.saledistributemobility.utility.data.api.OfficeApi;
 import com.shoniz.saledistributemobility.utility.data.pref.AppPref;
-import com.shoniz.saledistributemobility.utility.dialog.AsyncTaskDialog;
 import com.shoniz.saledistributemobility.utility.dialog.ErrorDialog.ErrorDialog;
-import com.shoniz.saledistributemobility.utility.dialog.OnProgressUpdate;
-import com.shoniz.saledistributemobility.utility.dialog.RunnableMethod;
-import com.shoniz.saledistributemobility.utility.dialog.RunnableModel;
-import com.shoniz.saledistributemobility.view.customer.CustomerBusiness;
-import com.shoniz.saledistributemobility.view.customer.CustomerData;
 import com.shoniz.saledistributemobility.view.customer.activity.CustomerActivity;
+import com.shoniz.saledistributemobility.view.customer.activity.ICustomerNavigator;
 import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexBusiness;
 import com.shoniz.saledistributemobility.view.customer.info.basic.CustomerBasicModel;
 import com.shoniz.saledistributemobility.view.dialog.unvisitedCustomerDialog.UnvisitingDialog;
@@ -62,7 +60,7 @@ import static com.shoniz.saledistributemobility.view.path.pathlist.PathListFragm
 import static com.shoniz.saledistributemobility.view.path.pathlist.PathListFragment.PERSIAN_DATE;
 
 
-public class CustomerListFragment extends dagger.android.support.DaggerFragment {
+public class CustomerListFragment extends BaseFragment<FragmentCustomerListBinding, CustomerListViewModel> implements ICustomerListNavigator {
 
     @Inject
     CommonPackage commonPackage;
@@ -76,27 +74,35 @@ public class CustomerListFragment extends dagger.android.support.DaggerFragment 
     ISettingRepository settingRepository;
     @Inject
     ICardIndexRepository cardIndexRepository;
+    @Inject
+    ViewModelProvider.Factory factory;
 
     AppCompatActivity activity;
     private RecyclerView recyclerView;
     private int pathCode;
     private List<CustomerBasicModel> models;
     private List<CustomerBasicModel> searchModels;
-    private ActionMode mActionMode;
     private CustomerAdapter adapter;
-    private ToolbarCustomerActionModeCallback actionModeCallback;
     private SearchView mSearchView;
 
-    private static String[] unvisitedReasonsString;
     private static List<ReasonEntity> reasonModels;
 
     private boolean isCustomersOfActivePath = false;
     private String activePathDate = "";
 
+    public static CustomerListFragment newInstance(PathModel pathModel) {
+        CustomerListFragment fragment = new CustomerListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(CustomerBasicModel.Column.PATH_CODE, pathModel.PathCode);
+        bundle.putBoolean(IS_ACTIVE, pathModel.IsActive);
+        bundle.putString(PERSIAN_DATE, pathModel.PersianDate.trim());
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         isCustomersOfActivePath = getArguments().getBoolean(IS_ACTIVE, false);
         activePathDate = getArguments().getString(PERSIAN_DATE, "");
@@ -108,14 +114,28 @@ public class CustomerListFragment extends dagger.android.support.DaggerFragment 
         setHasOptionsMenu(true);
         searchModels = new ArrayList<>();
         reasonModels = orderRepository.getUnvisitingReasons();
-        //unvisitedReasonsString = new String[reasonModels.size()];
-//        RadioGroup r = new RadioGroup(commonPackage.getContext());
-//                for (int i = 0; i < reasonModels.size(); i++) {
-//            RadioButton rdbtn = new RadioButton(commonPackage.getContext());
-//            rdbtn.setId(reasonModels.get(i).NotSallReasonID);
-//            rdbtn.setText(reasonModels.get(i).NotSallReasonText);
-//            r.addView(rdbtn);
-//        }
+    }
+
+    @Override
+    public CustomerListViewModel getViewModel() {
+        CustomerListViewModel model = ViewModelProviders.of(this, factory).get(CustomerListViewModel.class);
+        model.setNavigator(this);
+        return model;
+    }
+
+    @Override
+    public int getBindingVariable() {
+        return BR.viewModel;
+    }
+
+    @Override
+    public void onChangeLocation(Location location) {
+
+    }
+
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_customer_list;
     }
 
     @Override
@@ -127,18 +147,21 @@ public class CustomerListFragment extends dagger.android.support.DaggerFragment 
             recyclerView = (RecyclerView) view;
         }
         setHasOptionsMenu(true);
-        //refreshRecycle();
         return view;
     }
 
-    private CustomerAdapter.OnItemSelectedListener onItemSelectedListener = new CustomerAdapter.OnItemSelectedListener() {
+    @Override
+    public int getFragmentTitle() {
+        return 0;
+    }
+
+    private CustomerAdapter.CustomerListListener customerListListener = new CustomerAdapter.CustomerListListener() {
         @Override
         public void onClick(CustomerBasicModel customerBasicModel) {
             try {
-                boolean isEmptyCardindex = false;
-                isEmptyCardindex = CardIndexBusiness.isEmptyCardIndex(activity, customerBasicModel.PersonID);
+                boolean isEmptyCardIndex = CardIndexBusiness.isEmptyCardIndex(activity, customerBasicModel.PersonID);
 
-                if (customerBasicModel.UnIssuedOrderNo > 0 && isEmptyCardindex)
+                if (customerBasicModel.UnIssuedOrderNo > 0 && isEmptyCardIndex)
                     showSentOrderOperationDialog(customerBasicModel);
                 else
                     CustomerActivity.startActivity(getActivity(), customerBasicModel.PersonID);
@@ -150,7 +173,7 @@ public class CustomerListFragment extends dagger.android.support.DaggerFragment 
             }
         }
 
-        public void showSentOrderOperationDialog(CustomerBasicModel customerBasicModel) {
+        private void showSentOrderOperationDialog(CustomerBasicModel customerBasicModel) {
             final Dialog dialog = new Dialog(activity);
             dialog.setContentView(R.layout.dialog_sent_order_operation);
             Button btnEdit = dialog.findViewById(R.id.btn_edit_sent_order);
@@ -159,25 +182,8 @@ public class CustomerListFragment extends dagger.android.support.DaggerFragment 
             btnEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    try {
-                        if (settingRepository.getUnchangedOrdersNoInCardindeForEdit() != 0
-                                && settingRepository.getUnchangedOrdersNoInCardindeForEdit() != customerBasicModel.UnIssuedOrderNo)
-                            try {
-                                cardIndexRepository.removeUnchangedCardindexForEdit(orderRepository,
-                                        settingRepository, cardIndexRepository, commonPackage);
-                            } catch (IOException e) {
-                                UncaughtException exception = new UncaughtException(commonPackage, e);
-                                ExceptionHandler.handle(exception, getActivity());
-                            }
-
-                        RequestBusiness.makeOrderReadyToEdit(activity, customerBasicModel.UnIssuedOrderNo);
-                        settingRepository.setUnchangedOrdersNoInCardindeForEdit(customerBasicModel.UnIssuedOrderNo);
-                        dialog.dismiss();
-                        CustomerActivity.startActivity(getActivity(), customerBasicModel.PersonID);
-                    } catch (IOException e) {
-                        BaseException ex = new BusinessException(commonPackage, "خطا در تبدیل درخواست به کارتکس");
-                        ExceptionHandler.handle(ex, getActivity());
-                    }
+                    dialog.dismiss();
+                    getViewModel().startCustomerActivityToEdit(customerBasicModel);
 
                 }
             });
@@ -198,24 +204,24 @@ public class CustomerListFragment extends dagger.android.support.DaggerFragment 
             dialog.show();
         }
 
-        @Override
-        public void onUpdateClick(List<Integer> selectedIds) {
-            if (selectedIds.size() == models.size()) {
-                upDateCustomers();
-            } else {
-                //updateSelectedCustomers();
-            }
-        }
+//        @Override
+//        public void onUpdateClick(List<Integer> selectedIds) {
+//            if (selectedIds.size() == models.size()) {
+//                upDateCustomers();
+//            } else {
+//                //updateSelectedCustomers();
+//            }
+//        }
 
 
-        @Override
-        public void onItemCheck(CustomerBasicModel customerBasicModel) {
-            if (adapter.getSelectedList().size() == adapter.getList().size()) {
-                actionModeCallback.setCheckAll(true);
-            } else {
-                actionModeCallback.setCheckAll(false);
-            }
-        }
+//        @Override
+//        public void onItemCheck(CustomerBasicModel customerBasicModel) {
+//            if (adapter.getSelectedList().size() == adapter.getList().size()) {
+//                actionModeCallback.setCheckAll(true);
+//            } else {
+//                actionModeCallback.setCheckAll(false);
+//            }
+//        }
 
         private int single_choice_selected;
 
@@ -275,16 +281,6 @@ public class CustomerListFragment extends dagger.android.support.DaggerFragment 
         }
     };
 
-    public static CustomerListFragment newInstance(PathModel pathModel) {
-        CustomerListFragment fragment = new CustomerListFragment();
-        Bundle bundle = new Bundle();
-        bundle.putInt(CustomerBasicModel.Column.PATH_CODE, pathModel.PathCode);
-        bundle.putBoolean(IS_ACTIVE, pathModel.IsActive);
-        bundle.putString(PERSIAN_DATE, pathModel.PersianDate.trim());
-        fragment.setArguments(bundle);
-        return fragment;
-    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -308,50 +304,6 @@ public class CustomerListFragment extends dagger.android.support.DaggerFragment 
         return super.onOptionsItemSelected(item);
     }
 
-    private void upDateCustomers() {
-        RunnableMethod<Object, Object> runDo = new RunnableMethod<Object, Object>() {
-            @Override
-            public Object run(Object object, OnProgressUpdate onProgressUpdate) {
-                RunnableModel<FileContentModel> runnableModel = new RunnableModel<>();
-
-                try {
-                    int allProgress = 5, currentProgress = 1;
-
-                    String preMessage = StringHelper.GenerateMessage(getString(R.string.progress_status), currentProgress, allProgress);
-                    onProgressUpdate.onProgressUpdate("بروز رسانی نرم افزار");
-                    CustomerData.createSaleDb(activity, CustomerBusiness.getSaleDb(activity).FileContents);
-                    currentProgress++;
-                } catch (Exception e) {
-                    HandleException systemException = new HandleException(activity, e);
-                    ErrorDialog.showDialog((AppCompatActivity) getActivity(),
-                            systemException.getUserTitle(), systemException.getUserMessage(),
-                            systemException.getSystemMessage());
-                    runnableModel.HasError = true;
-                    runnableModel.exception = systemException;
-                }
-                return runnableModel;
-            }
-        };
-
-        RunnableMethod<RunnableModel<FileContentModel>, Object> runPost =
-                new RunnableMethod<RunnableModel<FileContentModel>, Object>() {
-                    @Override
-                    public Object run(RunnableModel<FileContentModel> runnableModel, OnProgressUpdate onProgressUpdate) {
-                        if (runnableModel.HasError) {
-                            ErrorDialog.showDialog((AppCompatActivity) getActivity(),
-                                    runnableModel.exception.getUserTitle(), runnableModel.exception.getUserMessage(),
-                                    runnableModel.exception.getSystemMessage());
-                        }
-                        return null;
-                    }
-                };
-
-        AsyncTaskDialog asyncTaskDialog = new AsyncTaskDialog(getActivity(),
-                getString(R.string.wait),
-                getString(R.string.get_visit_path), null, runDo, runPost);
-        asyncTaskDialog.execute();
-    }
-
     @Override
     public void onResume() {
         super.onResume();
@@ -366,7 +318,7 @@ public class CustomerListFragment extends dagger.android.support.DaggerFragment 
 
             adapter = new CustomerAdapter(getActivity(),
                     searchModels.size() == 0 ? models : searchModels,
-                    onItemSelectedListener, reasonModels);
+                    customerListListener, reasonModels);
             adapter.isCustomersOfActivePath = isCustomersOfActivePath;
             recyclerView.setAdapter(adapter);
         } catch (Exception e) {
@@ -398,7 +350,7 @@ public class CustomerListFragment extends dagger.android.support.DaggerFragment 
 
                 if (search.trim() != "")
                     for (CustomerBasicModel customer : models) {
-                        if((customer.PersonID + "").contains(search) ||
+                        if ((customer.PersonID + "").contains(search) ||
                                 customer.ContactName.contains(search) ||
                                 (customer.CustomerID + "").contains(search) ||
                                 customer.PersonName.contains(search))
@@ -412,6 +364,55 @@ public class CustomerListFragment extends dagger.android.support.DaggerFragment 
 
         super.onCreateOptionsMenu(menu, inflater);
     }
+
+    @Override
+    public void startCustomerActivity(int personId) {
+        CustomerActivity.startActivity(getActivity(), personId);
+    }
+
+    //    private void upDateCustomers() {
+//        RunnableMethod<Object, Object> runDo = new RunnableMethod<Object, Object>() {
+//            @Override
+//            public Object run(Object object, OnProgressUpdate onProgressUpdate) {
+//                RunnableModel<FileContentModel> runnableModel = new RunnableModel<>();
+//
+//                try {
+//                    int allProgress = 5, currentProgress = 1;
+//
+//                    String preMessage = StringHelper.GenerateMessage(getString(R.string.progress_status), currentProgress, allProgress);
+//                    onProgressUpdate.onProgressUpdate("بروز رسانی نرم افزار");
+//                    CustomerData.createSaleDb(activity, CustomerBusiness.getSaleDb(activity).FileContents);
+//                    currentProgress++;
+//                } catch (Exception e) {
+//                    HandleException systemException = new HandleException(activity, e);
+//                    ErrorDialog.showDialog((AppCompatActivity) getActivity(),
+//                            systemException.getUserTitle(), systemException.getUserMessage(),
+//                            systemException.getSystemMessage());
+//                    runnableModel.HasError = true;
+//                    runnableModel.exception = systemException;
+//                }
+//                return runnableModel;
+//            }
+//        };
+//
+//        RunnableMethod<RunnableModel<FileContentModel>, Object> runPost =
+//                new RunnableMethod<RunnableModel<FileContentModel>, Object>() {
+//                    @Override
+//                    public Object run(RunnableModel<FileContentModel> runnableModel, OnProgressUpdate onProgressUpdate) {
+//                        if (runnableModel.HasError) {
+//                            ErrorDialog.showDialog((AppCompatActivity) getActivity(),
+//                                    runnableModel.exception.getUserTitle(), runnableModel.exception.getUserMessage(),
+//                                    runnableModel.exception.getSystemMessage());
+//                        }
+//                        return null;
+//                    }
+//                };
+//
+//        AsyncTaskDialog asyncTaskDialog = new AsyncTaskDialog(getActivity(),
+//                getString(R.string.wait),
+//                getString(R.string.get_visit_path), null, runDo, runPost);
+//        asyncTaskDialog.execute();
+//    }
 
 }
 

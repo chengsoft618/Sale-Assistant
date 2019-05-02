@@ -16,8 +16,8 @@ import java.util.List;
 
 public interface IOrderRepository {
 
-    List<OrderData> getOrdersToVerify(int userId) throws InOutError;
-    List<OrderData> getVerifiedOrdersToCancel(int userId) throws InOutError;
+  //  List<OrderData> getOrdersToVerify(int userId) throws InOutError;
+ //   List<OrderData> getVerifiedOrdersToCancel(int userId) throws InOutError;
 
 //    List<OrderEntity> getOrderNotIssued() throws InOutError;
     List<OrderDetailEntity>  getOrderDetailNotIssued() throws BaseException;
@@ -31,9 +31,9 @@ public interface IOrderRepository {
 
     void verifyOrder(List<Long> orderIds) throws BaseException;
 
-    void cancelVerify(Long orderId,String message) throws BaseException;
-
-    void rejectVerify(long orderId, String comment) throws BaseException;
+//    void cancelVerify(Long orderId,String message) throws BaseException;
+//
+//    void rejectVerify(long orderId, String comment) throws BaseException;
 
     void sendTo(long orderId, int userId, String comment,int roleId) throws BaseException;
 

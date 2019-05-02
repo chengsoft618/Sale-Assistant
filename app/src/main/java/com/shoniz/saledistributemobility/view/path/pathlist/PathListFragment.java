@@ -19,22 +19,18 @@ import android.view.ViewGroup;
 
 import com.shoniz.saledistributemobility.BR;
 import com.shoniz.saledistributemobility.R;
-import com.shoniz.saledistributemobility.app.service.update.IAppUpdater;
+import com.shoniz.saledistributemobility.framework.service.update.IAppUpdater;
 import com.shoniz.saledistributemobility.data.api.ApiNetworkException;
-import com.shoniz.saledistributemobility.data.api.retrofit.ApiException;
 import com.shoniz.saledistributemobility.data.model.customer.ICustomerRepository;
 import com.shoniz.saledistributemobility.data.model.message.IMessageRepository;
 import com.shoniz.saledistributemobility.data.model.order.IOrderRepository;
-import com.shoniz.saledistributemobility.data.model.update.AppDataUpdate;
 import com.shoniz.saledistributemobility.data.sharedpref.ISettingRepository;
 import com.shoniz.saledistributemobility.databinding.FragmentPathListBinding;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
-import com.shoniz.saledistributemobility.framework.exception.ConnectionException;
 import com.shoniz.saledistributemobility.framework.exception.HandleException;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.ExceptionHandler;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.UncaughtException;
-import com.shoniz.saledistributemobility.framework.service.update.AppUpdater;
 import com.shoniz.saledistributemobility.infrastructure.AsyncResult;
 import com.shoniz.saledistributemobility.infrastructure.CommonAsyncTask;
 import com.shoniz.saledistributemobility.utility.Common;
@@ -52,7 +48,6 @@ import com.shoniz.saledistributemobility.view.path.PathData;
 import com.shoniz.saledistributemobility.view.path.PathModel;
 import com.shoniz.saledistributemobility.view.path.ToolbarPathActionModeCallback;
 import com.shoniz.saledistributemobility.view.path.customerlist.CustomerListFragment;
-import com.shoniz.saledistributemobility.view.path.outofpath.CustomerPreference;
 
 import java.util.List;
 
@@ -73,7 +68,7 @@ public class PathListFragment extends BaseFragment<FragmentPathListBinding, Path
     PathAdapter pathAdapter;
     @Inject
     ISettingRepository settingRepository;
-//    @Inject
+    //    @Inject
 //    AppDataUpdate appDataUpdate;
     @Inject
     IOrderRepository orderRepository;
@@ -202,25 +197,6 @@ public class PathListFragment extends BaseFragment<FragmentPathListBinding, Path
         }
     };
 
-    private void updatePath(PathModel pathModel) {
-        SimpleAsyncTask asyncTask = new SimpleAsyncTask(null, new RunnableMethod() {
-            @Override
-            public Object run(Object param, OnProgressUpdate onProgressUpdate) {
-                updatePath(pathModel.PathCode, null);
-                return null;
-            }
-        }, new RunnableMethod() {
-            @Override
-            public Object run(Object param, OnProgressUpdate onProgressUpdate) {
-                if (param != null) {
-                    ExceptionHandler.handle((BaseException) param, getActivity());
-                }
-                return null;
-            }
-        }, null);
-        asyncTask.run();
-    }
-
 
     public static PathListFragment newInstance() {
         PathListFragment fragment = new PathListFragment();
@@ -236,9 +212,9 @@ public class PathListFragment extends BaseFragment<FragmentPathListBinding, Path
 
     @Override
     public PathListViewModel getViewModel() {
-        PathListViewModel model = ViewModelProviders.of(this, factory).get(PathListViewModel.class);
-        model.setNavigator(this);
-        return model;
+        PathListViewModel viewModel = ViewModelProviders.of(this, factory).get(PathListViewModel.class);
+        viewModel.setNavigator(this);
+        return viewModel;
     }
 
     @Override
@@ -355,10 +331,8 @@ public class PathListFragment extends BaseFragment<FragmentPathListBinding, Path
                             try {
 
                                 appUpdater.setAppUpdateListener(message -> onProgress.onUpdate(message));
-                                appUpdater.updateWholeData();
+                                appUpdater.updatePrePath();
                                 settingRepository.setUnchangedOrdersNoInCardindeForEdit(0L);
-                                // pathModels = PathData.getAllPaths(getContext());
-                                // pathAdapter = new PathAdapter(pathModels, onRecyclerListener);
 
                             } catch (BaseException ex) {
                                 result.exception = ex;
@@ -433,6 +407,25 @@ public class PathListFragment extends BaseFragment<FragmentPathListBinding, Path
         commonAsyncTask.run();
     }
 
+    private void updatePath(PathModel pathModel) {
+        SimpleAsyncTask asyncTask = new SimpleAsyncTask(null, new RunnableMethod() {
+            @Override
+            public Object run(Object param, OnProgressUpdate onProgressUpdate) {
+                updatePath(pathModel.PathCode, null);
+                return null;
+            }
+        }, new RunnableMethod() {
+            @Override
+            public Object run(Object param, OnProgressUpdate onProgressUpdate) {
+                if (param != null) {
+                    ExceptionHandler.handle((BaseException) param, getActivity());
+                }
+                return null;
+            }
+        }, null);
+        asyncTask.run();
+    }
+
     @Override
     public void syncCustomerInfoById(int personId) {
         Runnable runnablePre = () -> {
@@ -470,13 +463,6 @@ public class PathListFragment extends BaseFragment<FragmentPathListBinding, Path
 
         CommonAsyncTask commonAsyncTask = new CommonAsyncTask(runnablePre, runnableDo, postRunnable, onProgress);
         commonAsyncTask.run();
-    }
-
-    public void goToCardIndexPage(int personId) {
-        Intent intent = new Intent(getActivity(), CustomerActivity.class);
-        intent.putExtra(CustomerPreference.IsActivityForJustGettingRequest, true);
-        intent.putExtra(CustomerPreference.PersonId, personId);
-        getBaseActivity().startActivity(intent);
     }
 
     @Override

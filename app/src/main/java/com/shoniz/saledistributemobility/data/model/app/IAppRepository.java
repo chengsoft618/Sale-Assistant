@@ -8,7 +8,7 @@ import com.shoniz.saledistributemobility.view.entity.EmployeeInfoEntity;
 
 public interface IAppRepository {
 
-    //EmployeeInfoEntity getEmployeeInfo();
+    EmployeeInfoEntity getEmployeeInfo();
 
-    //void syncEmployeeInfo() throws BaseException, ApiException;
+    void syncEmployeeInfo() throws BaseException;
 }

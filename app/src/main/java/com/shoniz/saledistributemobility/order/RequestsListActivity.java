@@ -17,13 +17,12 @@ import android.view.View;
 
 import com.shoniz.saledistributemobility.BR;
 import com.shoniz.saledistributemobility.R;
-import com.shoniz.saledistributemobility.app.service.update.IAppUpdater;
+import com.shoniz.saledistributemobility.framework.service.update.IAppUpdater;
 import com.shoniz.saledistributemobility.databinding.ActivityRequestBinding;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
 import com.shoniz.saledistributemobility.view.base.BaseActivity;
 import com.shoniz.saledistributemobility.view.customer.ILocationChange;
 import com.shoniz.saledistributemobility.data.model.log.ILogRepository;
-import com.shoniz.saledistributemobility.data.model.update.AppDataUpdate;
 import com.shoniz.saledistributemobility.framework.InOutError;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.ExceptionHandler;
 import com.shoniz.saledistributemobility.infrastructure.AsyncResult;

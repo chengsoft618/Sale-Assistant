@@ -7,6 +7,9 @@ import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderCom
 import com.shoniz.saledistributemobility.data.model.order.UnvisitedCustomerReasonEntity;
 import com.shoniz.saledistributemobility.framework.exception.OldApiException;
 import com.shoniz.saledistributemobility.framework.exception.ConnectionException;
+import com.shoniz.saledistributemobility.order.sent.SentOrderModel;
+import com.shoniz.saledistributemobility.order.unsent.UnsentOrderModel;
+import com.shoniz.saledistributemobility.order.unvisited.UnvisitedCustomerModel;
 import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexBusiness;
 import com.shoniz.saledistributemobility.utility.data.api.OfficeApi;
 import com.shoniz.saledistributemobility.order.detail.OrderDetailData;
@@ -32,7 +35,7 @@ public class OrderBusiness {
         ResultModel res;
         try {
             res = shonizApi.deleteOrder(sendRequestModel);
-            RequestBusiness.deleteOrder(context, sendRequestModel.OrderNo);
+            deleteOrder(context, sendRequestModel.OrderNo);
             return res;
         } catch (Exception e) {
             throw e;
@@ -91,5 +94,20 @@ public class OrderBusiness {
 
     public static List<ReasonModel> getUnvisitingReason(Context context) throws IOException, SQLException {
         return OrderDataOld.getUnvisitingReason(context);
+    }
+
+    public static SentOrderModel getOrderedRequest(Context context, long orderNo) throws Exception{
+        return RequestListData.getOrderedRequest(context,orderNo);
+    }
+    public static void deleteOrder(Context context,long orderNo) throws Exception{
+        RequestListData.deleteOrder(context,orderNo);
+    }
+
+    public static List<UnsentOrderModel> getUnsentRequestList(Context context) throws Exception{
+        return RequestListData.getUnsentRequestList(context);
+    }
+
+    public static List<UnvisitedCustomerModel> getUnvisitedCustomerList(Context context) throws Exception{
+        return RequestListData.getUnvisitedCustomerList(context);
     }
 }

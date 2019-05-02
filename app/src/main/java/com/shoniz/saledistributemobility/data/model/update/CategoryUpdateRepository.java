@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.shoniz.saledistributemobility.R;
-import com.shoniz.saledistributemobility.app.repository.update.ICategoryUpdateRepository;
+import com.shoniz.saledistributemobility.framework.repository.update.ICategoryUpdateRepository;
 import com.shoniz.saledistributemobility.catalog.ProductImageModel;
 import com.shoniz.saledistributemobility.catalog.ResourceModel;
 import com.shoniz.saledistributemobility.data.model.update.api.ICategoryUpdateApi;

@@ -94,9 +94,9 @@ public class BaseApp extends DaggerApplication {
         }
 
         exception.systemMessage = report.toString();
-        try {
-            new LogSerializer(getApplicationContext()).serialize(exception.getLogEntity());
-        } catch (Exception e1) {
+            try {
+                new LogSerializer(getApplicationContext()).serialize(exception.getLogEntity());
+            } catch (Exception e1) {
         }
 
         Utility.writeFile(report.toString());

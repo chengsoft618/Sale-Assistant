@@ -48,6 +48,7 @@ import com.shoniz.saledistributemobility.view.ordering.operation.cancel.VerifyCa
 import com.shoniz.saledistributemobility.view.ordering.operation.verify.VerifyFragment;
 import com.shoniz.saledistributemobility.view.ordering.operation.verify.VerifyModule;
 import com.shoniz.saledistributemobility.view.path.customerlist.CustomerListFragment;
+import com.shoniz.saledistributemobility.view.path.customerlist.CustomerListFragmentModule;
 import com.shoniz.saledistributemobility.view.path.pathlist.PathListFragment;
 import com.shoniz.saledistributemobility.view.path.pathlist.PathListFragmentModule;
 import com.shoniz.saledistributemobility.view.web.WebSiteActivity;
@@ -104,8 +105,6 @@ public abstract class ActivityBuilderModule {
     @ContributesAndroidInjector()
     public abstract LocationWorkerService bindLocationWorkerService();
 
-
-
     @ContributesAndroidInjector()
     public abstract ExceptionWorkerService bindExceptionWorkerService();
 
@@ -127,7 +126,7 @@ public abstract class ActivityBuilderModule {
     @ContributesAndroidInjector(modules = PathListFragmentModule.class)
     public abstract PathListFragment bindPathListFragment();
 
-    @ContributesAndroidInjector()
+    @ContributesAndroidInjector(modules = CustomerListFragmentModule.class)
     public abstract CustomerListFragment bindCustomerListFragment();
 
     @ContributesAndroidInjector()

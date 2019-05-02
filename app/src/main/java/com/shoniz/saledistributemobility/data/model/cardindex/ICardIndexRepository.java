@@ -12,7 +12,8 @@ import java.util.List;
 public interface ICardIndexRepository {
     List<CardIndexDetailData> getCardIndexDetail(int personId);
     List<CardIndexData> getAllCardIndices();
-    void removeUnchangedCardindexForEdit(IOrderRepository orderRepository,
-                                         ISettingRepository settingRepository, ICardIndexRepository cardIndexRepository,
-                                         CommonPackage commonPackage) throws IOException;
+//    void removeUnchangedCardindexForEdit(IOrderRepository orderRepository,
+//                                         ISettingRepository settingRepository, ICardIndexRepository cardIndexRepository,
+//                                         CommonPackage commonPackage) throws IOException;
+
 }

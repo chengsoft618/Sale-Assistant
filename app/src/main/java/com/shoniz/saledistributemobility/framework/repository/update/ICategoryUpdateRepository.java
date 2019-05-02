@@ -1,4 +1,4 @@
-package com.shoniz.saledistributemobility.app.repository.update;
+package com.shoniz.saledistributemobility.framework.repository.update;
 
 import com.shoniz.saledistributemobility.catalog.ProductImageModel;
 import com.shoniz.saledistributemobility.catalog.ResourceModel;

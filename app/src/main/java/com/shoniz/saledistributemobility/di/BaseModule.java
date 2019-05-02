@@ -14,9 +14,11 @@ import com.shoniz.saledistributemobility.data.model.app.api.AppApi;
 import com.shoniz.saledistributemobility.data.model.app.api.IAppApi;
 import com.shoniz.saledistributemobility.data.sharedpref.ISettingPref;
 import com.shoniz.saledistributemobility.data.sharedpref.ISettingRepository;
+import com.shoniz.saledistributemobility.data.sharedpref.SettingPref;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
 import com.shoniz.saledistributemobility.framework.Device;
 import com.shoniz.saledistributemobility.framework.Utility;
+import com.shoniz.saledistributemobility.framework.printer.BluetoothPrinter;
 
 import javax.inject.Singleton;
 
@@ -82,6 +84,16 @@ public abstract class BaseModule {
         return new FileDownloader(commonPackage,coreApi);
     }
 
+    @Singleton
+    @Provides
+    ISettingPref providesSettingPref(Context context){
+        return  new SettingPref(context);
+    }
 
+    @Singleton
+    @Provides
+    BluetoothPrinter providesBluetoothPrinter(CommonPackage commonPackage){
+        return  new BluetoothPrinter(commonPackage);
+    }
 
 }

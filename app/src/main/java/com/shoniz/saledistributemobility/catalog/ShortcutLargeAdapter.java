@@ -14,8 +14,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.shoniz.saledistributemobility.R;
-import com.shoniz.saledistributemobility.generated.callback.OnClickListener;
-import com.shoniz.saledistributemobility.utility.Common;
 import com.shoniz.saledistributemobility.utility.StringHelper;
 import com.shoniz.saledistributemobility.utility.data.fileSystem.FileManager;
 import com.shoniz.saledistributemobility.view.catalog.subcategory.SubCategoryDetailModel;

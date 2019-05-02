@@ -35,6 +35,7 @@ import com.shoniz.saledistributemobility.databinding.FragmentOrderedRequestListB
 import com.shoniz.saledistributemobility.framework.CommonPackage;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.ExceptionHandler;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.UncaughtException;
+import com.shoniz.saledistributemobility.framework.service.order.ICardIndexService;
 import com.shoniz.saledistributemobility.order.SharedOrderViewModel;
 import com.shoniz.saledistributemobility.view.base.BaseFragment;
 import com.shoniz.saledistributemobility.view.customer.ActionSendType;
@@ -78,6 +79,9 @@ public class SentOrdersFragment extends BaseFragment<FragmentOrderedRequestListB
 
     @Inject
     ICardIndexRepository cardIndexRepository;
+
+    @Inject
+    ICardIndexService cardIndexService;
 
     @Inject
     @Named("SentOrderViewModelFactory")
@@ -345,13 +349,14 @@ public class SentOrdersFragment extends BaseFragment<FragmentOrderedRequestListB
 //                                            @Override
 //                                            public void run() {
                                 try {
-                                    if(settingRepository.getUnchangedOrdersNoInCardindeForEdit() != 0
-                                            && settingRepository.getUnchangedOrdersNoInCardindeForEdit() != sentOrderModel.OrderNo)
-                                        cardIndexRepository.removeUnchangedCardindexForEdit(orderRepository,
-                                                settingRepository, cardIndexRepository, commonPackage);
-
-                                    RequestBusiness.makeOrderReadyToEdit(getContext(), sentOrderModel.OrderNo);
-                                    settingRepository.setUnchangedOrdersNoInCardindeForEdit(sentOrderModel.OrderNo);
+                                    cardIndexService.makeOrderReadyToEdit(sentOrderModel.OrderNo);
+//                                    if(settingRepository.getUnchangedOrdersNoInCardindeForEdit() != 0
+//                                            && settingRepository.getUnchangedOrdersNoInCardindeForEdit() != sentOrderModel.OrderNo)
+//                                        cardIndexRepository.removeUnchangedCardindexForEdit(orderRepository,
+//                                                settingRepository, cardIndexRepository, commonPackage);
+//
+//                                    cardIndexRepository.makeOrderReadyToEdit(getContext(), sentOrderModel.OrderNo);
+//                                    settingRepository.setUnchangedOrdersNoInCardindeForEdit(sentOrderModel.OrderNo);
                                     CustomerActivity.startActivity(getActivity(), sentOrderModel.PersonID);
                                     sharedOrderViewModel.isRefresh.setValue(true);
                                 } catch (Exception e) {

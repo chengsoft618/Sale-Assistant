@@ -55,15 +55,15 @@ public class OrderRepository implements IOrderRepository {
     }
 
 
-    @Override
-    public List<OrderData> getOrdersToVerify(int userId) {
-        return orderDataDao.getVerifiableOrders(userId);
-    }
-
-    @Override
-    public List<OrderData> getVerifiedOrdersToCancel(int userId) {
-        return orderDataDao.getVerifiedOrdersToCancel(settingRepository.getEmployeeInfoEntity().EmployeeId);
-    }
+//    @Override
+//    public List<OrderData> getOrdersToVerify(int userId) {
+//        return orderDataDao.getVerifiableOrders(userId);
+//    }
+//
+//    @Override
+//    public List<OrderData> getVerifiedOrdersToCancel(int userId) {
+//        return orderDataDao.getVerifiedOrdersToCancel(settingRepository.getEmployeeInfoEntity().EmployeeId);
+//    }
 
 //    @Override
 //    public List<OrderEntity> getOrderNotIssued() throws InOutError {
@@ -137,17 +137,17 @@ public class OrderRepository implements IOrderRepository {
         orderApi.verify(orderIds, roleId);
         //sync();
     }
-
-    @Override
-    public void cancelVerify(Long orderIds,String message) throws BaseException {
-        orderApi.cancelVerification(orderIds,message);
-        //sync();
-    }
-
-    @Override
-    public void rejectVerify(long orderId, String comment) throws BaseException {
-        orderApi.reject(orderId, comment);
-    }
+//
+//    @Override
+//    public void cancelVerify(Long orderIds,String message) throws BaseException {
+//        orderApi.cancelVerification(orderIds,message);
+//        //sync();
+//    }
+//
+//    @Override
+//    public void rejectVerify(long orderId, String comment) throws BaseException {
+//        orderApi.reject(orderId, comment);
+//    }
 
     @Override
     public void sendTo(long orderId, int userId, String comment,int roleId) throws BaseException {

@@ -12,7 +12,7 @@ import dagger.Provides;
 public class CustomerListFragmentModule {
 
     @Provides
-    ViewModelProvider.Factory getFactory(PathListViewModel model){
+    ViewModelProvider.Factory getFactory(CustomerListViewModel model){
         return new ViewModelProviderFactory<>(model);
     }
 

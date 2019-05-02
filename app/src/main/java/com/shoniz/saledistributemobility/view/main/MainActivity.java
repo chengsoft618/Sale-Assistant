@@ -23,9 +23,8 @@ import android.widget.TextView;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.shoniz.saledistributemobility.BR;
 import com.shoniz.saledistributemobility.R;
-import com.shoniz.saledistributemobility.app.service.update.IAppUpdater;
+import com.shoniz.saledistributemobility.framework.service.update.IAppUpdater;
 import com.shoniz.saledistributemobility.data.model.log.ILogRepository;
-import com.shoniz.saledistributemobility.data.model.update.AppDataUpdate;
 import com.shoniz.saledistributemobility.data.sharedpref.ISettingRepository;
 import com.shoniz.saledistributemobility.data.sharedpref.api.ISettingApi;
 import com.shoniz.saledistributemobility.databinding.ActivityMainBinding;
@@ -56,8 +55,6 @@ import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBinding>
         implements IMainNavigator, NavigationView.OnNavigationItemSelectedListener {
-
-
     @Inject
     ViewModelProvider.Factory factory;
     @Inject
@@ -66,15 +63,12 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
     ISettingApi settingApi;
     @Inject
     ISettingRepository settingRepository;
-//    @Inject
-//    AppDataUpdate appDataUpdate;
     @Inject
     IAppUpdater appUpdater;
     @Inject
     ILogRepository logRepository;
 
     Notification notificationAll = null;
-
 
     public static void createInstance(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
@@ -88,7 +82,6 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
         try {
             super.onCreate(savedInstanceState);
             mViewModel.setNavigator(this);
-            //mViewModel.load();
             mViewModel.updateData();
 
             setMainToolbar();
@@ -127,16 +120,7 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
 
     @Override
     public void onChangeLocation(Location location) {
-
     }
-
-
-    @Override
-    protected void onPause() {
-
-        super.onPause();
-    }
-
 
     @Override
     protected void onResume() {
@@ -157,9 +141,7 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
         }catch (Exception ex){
             ex.getMessage();
         }
-
     }
-
 
     @Override
     public void onBackPressed() {
@@ -170,31 +152,6 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
             super.onBackPressed();
         }
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // System.exit(0);
-    }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.main, menu);
-//        return true;
-//    }
-
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        int id = item.getItemId();
-//
-//        if (id == R.id.menu_update_coding_info) {
-//            updateData(false);
-//            return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -289,18 +246,14 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
         CommonAsyncTask.RunnableDo<Object, AsyncResult> runnableDo = (param, onProgress) -> {
             AsyncResult result = new AsyncResult();
             try {
-//                appDataUpdate.setUpdateListener(message -> onProgress.onUpdate(message));
-
                 appUpdater.setAppUpdateListener(message -> onProgress.onUpdate(message));
-                appUpdater.updateWholeData();
 
                 if(isForNewVersion) {
                    // appDataUpdate.updateWholeDataForNewVersion();
                     settingRepository.setCurrentVersionName(commonPackage.getUtility().getVersionName());
 
                 }
-//                else
-//                    appDataUpdate.updateWholeData();
+                appUpdater.updatePrePath();
 
             } catch (InOutError inOutError) {
                 result.exception = inOutError;

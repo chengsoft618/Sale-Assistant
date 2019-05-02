@@ -4,14 +4,12 @@ import android.arch.lifecycle.MutableLiveData;
 import android.view.View;
 
 import com.shoniz.saledistributemobility.R;
-import com.shoniz.saledistributemobility.app.service.update.IAppUpdater;
+import com.shoniz.saledistributemobility.framework.service.update.IAppUpdater;
 import com.shoniz.saledistributemobility.data.database.SaleDatabase;
 import com.shoniz.saledistributemobility.data.model.app.BranchData;
 import com.shoniz.saledistributemobility.data.model.app.BranchEntity;
 import com.shoniz.saledistributemobility.data.model.app.IAppRepository;
 import com.shoniz.saledistributemobility.data.model.app.IShonizRepository;
-import com.shoniz.saledistributemobility.data.model.update.AppDataUpdate;
-import com.shoniz.saledistributemobility.data.model.update.IAppUpdateListener;
 import com.shoniz.saledistributemobility.data.sharedpref.ISettingRepository;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
@@ -41,26 +39,27 @@ public class BranchViewModel extends RecyclerViewModel<BranchData,
     public MutableLiveData<List<BranchData>> branches = new MutableLiveData<>();
     public MutableLiveData<BranchEntity> selectedBranch = new MutableLiveData<>();
 
-    @Inject
+
     CommonPackage commonPackage;
-    @Inject
     SaleDatabase saleDatabase;
-    @Inject
     ISettingRepository settingRepository;
-//    @Inject
-//    AppDataUpdate appDataUpdate;
-    @Inject
     IAppRepository appRepository;
-    @Inject
     IShonizRepository shonizRepository;
-    @Inject
     IAppUpdater appUpdater;
 
     private boolean isReselectBranch = false;
 
 
     @Inject
-    public BranchViewModel() {
+    public BranchViewModel(
+            CommonPackage commonPackage, SaleDatabase saleDatabase, ISettingRepository settingRepository,
+            IAppRepository appRepository, IShonizRepository shonizRepository, IAppUpdater appUpdater) {
+        this.commonPackage = commonPackage;
+        this.saleDatabase = saleDatabase;
+        this.settingRepository = settingRepository;
+        this.appRepository = appRepository;
+        this.shonizRepository = shonizRepository;
+        this.appUpdater = appUpdater;
     }
 
     public void load(boolean isReselectBranch) {
@@ -117,7 +116,6 @@ public class BranchViewModel extends RecyclerViewModel<BranchData,
 //    }
 
 
-
     private void loadBranchList() {
         init();
         Runnable runnablePre = () -> {
@@ -127,7 +125,7 @@ public class BranchViewModel extends RecyclerViewModel<BranchData,
             AsyncResult result = new AsyncResult<List<BranchData>>();
             try {
                 result.model = shonizRepository.getShonizBranchData();
-            }  catch (Exception e) {
+            } catch (Exception e) {
                 result.exception = new UncaughtException(commonPackage, e);
                 result.exception.userMessage = "خطا در بارگذاری دفاتر";
             }
@@ -174,15 +172,11 @@ public class BranchViewModel extends RecyclerViewModel<BranchData,
 
                 appUpdater.setAppUpdateListener(message -> onProgress.onUpdate(message));
                 appUpdater.updateWholeData();
-
-//                appRepository.syncEmployeeInfo();
-//                settingRepository.setEmployeeInfoEntity(appRepository.getEmployeeInfo());
-//                appDataUpdate.setUpdateListener(message -> onProgress.onUpdate(message));
-//                appDataUpdate.updateWholeDataForNewVersion();
-            }  catch (BaseException e) {
+                appUpdater.setAppInitializationStatus();
+            } catch (BaseException e) {
                 result.exception = new UncaughtException(commonPackage, e, "لطفا از ارتباط اینترنت خود مطمئن شده و دوباره تلاش نمایید.");
             }
-           return result;
+            return result;
         };
         CommonAsyncTask.RunnablePost<AsyncResult> postRunnable = param -> {
             getNavigator().onEndAsync();

@@ -1,23 +1,26 @@
-package com.shoniz.saledistributemobility.framework.service.update;
+package com.shoniz.saledistributemobility.service.update;
 
-import com.shoniz.saledistributemobility.app.repository.update.IBasicUpdateRepository;
-import com.shoniz.saledistributemobility.app.repository.update.ICategoryUpdateRepository;
-import com.shoniz.saledistributemobility.app.repository.update.IDatabaseUpdateRepository;
-import com.shoniz.saledistributemobility.app.repository.update.IOrderUpdateRepository;
-import com.shoniz.saledistributemobility.app.service.update.IAppUpdater;
+import com.shoniz.saledistributemobility.framework.repository.update.IBasicUpdateRepository;
+import com.shoniz.saledistributemobility.framework.repository.update.ICategoryUpdateRepository;
+import com.shoniz.saledistributemobility.framework.repository.update.IDatabaseUpdateRepository;
+import com.shoniz.saledistributemobility.framework.repository.update.IOrderUpdateRepository;
 import com.shoniz.saledistributemobility.data.model.app.IAppRepository;
 import com.shoniz.saledistributemobility.data.model.update.IAppUpdateListener;
 import com.shoniz.saledistributemobility.data.sharedpref.ISettingRepository;
+import com.shoniz.saledistributemobility.framework.CommonPackage;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
+import com.shoniz.saledistributemobility.framework.service.update.IAppUpdater;
 
 public class AppUpdater implements IAppUpdater {
 
-    public AppUpdater(ICategoryUpdateRepository categoryUpdateRepository,
+    public AppUpdater(CommonPackage commonPackage,
+                      ICategoryUpdateRepository categoryUpdateRepository,
                       IDatabaseUpdateRepository databaseUpdateRepository,
                       IBasicUpdateRepository basicUpdateRepository,
                       IOrderUpdateRepository orderUpdateRepository,
                       IAppRepository appRepository,
                       ISettingRepository settingRepository) {
+        this.commonPackage =commonPackage;
         this.categoryUpdateRepository = categoryUpdateRepository;
         this.databaseUpdateRepository = databaseUpdateRepository;
         this.basicUpdateRepository = basicUpdateRepository;
@@ -52,8 +55,9 @@ public class AppUpdater implements IAppUpdater {
 
     @Override
     public void updateUser() throws BaseException {
-        basicUpdateRepository.updateUsers();
         basicUpdateRepository.updateEmployee();
+        basicUpdateRepository.updateUsers();
+       //basicUpdateRepository.updateEmployee();
     }
 
     @Override
@@ -67,6 +71,12 @@ public class AppUpdater implements IAppUpdater {
         orderUpdateRepository.setAppUpdateListener(appUpdateListener);
         basicUpdateRepository.setAppUpdateListener(appUpdateListener);
         databaseUpdateRepository.setAppUpdateListener(appUpdateListener);
+    }
+
+    @Override
+    public void setAppInitializationStatus() {
+        settingRepository.setIsInitialedApplication(true);
+        settingRepository.setCurrentVersionName(commonPackage.getUtility().getVersionName());
     }
 
     public void checkUpdateRules() throws BaseException {
@@ -93,6 +103,7 @@ public class AppUpdater implements IAppUpdater {
 //        }
     }
 
+    private CommonPackage commonPackage;
     private ICategoryUpdateRepository categoryUpdateRepository;
     private IDatabaseUpdateRepository databaseUpdateRepository;
     private IBasicUpdateRepository basicUpdateRepository;

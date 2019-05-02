@@ -19,6 +19,7 @@ import com.shoniz.saledistributemobility.data.model.order.ordercomplete.IOrderCo
 import com.shoniz.saledistributemobility.data.model.order.verifying.IOrderDataDao;
 import com.shoniz.saledistributemobility.data.model.update.db.IUpdateDao;
 import com.shoniz.saledistributemobility.data.sharedpref.ISettingRepository;
+import com.shoniz.saledistributemobility.framework.CommonPackage;
 
 import javax.inject.Singleton;
 
@@ -86,29 +87,7 @@ public class SaleDatabaseModule {
         return database.getCodingDao();
     }
 
-    @Singleton
-    @Provides
-    IOrderRepository provideOrderRepository(IOrderApi orderApi,
-                                            IOrderDataDao orderDataDao,
-                                            IOrderDao orderDao,
-                                            IOrderDetailDao orderDetailDao,
-                                            IUnvisitedCustomerReasonDao unvisitedCustomerReasonDao, IPathDao pathDao,
-                                            ISettingRepository settingRepository,  IOrderCompleteDataDao orderCompleteDataDao) {
 
-        return new OrderRepository(orderApi,
-                orderDataDao,
-                orderDao,
-                orderDetailDao,
-                unvisitedCustomerReasonDao, pathDao,
-                settingRepository,orderCompleteDataDao);
-    }
-
-
-    @Provides
-    ICardIndexRepository provideCardIndexRepository(ICardIndexDataDao cardIndexDataDao) {
-
-        return new CardIndexRepository(cardIndexDataDao);
-    }
 
     @Provides
     IUpdateDao provideUpdateDao(SaleDatabase database) {

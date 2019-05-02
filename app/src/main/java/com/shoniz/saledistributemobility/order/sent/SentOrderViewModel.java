@@ -28,20 +28,4 @@ public class SentOrderViewModel extends BaseViewModel<ISendOrderNavigator> {
     public SentOrderViewModel() {
 
     }
-
-    @Inject
-    IOrderRepository orderRepository;
-
-    @Inject
-    ISettingRepository settingRepository;
-
-    @Inject
-    ICardIndexRepository cardIndexRepository;
-
-    @Inject
-    CommonPackage commonPackage;
-
-
-
-
 }

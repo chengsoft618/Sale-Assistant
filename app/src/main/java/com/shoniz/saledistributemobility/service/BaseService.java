@@ -1,4 +1,4 @@
-package com.shoniz.saledistributemobility.framework.service;
+package com.shoniz.saledistributemobility.service;
 
 import android.app.ActivityManager;
 import android.content.Context;

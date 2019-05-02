@@ -11,7 +11,7 @@ import java.util.List;
 public interface IUserDataDao {
 
     @Query("SELECT " +
-            "u.*, r.canTerminate r_canTerminate, r.roleName r_roleName, r.directingPriority " +
+            "u.*,r.roleId r_roleId, r.canTerminate r_canTerminate, r.roleName r_roleName, r.directingPriority " +
             "r_directingPriority FROM user u " +
             "INNER JOIN role r ON r.roleId = u.roleId WHERE u.userId = :userId")
     public List<UserData> getUserData(int userId);

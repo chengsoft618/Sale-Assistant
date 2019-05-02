@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import com.shoniz.saledistributemobility.view.customer.info.basic.CustomerBasicM
 import com.shoniz.saledistributemobility.view.entity.ReasonEntity;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -25,18 +23,18 @@ import java.util.List;
  */
 
 public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.CustomerViewHolder> {
-    private boolean selectableMode = false;
-    private boolean allSelectedMode = false;
+//    private boolean selectableMode = false;
+//    private boolean allSelectedMode = false;
     private List<CustomerBasicModel> list;
-    private OnItemSelectedListener listener;
+    private CustomerListListener listener;
     private Context mContext;
-    private List<Integer> selectedIds = new LinkedList<>();
+//    private List<Integer> selectedIds = new LinkedList<>();
     public Boolean isCustomersOfActivePath = false;
     HashMap<Integer, String> unvisitedReasons=new HashMap<>();
 
     public CustomerAdapter(Context context, List<CustomerBasicModel> model,
-                           OnItemSelectedListener onItemSelectedListener, List<ReasonEntity> reasonEntities) {
-        this.listener = onItemSelectedListener;
+                           CustomerListListener customerListListener, List<ReasonEntity> reasonEntities) {
+        this.listener = customerListListener;
         list = model;
         mContext = context;
         for (ReasonEntity r : reasonEntities) {
@@ -52,13 +50,12 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
         return new CustomerViewHolder(view);
     }
 
-    private Context getContext() {
-        return mContext;
-    }
+//    private Context getContext() {
+//        return mContext;
+//    }
 
     @Override
     public void onBindViewHolder(@NonNull final CustomerViewHolder holder, int position) {
-        Log.d("Customer", "" + position);
         holder.mItem = list.get(position);
         holder.txtAddress.setText(com.shoniz.saledistributemobility.utility.StringHelper.GenerateMessage(mContext, R.string.customer_card_address,
                 holder.mItem.Address,
@@ -67,11 +64,11 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
 
         holder.txtPersonName.setText(holder.mItem.PersonID + " - " + holder.mItem.PersonName);
 
-        if (isSelectableMode()) {
-            holder.chkSelect.setVisibility(View.VISIBLE);
-        } else {
-            holder.chkSelect.setVisibility(View.GONE);
-        }
+//        if (isSelectableMode()) {
+//            holder.chkSelect.setVisibility(View.VISIBLE);
+//        } else {
+//            holder.chkSelect.setVisibility(View.GONE);
+//        }
 
         holder.txtClassNames.setText(holder.mItem.ClassNames);
 
@@ -103,33 +100,33 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
         holder.constraintLayout.setBackgroundColor(bgColor);
         holder.txt_order_description.setText(desc);
 
-        holder.chkSelect.setChecked(holder.mItem.isSelectedToUpdate);
+//        holder.chkSelect.setChecked(holder.mItem.isSelectedToUpdate);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isSelectableMode()) {
-                    holder.chkSelect.performClick();
-                } else
-                    listener.onClick(holder.mItem);
+                listener.onClick(holder.mItem);
+//                if (isSelectableMode()) {
+//                    holder.chkSelect.performClick();
+//                } else
             }
         });
 
 
-        holder.chkSelect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (holder.chkSelect.isChecked()) {
-                    holder.mItem.isSelectedToUpdate = true;
-                    selectedIds.add(holder.mItem.PathCode);
-                } else {
-                    if (selectedIds.contains(holder.mItem.PathCode))
-                        selectedIds.remove(new Integer(holder.mItem.PathCode));
-                    holder.mItem.isSelectedToUpdate = false;
-                }
-                listener.onItemCheck(holder.mItem);
-            }
-        });
+//        holder.chkSelect.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (holder.chkSelect.isChecked()) {
+//                    holder.mItem.isSelectedToUpdate = true;
+//                    selectedIds.add(holder.mItem.PathCode);
+//                } else {
+//                    if (selectedIds.contains(holder.mItem.PathCode))
+//                        selectedIds.remove(new Integer(holder.mItem.PathCode));
+//                    holder.mItem.isSelectedToUpdate = false;
+//                }
+//                listener.onItemCheck(holder.mItem);
+//            }
+//        });
 
         holder.mView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -140,55 +137,55 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
         });
     }
 
-    public void clearSelected() {
-        this.selectedIds.clear();
-    }
+//    public void clearSelected() {
+//        this.selectedIds.clear();
+//    }
+//
+//    public List<CustomerBasicModel> getList() {
+//        return list;
+//    }
+//
+//    public void addSelectedList(int id) {
+//        this.selectedIds.add(id);
+//    }
+//
+//    public void removeSelectedList(int id) {
+//        if (selectedIds.contains(id))
+//            this.selectedIds.remove(id);
+//    }
+//
+//    public boolean isSelectableMode() {
+//        return selectableMode;
+//    }
+//
+//    public void setSelectableMode(boolean selectableMode) {
+//        this.selectableMode = selectableMode;
+//
+//    }
 
-    public List<CustomerBasicModel> getList() {
-        return list;
-    }
+//    public boolean isAllSelectedMode() {
+//        return allSelectedMode;
+//    }
+//
+//    public void setAllSelectedMode(boolean allSelectedMode) {
+//        this.allSelectedMode = allSelectedMode;
+//    }
+//
+//    public List<Integer> getSelectedList() {
+//        return this.selectedIds;
+//    }
 
-    public void addSelectedList(int id) {
-        this.selectedIds.add(id);
-    }
+//    public void performPathUpdateClick() {
+//        listener.onUpdateClick(selectedIds);
+//    }
 
-    public void removeSelectedList(int id) {
-        if (selectedIds.contains(id))
-            this.selectedIds.remove(id);
-    }
-
-    public boolean isSelectableMode() {
-        return selectableMode;
-    }
-
-    public void setSelectableMode(boolean selectableMode) {
-        this.selectableMode = selectableMode;
-
-    }
-
-    public boolean isAllSelectedMode() {
-        return allSelectedMode;
-    }
-
-    public void setAllSelectedMode(boolean allSelectedMode) {
-        this.allSelectedMode = allSelectedMode;
-    }
-
-    public List<Integer> getSelectedList() {
-        return this.selectedIds;
-    }
-
-    public void performPathUpdateClick() {
-        listener.onUpdateClick(selectedIds);
-    }
-
-    public void setAllItemSelected(boolean b) {
-        for (CustomerBasicModel p :
-                getList()) {
-            p.isSelectedToUpdate = b;
-            addSelectedList(p.PathCode);
-        }
-    }
+//    public void setAllItemSelected(boolean b) {
+//        for (CustomerBasicModel p :
+//                getList()) {
+//            p.isSelectedToUpdate = b;
+//            addSelectedList(p.PathCode);
+//        }
+//    }
 
     @Override
     public int getItemCount() {
@@ -222,12 +219,12 @@ public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.Custom
         }
     }
 
-    public interface OnItemSelectedListener {
+    public interface CustomerListListener {
         void onClick(CustomerBasicModel customerBasicModel);
 
-        void onUpdateClick(List<Integer> selectedIds);
-
-        void onItemCheck(CustomerBasicModel customerBasicModel);
+//        void onUpdateClick(List<Integer> selectedIds);
+//
+//        void onItemCheck(CustomerBasicModel customerBasicModel);
 
         void onLongClick(CustomerBasicModel customerBasicModel);
     }

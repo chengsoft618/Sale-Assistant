@@ -7,7 +7,13 @@ import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderCom
 import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderDetailCompleteData;
 import com.shoniz.saledistributemobility.data.sharedpref.ISettingRepository;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
+import com.shoniz.saledistributemobility.order.OrderDataOld;
+import com.shoniz.saledistributemobility.order.detail.OrderDetailData;
+import com.shoniz.saledistributemobility.utility.Common;
 import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexBusiness;
+import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexDetailModel;
+import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexModel;
+import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexOldDb;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -18,9 +24,11 @@ import javax.inject.Inject;
 public class CardIndexRepository implements ICardIndexRepository {
 
     ICardIndexDataDao cardIndexDataDao;
+    CommonPackage commonPackage;
+    IOrderRepository orderRepository;
+    ISettingRepository settingRepository;
 
     @Inject
-
     public CardIndexRepository(ICardIndexDataDao cardIndexDataDao) {
         this.cardIndexDataDao = cardIndexDataDao;
     }
@@ -35,44 +43,34 @@ public class CardIndexRepository implements ICardIndexRepository {
         return cardIndexDataDao.getAllCardIndices();
     }
 
-    public void removeUnchangedCardindexForEdit(IOrderRepository orderRepository,
-                                                ISettingRepository settingRepository, ICardIndexRepository cardIndexRepository,
-                                                CommonPackage commonPackage) throws IOException {
-
-        Long orderNo = settingRepository.getUnchangedOrdersNoInCardindeForEdit();
-        if (orderNo == 0) return;
-        boolean isEqualFlag = true;
-        OrderCompleteData order = orderRepository.getOrderComplete(orderNo);
-        if (order == null) {
-            settingRepository.setUnchangedOrdersNoInCardindeForEdit(0L);
-            return;
-        }
-        List<OrderDetailCompleteData> orderDetails = orderRepository.getOrderDetailComplete(orderNo);
-        List<CardIndexDetailData> cardIndexDetailData = cardIndexRepository.getCardIndexDetail(order.PersonID);
-
-        if (orderDetails.size() != cardIndexDetailData.size()) return;
-
-        Collections.sort(orderDetails);
-        Collections.sort(cardIndexDetailData);
-
-        for (int i = orderDetails.size() - 1; i >= 0; i--) {
-            if (!isEqualItem(orderDetails.get(i), cardIndexDetailData.get(i))) {
-                settingRepository.setUnchangedOrdersNoInCardindeForEdit(0L);
-                return;
-            }
-        }
-
-     CardIndexBusiness.DeleteCardIndex(commonPackage.getContext(), order.PersonID);
-    }
+//    public void removeUnchangedCardIndexForEdit() throws IOException {
+//
+//        Long orderNo = settingRepository.getUnchangedOrdersNoInCardindeForEdit();
+//        if (orderNo == 0) return;
+//        boolean isEqualFlag = true;
+//        OrderCompleteData order = orderRepository.getOrderComplete(orderNo);
+//        if (order == null) {
+//            settingRepository.setUnchangedOrdersNoInCardindeForEdit(0L);
+//            return;
+//        }
+//        List<OrderDetailCompleteData> orderDetails = orderRepository.getOrderDetailComplete(orderNo);
+//        List<CardIndexDetailData> cardIndexDetailData = cardIndexRepository.getCardIndexDetail(order.PersonID);
+//
+//        if (orderDetails.size() != cardIndexDetailData.size()) return;
+//
+//        Collections.sort(orderDetails);
+//        Collections.sort(cardIndexDetailData);
+//
+//        for (int i = orderDetails.size() - 1; i >= 0; i--) {
+//            if (!isEqualItem(orderDetails.get(i), cardIndexDetailData.get(i))) {
+//                settingRepository.setUnchangedOrdersNoInCardindeForEdit(0L);
+//                return;
+//            }
+//        }
+//
+//     CardIndexBusiness.DeleteCardIndex(commonPackage.getContext(), order.PersonID);
+//    }
 
 
-    private boolean isEqualItem(OrderDetailCompleteData orderDetailCompleteData, CardIndexDetailData cardIndexDetailData) {
-        if (orderDetailCompleteData.Shortcut != Integer.parseInt(cardIndexDetailData.cardIndexDetailEntity.Shortcut)
-                || (orderDetailCompleteData.UnitID == 1 && orderDetailCompleteData.Qty != cardIndexDetailData.cardIndexDetailEntity.RequestCarton)
-                || (orderDetailCompleteData.UnitID == 2 && orderDetailCompleteData.Qty != cardIndexDetailData.cardIndexDetailEntity.RequestPackage)
-                ) {
-            return false;
-        }
-        return true;
-    }
+
 }

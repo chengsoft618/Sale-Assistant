@@ -47,21 +47,21 @@ public class RequestBusiness {
     public static List<UnvisitedCustomerModel> getUnvisitedCustomerList(Context context) throws Exception{
         return RequestListData.getUnvisitedCustomerList(context);
     }
-    public static void makeOrderReadyToEdit(Context context, long orderNo) throws IOException {
-        CardIndexModel cardIndexModel = OrderDataOld.mapOrderHeaderToCardIndex(context, orderNo);
-        CardIndexBusiness.DeleteCardIndex(context, cardIndexModel.PersonID);
-        List<CardIndexDetailModel> cardIndexDetailModels = OrderDetailData.mapOrderDetailsToCardIndises(context, orderNo);
-        CardIndexOldDb.insertCardIndex(context, cardIndexModel);
-       // CardIndexOldDb.saveDescription(context,cardIndexModel.PersonID,cardIndexModel.AccDesc,cardIndexModel.SaleDesc);
-        for (CardIndexDetailModel cardIndexDetailModel: cardIndexDetailModels) {
-            CardIndexOldDb.insertCardIndexDetail(context, cardIndexDetailModel);
-        }
-
-        //addToShareprefTempOrdersList(context, orderNo);
-
-
-        //RequestBusiness.deleteOrder(context, orderNo);
-    }
+//    public static void makeOrderReadyToEdit(Context context, long orderNo) throws IOException {
+//        CardIndexModel cardIndexModel = OrderDataOld.mapOrderHeaderToCardIndex(context, orderNo);
+//        CardIndexBusiness.DeleteCardIndex(context, cardIndexModel.PersonID);
+//        List<CardIndexDetailModel> cardIndexDetailModels = OrderDetailData.mapOrderDetailsToCardIndises(context, orderNo);
+//        CardIndexOldDb.insertCardIndex(context, cardIndexModel);
+//       // CardIndexOldDb.saveDescription(context,cardIndexModel.PersonID,cardIndexModel.AccDesc,cardIndexModel.SaleDesc);
+//        for (CardIndexDetailModel cardIndexDetailModel: cardIndexDetailModels) {
+//            CardIndexOldDb.insertCardIndexDetail(context, cardIndexDetailModel);
+//        }
+//
+//        //addToShareprefTempOrdersList(context, orderNo);
+//
+//
+//        //RequestBusiness.deleteOrder(context, orderNo);
+//    }
 
 //    private static void addToShareprefTempOrdersList(Context context, long orderNo){
 //        SharedPreferences preferences;

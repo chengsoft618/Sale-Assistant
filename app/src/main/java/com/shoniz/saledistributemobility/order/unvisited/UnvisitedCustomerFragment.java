@@ -13,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.shoniz.saledistributemobility.app.service.update.IAppUpdater;
+import com.shoniz.saledistributemobility.framework.service.update.IAppUpdater;
 import com.shoniz.saledistributemobility.data.model.order.IOrderRepository;
 import com.shoniz.saledistributemobility.data.model.order.UnvisitedCustomerReasonEntity;
 import com.shoniz.saledistributemobility.order.SharedOrderViewModel;
@@ -28,7 +28,6 @@ import com.shoniz.saledistributemobility.utility.dialog.RunnableModel;
 import com.shoniz.saledistributemobility.utility.Common;
 import com.shoniz.saledistributemobility.utility.dialog.AsyncTaskDialog;
 import com.shoniz.saledistributemobility.utility.dialog.ErrorDialog.ErrorDialog;
-import com.shoniz.saledistributemobility.view.base.BaseActivity;
 
 import java.util.LinkedList;
 import java.util.List;
