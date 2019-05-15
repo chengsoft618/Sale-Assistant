@@ -157,11 +157,7 @@
             android:label="@string/order_detail"
             android:screenOrientation="landscape" />
         <activity android:name=".view.ordering.detail.OrderDetailActivity" />
-        <activity
-            android:name=".view.ordering.operation.OperationActivity"
-            android:label="@string/title_activity_order_verify"
-            android:screenOrientation="landscape"
-            android:theme="@style/FullscreenTheme" />
+
         <activity
             android:name=".view.tracking.TrackingActivity"
             android:label="@string/main_menu_visitor_tracking_show"

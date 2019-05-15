@@ -5,6 +5,6 @@ package com.shoniz.saledistributemobility.view.path.outofpath;
  */
 
 public class CustomerPreference {
-    public static final String IsActivityForJustGettingRequest ="IsActivityForJustGettingRequest";
+    public static final String IsCardindexForUnknownCustomer ="IsCardindexForUnknownCustomer";
     public static final String PersonId ="PersonId";
 }

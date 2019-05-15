@@ -2,14 +2,9 @@ package com.shoniz.saledistributemobility.data.model.order.ordercomplete;
 
 
 import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Embedded;
 
 import com.google.gson.annotations.SerializedName;
 import com.shoniz.saledistributemobility.data.MetaData;
-import com.shoniz.saledistributemobility.data.model.customer.CustomerBasicEntity;
-import com.shoniz.saledistributemobility.view.entity.PathEntity;
-
-import java.util.UUID;
 
 public class OrderCompleteData extends MetaData<Long> {
 

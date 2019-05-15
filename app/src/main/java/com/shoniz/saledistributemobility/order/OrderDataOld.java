@@ -12,7 +12,7 @@ import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexModel;
 import com.shoniz.saledistributemobility.order.detail.OrderCompleteModel;
 import com.shoniz.saledistributemobility.utility.data.sqlite.DBHelper;
 import com.shoniz.saledistributemobility.utility.data.sqlite.SqliteConsts;
-import com.shoniz.saledistributemobility.order.unvisited.ReasonModel;
+import com.shoniz.saledistributemobility.order.unvisited__.ReasonModel__;
 import com.shoniz.saledistributemobility.utility.Common;
 import com.shoniz.saledistributemobility.utility.StringHelper;
 
@@ -154,10 +154,10 @@ public class OrderDataOld {
         return orderOnlineData;
     }
 
-    public static List<ReasonModel> getUnvisitingReason(Context context) throws IOException, SQLException {
+    public static List<ReasonModel__> getUnvisitingReason(Context context) throws IOException, SQLException {
         DBHelper db = null;
         Cursor cursor = null;
-        List<ReasonModel> reasons = new ArrayList<>();
+        List<ReasonModel__> reasons = new ArrayList<>();
         try {
             db = Common.getSaleDataBase(context);
 
@@ -166,9 +166,9 @@ public class OrderDataOld {
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 do {
-                    ReasonModel reasonModel = new ReasonModel();
-                    reasonModel.NotSallReasonID = cursor.getInt(cursor.getColumnIndex(ReasonModel.Column.NotSallReasonID));
-                    reasonModel.NotSallReasonText = cursor.getString(cursor.getColumnIndex(ReasonModel.Column.NotSallReasonText));
+                    ReasonModel__ reasonModel = new ReasonModel__();
+                    reasonModel.NotSallReasonID = cursor.getInt(cursor.getColumnIndex(ReasonModel__.Column.NotSallReasonID));
+                    reasonModel.NotSallReasonText = cursor.getString(cursor.getColumnIndex(ReasonModel__.Column.NotSallReasonText));
                     reasons.add(reasonModel);
 
                 } while (cursor.moveToNext());

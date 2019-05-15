@@ -57,7 +57,7 @@ public class MessageRetrofit implements IMessageApi {
     }
 
     @Override
-    public void sendCompletePathVisit(String message) throws BaseException {
+    public void sendEndOfDailyVisitMessage(String message) throws BaseException {
         IRetroCommand<Void, IMessageRetrofitService> command = service -> {
             apiParameter.Message = message;
             apiParameter.MessageTypeId = 5;

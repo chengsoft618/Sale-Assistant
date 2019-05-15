@@ -62,9 +62,9 @@ public interface ISettingRepository {
 
     int getChequeDurationDay();
 
-    String getLastCompletePathVisitDesc();
+    String getEndOfDailyVisitDesc();
 
-    void setLastCompletePathVisitDesc(String personIdText);
+    void setEndOfDailyWorkDesc(String personIdText);
 
     long getCustomerPointIntervalSeconds();
 
@@ -75,4 +75,9 @@ public interface ISettingRepository {
 
     long getUnchangedOrdersNoInCardindeForEdit();
     void setUnchangedOrdersNoInCardindeForEdit(Long order);
+
+    void setInactiveCustomerChecked(boolean value);
+    boolean isInactiveCustomerChecked();
+    boolean isClassNameBCustomerChecked();
+    void setCustomerClassNameBCheckbox(boolean value);
 }

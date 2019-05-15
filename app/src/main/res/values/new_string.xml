@@ -62,6 +62,7 @@
 
     <string name="general_space">\u0020</string>
     <string name="general_empty" />
+    <string name="general_dash" >-</string>
 
     <string name="pref_setting">Setting</string>
     <string name="pref_basic_info">basicInfo</string>
@@ -138,6 +139,10 @@
     <string name="error_dialog_title">خطا</string>
 
     <string name="path_fragment_title">لیست مسیر ها</string>
+    <string name="path_total_customers">کل مشتریان</string>
+    <string name="path_whole_seller_count">عمده</string>
+    <string name="path_retail_seller_count">خرده</string>
+    <string name="path_desc">لیست مسیر ها</string>
 
 
     <string name="gps_please_enable">لطفا GPS دستگاه خود را روشن کنید</string>

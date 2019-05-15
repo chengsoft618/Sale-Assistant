@@ -6,7 +6,7 @@ import com.shoniz.saledistributemobility.order.IsSelectedItem;
  * Created by ferdos.s on 6/7/2017.
  */
 
-public class PathModel extends IsSelectedItem {
+public class PathModel__ extends IsSelectedItem {
 
     public static class Column{
         public static final String PATH_CODE="PathCode";

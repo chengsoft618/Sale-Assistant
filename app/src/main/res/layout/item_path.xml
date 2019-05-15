@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<data>
+    <import type="com.shoniz.saledistributemobility.framework.StringHelper" />
+    <variable
+        name="viewModel"
+        type="com.shoniz.saledistributemobility.view.path.pathlist.PathItemViewModel" />
+</data>
+
 <android.support.constraint.ConstraintLayout style="@style/Card"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:onClick="@{(view) -> viewModel.onPathClick(view)}"
     android:id="@+id/whole_path_card">
 
     <TextView
@@ -13,7 +22,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_width="wrap_content"
-        android:text="عمده :"
+        android:text="@{StringHelper.mergeTexts(@string/path_whole_seller_count, String.valueOf(viewModel.getModel().pathEntity.WholesalerCount), @string/path_retail_seller_count, String.valueOf(viewModel.getModel().pathEntity.RetailerCount))}"
         app:layout_constraintEnd_toStartOf="@+id/txtCustomerCount"
         app:layout_constraintTop_toTopOf="@+id/txtCustomerCount" />
 
@@ -42,7 +51,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:gravity="right"
-        android:text="txt_path_name"
+        android:text="@{StringHelper.mergeTexts(viewModel.getModel().pathEntity.PathName, @string/general_dash, String.valueOf(viewModel.getModel().pathEntity.PathCode))}"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintStart_toEndOf="@+id/img_download"
         app:layout_constraintTop_toTopOf="parent" />
@@ -58,7 +67,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:gravity="right"
-        android:text="txt_path_description"
+        android:text="@{viewModel.getModel().pathEntity.PathDescription}"
         android:textAppearance="@style/TextAppearance.AppCompat"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="parent"
@@ -87,8 +96,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/txtRow"
         app:layout_constraintRight_toLeftOf="@+id/chkSelect"
-        app:layout_constraintTop_toTopOf="parent"
-         />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtCustomerCount"
@@ -104,11 +112,10 @@
 
     <TextView
         android:id="@+id/txtRetailerCount"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_width="wrap_content"
-        android:text=" خرده :"
         app:layout_constraintEnd_toStartOf="@+id/txtWholesalerCount"
         app:layout_constraintTop_toTopOf="@+id/txtWholesalerCount" />
 
@@ -121,8 +128,10 @@
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_download" />
+        app:srcCompat="@drawable/ic_download"
+        android:onClick="@{(view) -> viewModel.onPathDownloadClick(view)}"/>
 
 </android.support.constraint.ConstraintLayout>
 
+</layout>
 

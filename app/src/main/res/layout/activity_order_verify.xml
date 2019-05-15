@@ -5,7 +5,6 @@
     tools:context="com.mindorks.framework.mvvm.ui.login.LoginActivity">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.shoniz.saledistributemobility.view.ordering.operation.OperationViewModel" />

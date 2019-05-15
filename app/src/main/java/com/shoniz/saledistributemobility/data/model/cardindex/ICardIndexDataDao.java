@@ -37,9 +37,14 @@ public interface ICardIndexDataDao {
             "cb.ClassNames c_ClassNames,\n" +
             "cb.Latitude c_Latitude,\n" +
             "cb.Longitude c_Longitude,\n" +
-            "cb.accuracy c_accuracy " +
+            "cb.accuracy c_accuracy,\n" +
+            "cb.VisitOrder c_visitOrder,\n"+
+            "cb.LastVisitDays c_lastVisitDays\n"+
             " FROM CardIndex ci INNER JOIN CustomerBase cb on ci.PersonID=cb.PersonID \n")
      List<CardIndexData> getAllCardIndices();
+
+    @Query("Select Count(OrderNo) itemCount from CardIndex where PersonId = :personId")
+    int getCardIndexCount(int personId);
 }
 
 

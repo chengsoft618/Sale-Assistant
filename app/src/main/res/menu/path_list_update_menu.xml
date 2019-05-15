@@ -3,18 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
     <item
-        android:id="@+id/action_update_path_menu"
+        android:id="@+id/action_update_all_paths_menu"
         android:orderInCategory="100"
         android:title="@string/path_update_menu"
         app:showAsAction="never"
         />
     <item
-        android:id="@+id/action_path_complete_path_visit"
+        android:id="@+id/action_end_of_daily_visit"
         android:orderInCategory="101"
         android:title="@string/path_complete_path_visit"
         app:showAsAction="never" />
     <item
-    android:id="@+id/action_reg_out_of_path"
+    android:id="@+id/action_out_of_path_menu"
     android:orderInCategory="102"
     android:title="@string/reg_out_of_path"
     app:showAsAction="never" />

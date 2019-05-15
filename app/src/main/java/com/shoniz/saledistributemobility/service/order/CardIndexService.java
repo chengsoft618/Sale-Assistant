@@ -83,6 +83,11 @@ public class CardIndexService implements ICardIndexService {
         CardIndexBusiness.DeleteCardIndex(commonPackage.getContext(), order.PersonID);
     }
 
+    @Override
+    public boolean isEmptyCardIndex(int personId) {
+        return cardIndexRepository.getCardIndexCount(personId) == 0;
+    }
+
 //    public static SentOrderModel getOrderedRequest(Context context, long orderNo) throws Exception{
 //        return RequestListData.getOrderedRequest(context,orderNo);
 //    }
@@ -94,7 +99,7 @@ public class CardIndexService implements ICardIndexService {
 //        return RequestListData.getUnsentRequestList(context);
 //    }
 //
-//    public static List<UnvisitedCustomerModel> getUnvisitedCustomerList(Context context) throws Exception{
+//    public static List<UnvisitedCustomerModel__> getUnvisitedCustomerList(Context context) throws Exception{
 //        return RequestListData.getUnvisitedCustomerList(context);
 //    }
 

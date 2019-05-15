@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.shoniz.saledistributemobility.R;
-import com.shoniz.saledistributemobility.view.path.PathModel;
+import com.shoniz.saledistributemobility.view.path.PathModel__;
 
 import java.util.List;
 
@@ -105,7 +105,7 @@ public class CustomerChequeAdapter extends RecyclerView.Adapter<CustomerChequeAd
     }
 
     public interface OnCustomerChequeListener {
-        void onItemCheck(PathModel pathModel);
+        void onItemCheck(PathModel__ pathModel);
     }
 
 

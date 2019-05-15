@@ -14,24 +14,24 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class ApiModule {
+public class ApiModule__ {
 
-    @Singleton
-    @Provides
-    IUserApi provideUserApi(ApiParameter parameter, CommonPackage commonPackage){
-        return new UserRetrofit(parameter, commonPackage);
-    }
-
-    @Singleton
-    @Provides
-    IOrderApi provideOrderApi(ApiParameter parameter, CommonPackage commonPackage){
-        return new OrderRetrofit(parameter, commonPackage);
-    }
-
-    @Singleton
-    @Provides
-    ICustomerApi provideCustomerApi(ApiParameter parameter, CommonPackage commonPackage){
-        return new CustomerRetrofit(parameter, commonPackage);
-    }
+//    @Singleton
+//    @Provides
+//    IUserApi provideUserApi(ApiParameter parameter, CommonPackage commonPackage){
+//        return new UserRetrofit(parameter, commonPackage);
+//    }
+//
+//    @Singleton
+//    @Provides
+//    IPathApi provideOrderApi(ApiParameter parameter, CommonPackage commonPackage){
+//        return new OrderRetrofit(parameter, commonPackage);
+//    }
+//
+//    @Singleton
+//    @Provides
+//    ICustomerApi provideCustomerApi(ApiParameter parameter, CommonPackage commonPackage){
+//        return new CustomerRetrofit(parameter, commonPackage);
+//    }
 
 }

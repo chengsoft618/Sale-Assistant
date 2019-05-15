@@ -8,7 +8,6 @@ import com.shoniz.saledistributemobility.base.BaseFragment;
 import com.shoniz.saledistributemobility.view.customer.ILocationChange;
 import com.shoniz.saledistributemobility.order.sent.SentOrdersFragment;
 import com.shoniz.saledistributemobility.order.unsent.UnsentOrdersFragment;
-import com.shoniz.saledistributemobility.order.unvisited.UnvisitedCustomerFragment;
 import com.shoniz.saledistributemobility.utility.Enums.RequestEnum;
 
 import java.util.ArrayList;
@@ -54,7 +53,7 @@ public class RequestsListPageAdapter extends FragmentStatePagerAdapter {
             case UnsentRequestsPage: // Fragment # 0 - This will show FirstFragment different title
                 return UnsentOrdersFragment.newInstance();
 //            case UnvisitedCustomerPage: // Fragment # 1 - This will show SecondFragment
-//                return UnvisitedCustomerFragment.newInstance();
+//                return UnvisitedCustomerFragment__.newInstance();
 //            case 3: // Fragment # 1 - This will show SecondFragment
 //                return CustomerBasicPageFragment.newInstance(customerBasicModel);
             default:

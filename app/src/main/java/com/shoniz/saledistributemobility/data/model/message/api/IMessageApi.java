@@ -14,6 +14,5 @@ public interface IMessageApi {
     List<MessageEntity> catchMessage() throws BaseException;
     List<MessageEntity>  catchLatestMessage(int sendId) throws BaseException;
     void SetMessageDelivered(List<Long> ids) throws BaseException;
-
-    void sendCompletePathVisit(String desc) throws BaseException;;
+    void sendEndOfDailyVisitMessage(String desc) throws BaseException;;
 }

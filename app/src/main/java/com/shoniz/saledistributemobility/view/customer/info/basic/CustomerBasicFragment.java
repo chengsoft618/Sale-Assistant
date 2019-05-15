@@ -1,7 +1,6 @@
 package com.shoniz.saledistributemobility.view.customer.info.basic;
 
 import android.Manifest;
-import android.app.Activity;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
@@ -18,7 +17,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.location.LocationRequest;
 import com.shoniz.saledistributemobility.BR;
@@ -30,11 +28,9 @@ import com.shoniz.saledistributemobility.data.model.location.ILocationRepository
 import com.shoniz.saledistributemobility.data.model.location.LocationEntity;
 import com.shoniz.saledistributemobility.data.model.log.ILogRepository;
 import com.shoniz.saledistributemobility.data.model.message.MessageData;
-import com.shoniz.saledistributemobility.data.model.message.MessageEntity;
 import com.shoniz.saledistributemobility.data.sharedpref.ISettingRepository;
 import com.shoniz.saledistributemobility.databinding.FragmentCustomerBasicPageBinding;
 import com.shoniz.saledistributemobility.framework.exception.HandleException;
-import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.ExceptionHandler;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.UncaughtException;
 import com.shoniz.saledistributemobility.infrastructure.AsyncResult;
@@ -42,18 +38,10 @@ import com.shoniz.saledistributemobility.infrastructure.CommonAsyncTask;
 import com.shoniz.saledistributemobility.infrastructure.wialon.WialonWorker;
 import com.shoniz.saledistributemobility.location.LocationHelper;
 import com.shoniz.saledistributemobility.utility.Common;
-import com.shoniz.saledistributemobility.utility.dialog.AsyncTaskDialog;
 import com.shoniz.saledistributemobility.utility.dialog.ErrorDialog.ErrorDialog;
-import com.shoniz.saledistributemobility.utility.dialog.OnProgressUpdate;
-import com.shoniz.saledistributemobility.utility.dialog.RunnableMethod;
-import com.shoniz.saledistributemobility.utility.dialog.RunnableModel;
-import com.shoniz.saledistributemobility.view.base.BaseActivity;
 import com.shoniz.saledistributemobility.view.base.BaseFragment;
 import com.shoniz.saledistributemobility.view.customer.CustomerBusiness;
-import com.shoniz.saledistributemobility.view.customer.CustomerData;
-import com.shoniz.saledistributemobility.view.customer.info.credit.CustomerCreditModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;

@@ -19,5 +19,5 @@ public interface IMessageRepository {
     int unreadMessage();
     void readAll();
 
-    void sendCompletePathVisit(String desc) throws BaseException;
+    void sendEndOfDailyVisitMessage(String desc) throws BaseException;
 }

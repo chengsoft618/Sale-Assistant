@@ -5,13 +5,12 @@ import android.database.Cursor;
 
 import com.shoniz.saledistributemobility.R;
 import com.shoniz.saledistributemobility.order.sent.SentOrderModel;
+import com.shoniz.saledistributemobility.order.unvisited__.ReasonModel__;
+import com.shoniz.saledistributemobility.order.unvisited__.UnvisitedCustomerModel__;
 import com.shoniz.saledistributemobility.utility.data.pref.AppPref;
 import com.shoniz.saledistributemobility.utility.data.sqlite.DBHelper;
-import com.shoniz.saledistributemobility.order.unvisited.ReasonModel;
 import com.shoniz.saledistributemobility.order.unsent.UnsentOrderModel;
-import com.shoniz.saledistributemobility.order.unvisited.UnvisitedCustomerModel;
 import com.shoniz.saledistributemobility.utility.Common;
-import com.shoniz.saledistributemobility.utility.Enums;
 import com.shoniz.saledistributemobility.utility.PersianCalendar;
 import com.shoniz.saledistributemobility.utility.StringHelper;
 
@@ -147,7 +146,7 @@ public class RequestListData {
         }
     }
 
-    public static List<UnvisitedCustomerModel> getUnvisitedCustomerList(Context context) throws IOException {
+    public static List<UnvisitedCustomerModel__> getUnvisitedCustomerList(Context context) throws IOException {
 
         DBHelper db = null;
         Cursor cursor = null;
@@ -158,21 +157,21 @@ public class RequestListData {
 //            db.attachDataBase(context, Enums.DBName.Order);
 //            db.attachDataBase(context, Enums.DBName.base);
             boolean isSent=AppPref.isReasonSendAll(context);
-            List<UnvisitedCustomerModel> unvisitedCustomerModels = new ArrayList<>();
+            List<UnvisitedCustomerModel__> unvisitedCustomerModels = new ArrayList<>();
             String command = StringHelper.GenerateMessage(context, R.string.unvisit_customer_list);
             cursor = db.select(command);
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 do {
-                    UnvisitedCustomerModel model = new UnvisitedCustomerModel();
-                    model.InPath = cursor.getInt(cursor.getColumnIndex(UnvisitedCustomerModel.UnorderedColumns.InPath));
-                    model.PathName = cursor.getString(cursor.getColumnIndex(UnvisitedCustomerModel.UnorderedColumns.PathName));
-                    model.PersonName = cursor.getString(cursor.getColumnIndex(UnvisitedCustomerModel.UnorderedColumns.PersonName));
-                    model.PersonID = cursor.getInt(cursor.getColumnIndex(UnvisitedCustomerModel.UnorderedColumns.PersonID));
-                    model.ErrorMessage = cursor.getString(cursor.getColumnIndex(UnvisitedCustomerModel.UnorderedColumns.ErrorMessage));
+                    UnvisitedCustomerModel__ model = new UnvisitedCustomerModel__();
+                    model.InPath = cursor.getInt(cursor.getColumnIndex(UnvisitedCustomerModel__.UnorderedColumns.InPath));
+                    model.PathName = cursor.getString(cursor.getColumnIndex(UnvisitedCustomerModel__.UnorderedColumns.PathName));
+                    model.PersonName = cursor.getString(cursor.getColumnIndex(UnvisitedCustomerModel__.UnorderedColumns.PersonName));
+                    model.PersonID = cursor.getInt(cursor.getColumnIndex(UnvisitedCustomerModel__.UnorderedColumns.PersonID));
+                    model.ErrorMessage = cursor.getString(cursor.getColumnIndex(UnvisitedCustomerModel__.UnorderedColumns.ErrorMessage));
                     model.IsSent = isSent;
-                    model.reasonModel.NotSallReasonID =cursor.getInt(cursor.getColumnIndex(ReasonModel.Column.NotSallReasonID));
-                    model.reasonModel.NotSallReasonText =cursor.getString(cursor.getColumnIndex(ReasonModel.Column.NotSallReasonText));
+                    model.reasonModel.NotSallReasonID =cursor.getInt(cursor.getColumnIndex(ReasonModel__.Column.NotSallReasonID));
+                    model.reasonModel.NotSallReasonText =cursor.getString(cursor.getColumnIndex(ReasonModel__.Column.NotSallReasonText));
                     unvisitedCustomerModels.add(model);
                 } while (cursor.moveToNext());
             }

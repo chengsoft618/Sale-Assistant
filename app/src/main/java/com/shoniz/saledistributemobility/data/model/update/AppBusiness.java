@@ -1,22 +1,6 @@
 package com.shoniz.saledistributemobility.data.model.update;
 
-import android.content.Context;
-
 import com.shoniz.saledistributemobility.R;
-import com.shoniz.saledistributemobility.base.download.ProgressStage;
-import com.shoniz.saledistributemobility.catalog.ProductImageModel;
-import com.shoniz.saledistributemobility.catalog.ResourceBusiness;
-import com.shoniz.saledistributemobility.catalog.ResourceModel;
-import com.shoniz.saledistributemobility.view.customer.CustomerBusiness;
-import com.shoniz.saledistributemobility.view.customer.CustomerData;
-import com.shoniz.saledistributemobility.framework.exception.OldApiException;
-import com.shoniz.saledistributemobility.framework.exception.ConnectionException;
-import com.shoniz.saledistributemobility.utility.Common;
-import com.shoniz.saledistributemobility.utility.data.pref.AppPref;
-import com.shoniz.saledistributemobility.utility.dialog.StageListener;
-
-import java.io.IOException;
-import java.util.List;
 
 
 public class AppBusiness {
@@ -31,7 +15,7 @@ public class AppBusiness {
 //    public static void saveDatabasesFiles(Context context, StageListener onStageListener) throws ConnectionException, OldApiException, IOException {
 //        int allProgress = 1, currentTaskIndex = 1;
 //        onStageListener.OnStageGoing(ProgressStage.GetBaseDb, currentTaskIndex, allProgress);
-//        CustomerData.createSaleDb(context, CustomerBusiness.getSaleDb(context).FileContents);
+//        CustomerData__.createSaleDb(context, CustomerBusiness.getSaleDb(context).FileContents);
 //    }
 //
 //    public static void updateCoding(Context context, StageListener onStageListener) throws ConnectionException, OldApiException, IOException {

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import com.shoniz.saledistributemobility.data.model.customer.UnvisitedReasonData;
 import com.shoniz.saledistributemobility.data.model.location.LocationEntity;
 import com.shoniz.saledistributemobility.data.model.order.UnvisitedCustomerReasonEntity;
 import com.shoniz.saledistributemobility.data.model.user.RoleEntity;
@@ -24,8 +25,7 @@ import com.shoniz.saledistributemobility.view.customer.info.bought.CustomerBuyMo
 import com.shoniz.saledistributemobility.view.customer.info.cheque.CustomerChequeModel;
 import com.shoniz.saledistributemobility.view.customer.info.credit.CustomerCreditModel;
 import com.shoniz.saledistributemobility.base.FileContentModel;
-import com.shoniz.saledistributemobility.order.unvisited.ReasonDto;
-import com.shoniz.saledistributemobility.view.path.PathModel;
+import com.shoniz.saledistributemobility.view.path.PathModel__;
 import com.shoniz.saledistributemobility.catalog.ProfileCategoryModel;
 import com.shoniz.saledistributemobility.catalog.ResourceModel;
 import com.shoniz.saledistributemobility.order.ResultModel;
@@ -116,13 +116,13 @@ public class OfficeApi {
         getData(ApiConsts.Api.SEND_CUSTOMER_LOCATION, postModel, typeToken);
     }
 
-    public List<PathModel> getVisitorPaths(List<Integer> pathsCodes) throws OldApiException, IOException, ConnectionException {
+    public List<PathModel__> getVisitorPaths(List<Integer> pathsCodes) throws OldApiException, IOException, ConnectionException {
         return getPaths(pathsCodes);
     }
 
 
-    private List<PathModel> getPaths(List<Integer> pathsCodes) throws OldApiException, ConnectionException, IOException {
-        TypeToken<List<PathModel>> typeToken = new TypeToken<List<PathModel>>() {
+    private List<PathModel__> getPaths(List<Integer> pathsCodes) throws OldApiException, ConnectionException, IOException {
+        TypeToken<List<PathModel__>> typeToken = new TypeToken<List<PathModel__>>() {
         };
         PostModel postModel = getPostModel();
         postModel.Ids = pathsCodes;
@@ -361,25 +361,25 @@ public class OfficeApi {
         // TODO : set Latitude,Longitude,Accuracy,BatteryStatus,GPSStatus
     }
 
-    public void SetReasonAll(ReasonDto reasonDto) throws IOException, ConnectionException, OldApiException {
-        TypeToken<Void> typeToken = new TypeToken<Void>() {
-        };
-        PostModel postModel = getPostModel();
-        postModel.PersonId = reasonDto.PersonID;
-        postModel.NotSaleReasonId = reasonDto.NotSallReasonID;
-        postModel.FromDate = reasonDto.PersianDate;
-        List<ReasonDto> reasonDtos = new ArrayList<>();
-        reasonDtos.add(reasonDto);
-        postModel.ReasonList = reasonDtos;
-        // TODO : set Latitude,Longitude,Accuracy,BatteryStatus,GPSStatus
-        getData(ApiConsts.Api.SET_REASON, postModel, typeToken);
-    }
+//    public void SetReasonAll(UnvisitedReasonData unvisitedReasonData) throws IOException, ConnectionException, OldApiException {
+//        TypeToken<Void> typeToken = new TypeToken<Void>() {
+//        };
+//        PostModel postModel = getPostModel();
+//        postModel.PersonId = unvisitedReasonData.PersonID;
+//        postModel.NotSaleReasonId = unvisitedReasonData.NotSallReasonID;
+//        postModel.FromDate = unvisitedReasonData.PersianDate;
+//        List<UnvisitedReasonData> unvisitedReasonData = new ArrayList<>();
+//        unvisitedReasonData.add(unvisitedReasonData);
+//        postModel.ReasonList = unvisitedReasonData;
+//        // TODO : set Latitude,Longitude,Accuracy,BatteryStatus,GPSStatus
+//        getData(ApiConsts.Api.SET_REASON, postModel, typeToken);
+//    }
 
-    public List<UnvisitedCustomerReasonEntity> SetReasonAll(List<ReasonDto> reasonDto) throws IOException, ConnectionException, OldApiException {
+    public List<UnvisitedCustomerReasonEntity> SetReasonAll(List<UnvisitedReasonData> unvisitedReasonData) throws IOException, ConnectionException, OldApiException {
         TypeToken<List<UnvisitedCustomerReasonEntity>> typeToken = new TypeToken<List<UnvisitedCustomerReasonEntity>>() {
         };
         PostModel postModel = getPostModel();
-        postModel.ReasonList = reasonDto;
+        postModel.ReasonList = unvisitedReasonData;
         // TODO : set Latitude,Longitude,Accuracy,BatteryStatus,GPSStatus
         return getData(ApiConsts.Api.SET_REASON_ALL, postModel, typeToken);
     }

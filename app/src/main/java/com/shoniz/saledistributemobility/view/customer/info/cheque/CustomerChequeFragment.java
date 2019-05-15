@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import com.shoniz.saledistributemobility.R;
 import com.shoniz.saledistributemobility.data.model.customer.CustomerBasicEntity;
 import com.shoniz.saledistributemobility.framework.exception.HandleException;
-import com.shoniz.saledistributemobility.view.customer.CustomerData;
+import com.shoniz.saledistributemobility.view.customer.CustomerOldData;
 import com.shoniz.saledistributemobility.view.customer.info.basic.CustomerBasicModel;
 import com.shoniz.saledistributemobility.base.BaseFragment;
 import com.shoniz.saledistributemobility.utility.Common;
@@ -70,7 +70,7 @@ public class CustomerChequeFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_customer_cheque, container, false);
         try {
-            List<CustomerChequeModel> models = CustomerData.getCustomerChequeByPersonId(activity, personID);
+            List<CustomerChequeModel> models = CustomerOldData.getCustomerChequeByPersonId(activity, personID);
             if (view instanceof RecyclerView) {
                 recyclerView = (RecyclerView) view;
                 CustomerChequeAdapter customerChequeAdapter = new CustomerChequeAdapter(models, onCustomerChequeListener);

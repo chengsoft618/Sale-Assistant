@@ -1,9 +1,7 @@
 package com.shoniz.saledistributemobility.data.model.location;
 
-import com.shoniz.saledistributemobility.data.api.retrofit.ApiException;
 import com.shoniz.saledistributemobility.data.model.location.api.ILocationApi;
 import com.shoniz.saledistributemobility.data.model.location.db.ILocationDao;
-import com.shoniz.saledistributemobility.framework.InOutError;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
 
 import java.util.List;

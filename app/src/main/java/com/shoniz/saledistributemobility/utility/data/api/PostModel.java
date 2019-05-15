@@ -1,8 +1,8 @@
 package com.shoniz.saledistributemobility.utility.data.api;
 
 import com.shoniz.saledistributemobility.catalog.ResourceModel;
+import com.shoniz.saledistributemobility.data.model.customer.UnvisitedReasonData;
 import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexDto;
-import com.shoniz.saledistributemobility.order.unvisited.ReasonDto;
 
 import java.util.List;
 
@@ -32,7 +32,7 @@ public class PostModel {
     public List<ResourceModel> ResourceFiles;
     public List<CardIndexDto.AmountModel> RequiresList;
     public List<CardIndexDto.AmountModel> ExistenceList;
-    public List<ReasonDto> ReasonList;
+    public List<UnvisitedReasonData> ReasonList;
     public boolean IsDelete ;
     public boolean IsNew ;
     public int ChequeDuration ;

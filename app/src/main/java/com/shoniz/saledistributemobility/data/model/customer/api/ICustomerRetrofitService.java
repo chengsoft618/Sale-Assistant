@@ -60,4 +60,7 @@ public interface ICustomerRetrofitService {
 
     @POST("GetOrderDetailByPersonIds")
     Call<List<OrderDetailEntity>> getOrderDetailByPersonId(@Body ApiParameter parameter);
+
+    @POST("sendReasonAll")
+    Call<Void> setUnvisitingReason(@Body ApiParameter parameter);
 }

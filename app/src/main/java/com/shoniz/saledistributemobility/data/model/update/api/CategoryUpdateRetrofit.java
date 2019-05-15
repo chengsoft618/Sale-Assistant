@@ -32,6 +32,7 @@ public class CategoryUpdateRetrofit implements ICategoryUpdateApi {
 
     @Override
     public List<ProductImageModel> getShortcutChanges(List<ResourceModel> models) throws BaseException {
+        apiParameter = new ApiParameter(commonPackage);
         apiParameter.ResourceFiles = models;
         IRetroCommand<List<ProductImageModel>, IUpdateRetrofitService> command =
                 service -> {
@@ -44,7 +45,9 @@ public class CategoryUpdateRetrofit implements ICategoryUpdateApi {
     }
 
     @Override
-    public List<ResourceModel> getResourceChanges() throws BaseException {
+    public List<ResourceModel> getResourceChanges(List<ResourceModel> models) throws BaseException {
+        apiParameter = new ApiParameter(commonPackage);
+        apiParameter.ResourceFiles = models;
         IRetroCommand<List<ResourceModel>, IUpdateRetrofitService> command =
                 service -> {
                     apiParameter.RoleId = commonPackage.getSettingPref().getCurrentRoleId();
@@ -57,6 +60,7 @@ public class CategoryUpdateRetrofit implements ICategoryUpdateApi {
 
     @Override
     public List<ProfileCategoryEntity> getProfileCategoryAll() throws BaseException {
+        apiParameter = new ApiParameter(commonPackage);
         IRetroCommand<List<ProfileCategoryEntity>, IUpdateRetrofitService> command =
                 service -> {
                     apiParameter.RoleId = commonPackage.getSettingPref().getCurrentRoleId();
@@ -69,6 +73,7 @@ public class CategoryUpdateRetrofit implements ICategoryUpdateApi {
 
     @Override
     public List<CategoryEntity> getCategoryAll() throws BaseException {
+        apiParameter = new ApiParameter(commonPackage);
         IRetroCommand<List<CategoryEntity>, IUpdateRetrofitService> command =
                 service -> {
                     apiParameter.RoleId = commonPackage.getSettingPref().getCurrentRoleId();
@@ -81,6 +86,7 @@ public class CategoryUpdateRetrofit implements ICategoryUpdateApi {
 
     @Override
     public List<SubCategoryEntity> getSubCategoryAll() throws BaseException {
+        apiParameter = new ApiParameter(commonPackage);
         IRetroCommand<List<SubCategoryEntity>, IUpdateRetrofitService> command =
                 service -> {
                     apiParameter.RoleId = commonPackage.getSettingPref().getCurrentRoleId();
@@ -93,6 +99,7 @@ public class CategoryUpdateRetrofit implements ICategoryUpdateApi {
 
     @Override
     public List<SubCategoryDetailEntity> getSubCategoryDetailAll() throws BaseException {
+        apiParameter = new ApiParameter(commonPackage);
         IRetroCommand<List<SubCategoryDetailEntity>, IUpdateRetrofitService> command =
                 service -> {
                     apiParameter.RoleId = commonPackage.getSettingPref().getCurrentRoleId();
@@ -105,6 +112,7 @@ public class CategoryUpdateRetrofit implements ICategoryUpdateApi {
 
     @Override
     public ProductImageModel getShortcutImage(ProductImageModel shortcutModel) throws BaseException {
+        apiParameter = new ApiParameter(commonPackage);
         IRetroCommand<ProductImageModel, IUpdateRetrofitService> command =
                 service -> {
                     apiParameter.Shortcut = shortcutModel.Shortcut;
@@ -118,6 +126,7 @@ public class CategoryUpdateRetrofit implements ICategoryUpdateApi {
 
     @Override
     public ResourceModel getResourceFile(ResourceModel resourceModel) throws BaseException {
+        apiParameter = new ApiParameter(commonPackage);
         IRetroCommand<ResourceModel, IUpdateRetrofitService> command =
                 service -> {
                     apiParameter.ResourceFileId = resourceModel.ResourceFileId;

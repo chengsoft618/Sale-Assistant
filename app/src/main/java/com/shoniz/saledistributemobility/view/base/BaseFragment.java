@@ -53,7 +53,7 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
 
     public abstract int getBindingVariable();
 
-    public abstract void onChangeLocation(Location location);
+    public void onChangeLocation(Location location){}
 
     SharedLocationViewModel sharedLocationViewModel;
 

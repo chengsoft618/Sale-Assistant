@@ -1,9 +1,9 @@
 package com.shoniz.saledistributemobility.data.api;
 
 import com.shoniz.saledistributemobility.catalog.ResourceModel;
+import com.shoniz.saledistributemobility.data.model.customer.UnvisitedReasonData;
 import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexDto;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
-import com.shoniz.saledistributemobility.order.unvisited.ReasonDto;
 
 import java.util.List;
 
@@ -56,7 +56,7 @@ public class ApiParameter {
     public List<ResourceModel> ResourceFiles;
     public List<CardIndexDto.AmountModel> RequiresList;
     public List<CardIndexDto.AmountModel> ExistenceList;
-    public List<ReasonDto> ReasonList;
+    public List<UnvisitedReasonData> ReasonList;
     public boolean IsDelete ;
     public boolean IsNew ;
     public int ChequeDuration ;
@@ -64,6 +64,7 @@ public class ApiParameter {
     public String NeedDate ;
     public String SaleDesc ;
     public String AccDesc ;
+    public String Description ;
     public int BatteryStatus ;
     public String Provider ;
     public int RoleId = 0;

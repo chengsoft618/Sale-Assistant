@@ -11,14 +11,13 @@ import com.shoniz.saledistributemobility.location.TrackingService;
 import com.shoniz.saledistributemobility.message.management.MessageManagementService;
 import com.shoniz.saledistributemobility.message.receiver.PersonMessageReceiver;
 import com.shoniz.saledistributemobility.order.RequestListModule;
-import com.shoniz.saledistributemobility.order.RequestListViewModel;
 import com.shoniz.saledistributemobility.order.RequestsListActivity;
 import com.shoniz.saledistributemobility.order.SendOrderService;
 import com.shoniz.saledistributemobility.order.sent.SentOrdersFragment;
 import com.shoniz.saledistributemobility.order.sent.SentOrdersFragmentModule;
 import com.shoniz.saledistributemobility.order.unsent.UnSentOrdersFragmentModule;
 import com.shoniz.saledistributemobility.order.unsent.UnsentOrdersFragment;
-import com.shoniz.saledistributemobility.order.unvisited.UnvisitedCustomerFragment;
+import com.shoniz.saledistributemobility.order.unvisited__.UnvisitedCustomerFragment__;
 import com.shoniz.saledistributemobility.view.branch.BranchActivity;
 import com.shoniz.saledistributemobility.view.branch.BranchActivityModule;
 import com.shoniz.saledistributemobility.view.catalog.CatalogFragment;
@@ -41,12 +40,6 @@ import com.shoniz.saledistributemobility.view.ordering.detail.OrderDetailActivit
 import com.shoniz.saledistributemobility.view.ordering.detail.OrderDetailActivityModule;
 import com.shoniz.saledistributemobility.view.ordering.detail.printissue.PrintIssueActivity;
 import com.shoniz.saledistributemobility.view.ordering.detail.printissue.PrintIssueActivityModule;
-import com.shoniz.saledistributemobility.view.ordering.operation.OperationActivity;
-import com.shoniz.saledistributemobility.view.ordering.operation.OrderVerifyActivityModule;
-import com.shoniz.saledistributemobility.view.ordering.operation.cancel.VerifyCancelFragment;
-import com.shoniz.saledistributemobility.view.ordering.operation.cancel.VerifyCancelModule;
-import com.shoniz.saledistributemobility.view.ordering.operation.verify.VerifyFragment;
-import com.shoniz.saledistributemobility.view.ordering.operation.verify.VerifyModule;
 import com.shoniz.saledistributemobility.view.path.customerlist.CustomerListFragment;
 import com.shoniz.saledistributemobility.view.path.customerlist.CustomerListFragmentModule;
 import com.shoniz.saledistributemobility.view.path.pathlist.PathListFragment;
@@ -63,20 +56,11 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class ActivityBuilderModule {
 
-    @ContributesAndroidInjector(modules = {OrderVerifyActivityModule.class})
-    abstract OperationActivity bindOperationActivity();
-
     @ContributesAndroidInjector(modules = {OrderDetailActivityModule.class})
     abstract OrderDetailActivity bindOrderDetailActivity();
 
     @ContributesAndroidInjector(modules = {MessageActivityModule.class})
     abstract MessageActivity bindMessageActivity();
-
-    @ContributesAndroidInjector(modules = {VerifyModule.class})
-    public abstract VerifyFragment verifyFragment();
-
-    @ContributesAndroidInjector(modules = {VerifyCancelModule.class})
-    public abstract VerifyCancelFragment cancelVerifyFragment();
 
     @ContributesAndroidInjector
     public abstract LocationManagementService bindLocationServices();
@@ -118,7 +102,7 @@ public abstract class ActivityBuilderModule {
     public abstract RequestsListActivity bindRequestsListActivity();
 
     @ContributesAndroidInjector
-    public abstract UnvisitedCustomerFragment bindUnvisitedCustomerFragment();
+    public abstract UnvisitedCustomerFragment__ bindUnvisitedCustomerFragment();
 
     @ContributesAndroidInjector(modules = BranchActivityModule.class)
     public abstract BranchActivity bindBranchActivity();

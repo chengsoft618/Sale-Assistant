@@ -42,21 +42,5 @@ public interface IUpdateDao {
     @Insert(onConflict = REPLACE)
     void insertSubCategoryDetail(SubCategoryDetailEntity subCategoryDetailId);
 
-    @Query("DELETE FROM 'ImageVersion' WHERE Shortcut = :shortcut")
-    void deleteImageVersion(int shortcut);
 
-    @Insert(onConflict = REPLACE)
-    void insertImageVersion(ImageVersionEntity imageVersionEntity);
-
-    @Query("DELETE FROM 'FileResource' WHERE ResourceFileId = :resourceFileId")
-    void deleteFileResource(int resourceFileId);
-
-    @Insert(onConflict = REPLACE)
-    void insertFileResource(FileResourceEntity fileResourceEntity);
-
-    @Query("SELECT * FROM ImageVersion")
-    List<ImageVersionEntity> getUpdatedShortcutsImages();
-
-    @Query("SELECT * FROM FileResource")
-    List<FileResourceEntity> getUpdatedResources();
 }

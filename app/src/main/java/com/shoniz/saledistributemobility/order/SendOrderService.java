@@ -16,7 +16,7 @@ import com.shoniz.saledistributemobility.utility.dialog.RunnableMethod;
 import com.shoniz.saledistributemobility.R;
 import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexBusiness;
 import com.shoniz.saledistributemobility.framework.exception.HandleException;
-import com.shoniz.saledistributemobility.view.customer.CustomerData;
+import com.shoniz.saledistributemobility.view.customer.CustomerOldData;
 import com.shoniz.saledistributemobility.view.customer.info.basic.CustomerBasicModel;
 import com.shoniz.saledistributemobility.view.customer.SendRequestModel;
 import com.shoniz.saledistributemobility.utility.Notification;
@@ -24,7 +24,6 @@ import com.shoniz.saledistributemobility.utility.SimpleAsyncTask;
 import com.shoniz.saledistributemobility.utility.StringHelper;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -165,7 +164,7 @@ public class SendOrderService extends DaggerService {
 
 
     private void pushNotification(Context context, SendRequestModel sendRequestModel) throws IOException {
-        CustomerBasicModel customerBasicModel = CustomerData.getCustomerBaseInfo(context, sendRequestModel.PersonID);
+        CustomerBasicModel customerBasicModel = CustomerOldData.getCustomerBaseInfo(context, sendRequestModel.PersonID);
         notification.setContext(StringHelper.GenerateMessage(context, R.string.noti_send_order, sendRequestModel.PersonID + "", customerBasicModel.PersonName));
         notification.setTitle("ارسال درخواست");
         notification.setProgress(0, 0, true);
@@ -185,10 +184,10 @@ public class SendOrderService extends DaggerService {
 
             case DeleteOrder:
                 resultModel = OrderBusiness.DeleteOrder(context, sendRequestModel);
-                break;
-            case SaleNotReason:
-                OrderBusiness.sendReasonAll(context, sendRequestModel.PersonID);
-                break;
+             //   break;
+            //case SaleNotReason:
+                //OrderBusiness.sendReasonAll(context, sendRequestModel.PersonID);
+                //break;
         }
         return resultModel;
     }

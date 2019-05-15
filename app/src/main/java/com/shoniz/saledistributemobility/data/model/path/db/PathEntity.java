@@ -1,4 +1,4 @@
-package com.shoniz.saledistributemobility.view.entity;
+package com.shoniz.saledistributemobility.data.model.path.db;
 
 import android.arch.persistence.room.Entity;
 

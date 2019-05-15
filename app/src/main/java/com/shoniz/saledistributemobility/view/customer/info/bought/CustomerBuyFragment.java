@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import com.shoniz.saledistributemobility.R;
 import com.shoniz.saledistributemobility.data.model.customer.CustomerBasicEntity;
 import com.shoniz.saledistributemobility.framework.exception.HandleException;
-import com.shoniz.saledistributemobility.view.customer.CustomerData;
+import com.shoniz.saledistributemobility.view.customer.CustomerOldData;
 import com.shoniz.saledistributemobility.base.BaseFragment;
 import com.shoniz.saledistributemobility.view.customer.info.basic.CustomerBasicModel;
 import com.shoniz.saledistributemobility.utility.Common;
@@ -77,7 +77,7 @@ public class CustomerBuyFragment extends BaseFragment {
         if (view instanceof RecyclerView) {
             recyclerView = (RecyclerView) view;
             try {
-                List<CustomerBuyModel> models = CustomerData.getCustomerBuyByPersonId(activity, personID);
+                List<CustomerBuyModel> models = CustomerOldData.getCustomerBuyByPersonId(activity, personID);
                 CustomerBuyAdapter customerBuyAdapter = new CustomerBuyAdapter(models, onCustomerBuyListener);
                 Common.setRecycleViewLayoutManager(activity,recyclerView,1);
                 recyclerView.setAdapter(customerBuyAdapter);

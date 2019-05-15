@@ -306,13 +306,10 @@ public class MainActivity extends BaseActivity<MainViewModel, ActivityMainBindin
         notificationAll.setProgress(0, 0, false);
         showSnackBar(note);
         notificationAll.push();
-
     }
 
     @Override
     public void startChangeLogs() {
         WebSiteActivity.startChangeLog(commonPackage.getContext());
     }
-
-
 }

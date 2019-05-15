@@ -48,25 +48,7 @@ public class AppPref {
         return pm.get(AppModel.IS_SEND_REASON_ALL, false);
     }
 
-    public static void setActiveCustomerChecked(Context context, boolean value) {
-        PreferenceManager pm = Common.getPref(context);
-        pm.set(AppModel.IS_ACTIVE_CUSTOMER_CHECKED, value);
-    }
 
-    public static boolean isActiveCustomerChecked(Context context) {
-        PreferenceManager pm = Common.getPref(context);
-        return pm.get(AppModel.IS_ACTIVE_CUSTOMER_CHECKED, true);
-    }
-
-    public static boolean isCustomerClassNameB(Context context) {
-        PreferenceManager pm = Common.getPref(context);
-        return pm.get(AppModel.CUSTOER_CLASS_NAMES, false);
-    }
-
-    public  static void setCustomerClassNameB(Context context, boolean value) {
-        PreferenceManager pm = Common.getPref(context);
-        pm.set(AppModel.CUSTOER_CLASS_NAMES, value);
-    }
 
     public  static void removeAllSharedpref(Context context) {
         PreferenceManager pm = Common.getPref(context);

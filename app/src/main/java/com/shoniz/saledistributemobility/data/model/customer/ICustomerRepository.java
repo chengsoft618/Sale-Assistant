@@ -1,21 +1,24 @@
 package com.shoniz.saledistributemobility.data.model.customer;
 
-import com.shoniz.saledistributemobility.data.api.ApiNetworkException;
+import com.shoniz.saledistributemobility.data.model.order.UnvisitedCustomerReasonEntity;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
-import com.shoniz.saledistributemobility.view.customer.info.basic.CustomerBasicModel;
 
 import java.util.List;
 
 public interface ICustomerRepository {
 
     List<CustomerAddressEntity> getCustomerAddress(int personID);
-    void syncCustomerWholeInfoById(int personId) throws BaseException;
-    void syncEmployeeWholeInfoByPath(int pathId) throws BaseException;
+//    void syncCustomerWholeInfoById(int personId) throws BaseException;
+//    void syncEmployeeWholeInfoByPath(int pathId) throws BaseException;
     boolean isPathSync(int pathId);
-    List<CustomerBasicModel> getCustomerBaseInfoByPath(int pathCode);
+    List<CustomerData> getCustomerBaseInfoByPath(int pathCode, boolean containInactiveCustomers, boolean containClassB);
     CustomerBasicEntity getCustomerBase(int personID);
 
     CustomerCreditEntity getCustomerCredit(int personID);
+    void sendUnvisitedReason(UnvisitedReasonData unvisitedReasonData) throws BaseException;
+    void saveUnvisitingReason(UnvisitedCustomerReasonEntity reasonDto);
+
+
 
 
 //    CustomerChequeEntity syncEmployeeCustomerChequeByPath(int pathId) throws InOutError;

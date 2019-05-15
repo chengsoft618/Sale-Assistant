@@ -230,8 +230,6 @@ public class CardIndexFragment extends BaseFragment<FragmentCustomerCardIndexBin
             transaction.replace(R.id.fragment_container, catalogFragment);
             transaction.commit();
 
-
-
             if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT_WATCH) {
                 slide_in_left = AnimationUtils.loadAnimation(activity, android.R.anim.slide_in_left);
                 slide_out_right = AnimationUtils.loadAnimation(activity, android.R.anim.slide_out_right);

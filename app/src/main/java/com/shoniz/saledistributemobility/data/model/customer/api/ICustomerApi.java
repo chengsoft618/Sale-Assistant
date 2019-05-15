@@ -1,14 +1,13 @@
 package com.shoniz.saledistributemobility.data.model.customer.api;
 
-import com.shoniz.saledistributemobility.data.api.retrofit.ApiException;
 import com.shoniz.saledistributemobility.data.model.customer.CustomerBasicEntity;
 import com.shoniz.saledistributemobility.data.model.customer.CustomerBoughtEntity;
 import com.shoniz.saledistributemobility.data.model.customer.CustomerChequeEntity;
 import com.shoniz.saledistributemobility.data.model.customer.CustomerCreditEntity;
+import com.shoniz.saledistributemobility.data.model.customer.UnvisitedReasonData;
 import com.shoniz.saledistributemobility.data.model.location.LocationEntity;
 import com.shoniz.saledistributemobility.data.model.order.OrderDetailEntity;
 import com.shoniz.saledistributemobility.data.model.order.OrderEntity;
-import com.shoniz.saledistributemobility.framework.InOutError;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
 
 import java.util.List;
@@ -30,4 +29,6 @@ public interface ICustomerApi {
    List<CustomerCreditEntity> getEmployeeCustomerCreditById(int personId) throws BaseException;
    List<OrderEntity> getOrderByPersonId(int personId) throws BaseException;
    List<OrderDetailEntity> getOrderDetailByPersonId(int personId) throws BaseException;
+
+   void sendUnvisitedCustomerReason(UnvisitedReasonData unvisitedReasonData) throws BaseException;
 }

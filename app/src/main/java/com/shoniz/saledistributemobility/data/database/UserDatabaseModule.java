@@ -7,6 +7,7 @@ import com.shoniz.saledistributemobility.data.model.update.IAppUpdateRepository;
 import com.shoniz.saledistributemobility.data.model.location.db.ILocationDao;
 import com.shoniz.saledistributemobility.data.model.update.api.ICategoryUpdateApi;
 import com.shoniz.saledistributemobility.data.model.update.db.IUpdateDao;
+import com.shoniz.saledistributemobility.data.model.update.db.IUpdateUserDbDao;
 import com.shoniz.saledistributemobility.data.model.user.db.IUserDataDao;
 import com.shoniz.saledistributemobility.data.model.user.IUserRepository;
 import com.shoniz.saledistributemobility.data.model.user.UserRepository;
@@ -31,25 +32,24 @@ public class UserDatabaseModule {
         return userDatabase.getUserDao();
     }
 
-
-
     @Provides
     IRoleDao providesRoleDao(UserDatabase userDatabase) {
         return userDatabase.getRoleDao();
     }
-
 
     @Provides
     IUserDataDao providesUserDataDao(UserDatabase userDatabase) {
         return userDatabase.getUserDataDao();
     }
 
-
-
     @Provides
-    IUserRepository providesUserRepository(IUserDataDao userDataDao, IUserDao userDao, IRoleDao roleDao, IUserApi userApi) {
-        return new UserRepository(userDataDao, userDao, roleDao, userApi);
+    IUpdateUserDbDao providesIUpdateUserDbDao(UserDatabase userDatabase) {
+        return userDatabase.getIUpdateUserDbDao();
     }
+
+
+
+
 
 
 
@@ -60,13 +60,6 @@ public class UserDatabaseModule {
     }
 
 
-
-    @Provides
-    IAppUpdateRepository providesAppUpdateRepository (CommonPackage commonPackage,
-                                                      ICategoryUpdateApi categoryUpdateApi,
-                                                      IUpdateDao updateDao){
-        return  null;//AppUpda(commonPackage,categoryUpdateApi,updateDao);
-    }
 
 
 

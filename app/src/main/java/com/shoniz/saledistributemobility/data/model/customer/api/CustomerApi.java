@@ -1,6 +1,5 @@
 package com.shoniz.saledistributemobility.data.model.customer.api;
 
-import com.shoniz.saledistributemobility.data.api.retrofit.ApiException;
 import com.shoniz.saledistributemobility.data.model.customer.CustomerBasicEntity;
 import com.shoniz.saledistributemobility.data.model.customer.CustomerBoughtEntity;
 import com.shoniz.saledistributemobility.data.model.customer.CustomerChequeEntity;
@@ -8,8 +7,8 @@ import com.shoniz.saledistributemobility.data.model.customer.CustomerCreditEntit
 import com.shoniz.saledistributemobility.data.model.location.LocationEntity;
 import com.shoniz.saledistributemobility.data.model.order.OrderDetailEntity;
 import com.shoniz.saledistributemobility.data.model.order.OrderEntity;
-import com.shoniz.saledistributemobility.framework.InOutError;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
+import com.shoniz.saledistributemobility.data.model.customer.UnvisitedReasonData;
 
 import java.util.List;
 
@@ -84,6 +83,11 @@ public class CustomerApi implements ICustomerApi {
     @Override
     public List<OrderDetailEntity> getOrderDetailByPersonId(int personId) throws BaseException {
         return customerApi.getOrderDetailByPersonId(personId);
+    }
+
+    @Override
+    public void sendUnvisitedCustomerReason(UnvisitedReasonData unvisitedReasonData) throws BaseException {
+        customerApi.sendUnvisitedCustomerReason(unvisitedReasonData);
     }
 
 

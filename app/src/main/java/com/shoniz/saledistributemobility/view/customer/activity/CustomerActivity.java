@@ -1,10 +1,8 @@
 package com.shoniz.saledistributemobility.view.customer.activity;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
@@ -15,30 +13,20 @@ import android.view.View;
 
 import com.shoniz.saledistributemobility.BR;
 import com.shoniz.saledistributemobility.R;
-import com.shoniz.saledistributemobility.data.model.cardindex.CardIndexDetailData;
-import com.shoniz.saledistributemobility.data.model.cardindex.CardIndexRepository;
-import com.shoniz.saledistributemobility.data.model.cardindex.ICardIndexRepository;
 import com.shoniz.saledistributemobility.data.model.customer.CustomerBasicEntity;
 import com.shoniz.saledistributemobility.data.model.customer.ICustomerRepository;
 import com.shoniz.saledistributemobility.data.model.order.IOrderRepository;
-import com.shoniz.saledistributemobility.data.model.order.OrderRepository;
-import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderCompleteData;
-import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderDetailCompleteData;
 import com.shoniz.saledistributemobility.data.sharedpref.ISettingRepository;
-import com.shoniz.saledistributemobility.view.customer.CustomerData;
-import com.shoniz.saledistributemobility.view.customer.CustomerPageAdapter;
-import com.shoniz.saledistributemobility.view.customer.SharedCustomerViewModel;
-import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexBusiness;
-import com.shoniz.saledistributemobility.view.customer.info.basic.CustomerBasicModel;
 import com.shoniz.saledistributemobility.databinding.ActivityCustomerBinding;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.UncaughtException;
+import com.shoniz.saledistributemobility.framework.service.order.ICardIndexService;
 import com.shoniz.saledistributemobility.view.base.BaseActivity;
+import com.shoniz.saledistributemobility.view.customer.CustomerPageAdapter;
+import com.shoniz.saledistributemobility.view.customer.SharedCustomerViewModel;
 import com.shoniz.saledistributemobility.view.path.outofpath.CustomerPreference;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -55,7 +43,7 @@ public class CustomerActivity extends BaseActivity<CustomerViewModel, ActivityCu
     IOrderRepository orderRepository;
 
     @Inject
-    ICardIndexRepository cardIndexRepository;
+    ICardIndexService cardIndexRepository;
 
     @Inject
     @Named("SharedCustomerViewModel")
@@ -103,7 +91,7 @@ public class CustomerActivity extends BaseActivity<CustomerViewModel, ActivityCu
 
             personID = getIntent().getExtras().getInt(CustomerPreference.PersonId);
 
-            if (getIntent().getExtras().getBoolean(CustomerPreference.IsActivityForJustGettingRequest, false)) {
+            if (getIntent().getExtras().getBoolean(CustomerPreference.IsCardindexForUnknownCustomer, false)) {
                 adapter = new CustomerPageAdapter(getSupportFragmentManager(), personID);
                 setTitle("ثبت درخواست مشتری شماره: " + personID);
             } else {
@@ -165,8 +153,7 @@ public class CustomerActivity extends BaseActivity<CustomerViewModel, ActivityCu
     @Override
     public void onBackPressed() {
         try {
-            cardIndexRepository.removeUnchangedCardindexForEdit(orderRepository,
-                    settingRepository, cardIndexRepository, commonPackage);
+            cardIndexRepository.removeUnchangedCardIndexForEdit();
         } catch (IOException e) {
             UncaughtException exception = new UncaughtException(commonPackage, e);
             handleError(exception);

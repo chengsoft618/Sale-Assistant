@@ -2,8 +2,8 @@ package com.shoniz.saledistributemobility.view.customer.cardindex;
 
 import android.content.Context;
 
+import com.shoniz.saledistributemobility.data.model.customer.UnvisitedReasonData;
 import com.shoniz.saledistributemobility.utility.data.pref.AppPref;
-import com.shoniz.saledistributemobility.order.unvisited.ReasonDto;
 import com.shoniz.saledistributemobility.utility.PersianCalendar;
 
 import java.io.IOException;
@@ -45,13 +45,13 @@ public class CardIndexBusiness {
         return CardIndexOldDb.getCardIndexDto(context, personId);
     }
 
-    public static ReasonDto getReasonDto(Context context, int personId) throws IOException {
-        return CardIndexOldDb.getReasonDto(context, personId);
-    }
+//    public static UnvisitedReasonData getReasonDto(Context context, int personId) throws IOException {
+//        return CardIndexOldDb.getReasonDto(context, personId);
+//    }
 
-    public static List<ReasonDto> getReasonDto(Context context, List<Integer> personIds) throws IOException {
-        return CardIndexOldDb.getReasonDto(context, personIds);
-    }
+//    public static List<UnvisitedReasonData> getReasonDto(Context context, List<Integer> personIds) throws IOException {
+//        return CardIndexOldDb.getReasonDto(context, personIds);
+//    }
 
     private static void saveAmount(Context context, CardIndexParam cardIndexParam, AmountType amountType) throws Exception {
         createCardIndexIfNotExist(context, cardIndexParam.PersonId);
@@ -134,9 +134,9 @@ public class CardIndexBusiness {
         return CardIndexOldDb.IsEmptyCardIndex(context);
     }
 
-    public static boolean isEmptyCardIndex(Context context, int personId) throws IOException {
-        return CardIndexOldDb.isEmptyCardIndex(context, personId);
-    }
+//    public static boolean isCardIndexEmpty(Context context, int personId) throws IOException {
+//        return CardIndexOldDb.isEmptyCardIndex(context, personId);
+//    }
 
     public static long getRequestAmount(Context context,int personID) throws IOException {
         return CardIndexOldDb.GetRequestAmount(context,personID);

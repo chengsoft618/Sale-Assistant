@@ -2,33 +2,6 @@ package com.shoniz.saledistributemobility.view.path.outofpath;
 
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-
-import com.shoniz.saledistributemobility.order.OrderDataOld;
-import com.shoniz.saledistributemobility.utility.dialog.OnProgressUpdate;
-import com.shoniz.saledistributemobility.utility.dialog.RunnableMethod;
-import com.shoniz.saledistributemobility.R;
-import com.shoniz.saledistributemobility.view.customer.activity.CustomerActivity;
-import com.shoniz.saledistributemobility.view.customer.CustomerBusiness;
-import com.shoniz.saledistributemobility.framework.exception.HandleException;
-import com.shoniz.saledistributemobility.view.customer.CustomerData;
-import com.shoniz.saledistributemobility.order.detail.OrderDetailData;
-import com.shoniz.saledistributemobility.view.customer.info.basic.CustomerBasicModel;
-import com.shoniz.saledistributemobility.view.customer.info.bought.CustomerBuyModel;
-import com.shoniz.saledistributemobility.view.customer.info.cheque.CustomerChequeModel;
-import com.shoniz.saledistributemobility.view.customer.info.credit.CustomerCreditModel;
-import com.shoniz.saledistributemobility.order.detail.OrderDetailModel;
-import com.shoniz.saledistributemobility.order.OrderModel;
-import com.shoniz.saledistributemobility.view.path.PathModel;
-import com.shoniz.saledistributemobility.utility.dialog.RunnableModel;
-import com.shoniz.saledistributemobility.utility.dialog.AsyncTaskDialog;
-import com.shoniz.saledistributemobility.utility.dialog.ErrorDialog.ErrorDialog;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class RegOutOfPath {
 
@@ -40,8 +13,8 @@ public class RegOutOfPath {
         this.context = context;
     }
 
-//    public void manageOutOfPath() throws IOException {
-//        if (CustomerData.isCustomerExist(context, personId)) {
+//    public void initOutOfPath() throws IOException {
+//        if (CustomerData__.isCustomerExist(context, personId)) {
 //            goToCustomerPage(personId);
 //            return;
 //        }
@@ -72,10 +45,10 @@ public class RegOutOfPath {
 //            }
 //        };
 //
-//        RunnableMethod<RunnableModel<List<PathModel>>, Object> runPost =
-//                new RunnableMethod<RunnableModel<List<PathModel>>, Object>() {
+//        RunnableMethod<RunnableModel<List<PathModel__>>, Object> runPost =
+//                new RunnableMethod<RunnableModel<List<PathModel__>>, Object>() {
 //                    @Override
-//                    public Object run(RunnableModel<List<PathModel>> runnableModel, OnProgressUpdate onProgressUpdate) {
+//                    public Object run(RunnableModel<List<PathModel__>> runnableModel, OnProgressUpdate onProgressUpdate) {
 //                        if (!runnableModel.HasError) {
 //                            try {
 //                                goToCustomerPage(personId);
@@ -97,7 +70,7 @@ public class RegOutOfPath {
 //
 //    private void syncCustomerInfoById(AppCompatActivity context, int personId) {
 //        Intent intent = new Intent(context, CustomerActivity.class);
-//        intent.putExtra(CustomerPreference.IsActivityForJustGettingRequest, true);
+//        intent.putExtra(CustomerPreference.IsCardindexForUnknownCustomer, true);
 //        intent.putExtra(CustomerPreference.PersonId, personId);
 //        context.startActivity(intent);
 ////        android.support.v4.app.FragmentTransaction transaction = context.getSupportFragmentManager().beginTransaction();
@@ -130,11 +103,11 @@ public class RegOutOfPath {
 //        List<OrderModel> orderModels = CustomerBusiness.getOrderByPersonIds(context, personIds);
 //        List<OrderDetailModel> orderDetailModels = CustomerBusiness.getOrderDetailByPersonIds(context, personIds);
 //
-//        CustomerData.insertBaseInfo(context, customers);
+//        CustomerData__.insertBaseInfo(context, customers);
 //        OrderDataOld.insert(context, orderModels);
 //        OrderDetailData.insert(context, orderDetailModels);
-//        CustomerData.insertCustomersCheque(context, chequeModel);
-//        CustomerData.insertCustomersBuy(context, customerBuyModels);
-//        CustomerData.insertCustomersCredit(context, customerCreditModels);
+//        CustomerData__.insertCustomersCheque(context, chequeModel);
+//        CustomerData__.insertCustomersBuy(context, customerBuyModels);
+//        CustomerData__.insertCustomersCredit(context, customerCreditModels);
 //    }
 }

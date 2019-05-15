@@ -5,10 +5,7 @@ import android.view.View;
 
 import com.shoniz.saledistributemobility.R;
 import com.shoniz.saledistributemobility.data.model.app.BranchData;
-import com.shoniz.saledistributemobility.data.model.app.BranchEntity;
-import com.shoniz.saledistributemobility.data.model.order.OrderData;
 import com.shoniz.saledistributemobility.infrastructure.recycler.RecyclerItemViewModel;
-import com.shoniz.saledistributemobility.view.ordering.operation.verify.IVerifyRecyclerListener;
 
 public class BranchItemViewModel extends RecyclerItemViewModel<BranchData,
     IBranchRecyclerListener> {

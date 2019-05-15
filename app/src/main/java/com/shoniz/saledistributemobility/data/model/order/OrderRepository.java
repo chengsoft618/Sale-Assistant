@@ -2,7 +2,7 @@ package com.shoniz.saledistributemobility.data.model.order;
 
 //import com.shoniz.saledistributemobility.app.order.OrderModel;
 
-import com.shoniz.saledistributemobility.data.database.dao.IPathDao;
+import com.shoniz.saledistributemobility.data.model.path.db.IPathDao;
 import com.shoniz.saledistributemobility.data.model.ShortcutAvailability;
 import com.shoniz.saledistributemobility.data.model.order.api.IOrderApi;
 import com.shoniz.saledistributemobility.data.model.order.db.IOrderDao;
@@ -13,12 +13,9 @@ import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderCom
 import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderDetailCompleteData;
 import com.shoniz.saledistributemobility.data.model.order.verifying.IOrderDataDao;
 import com.shoniz.saledistributemobility.data.sharedpref.ISettingRepository;
-import com.shoniz.saledistributemobility.framework.InOutError;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
-import com.shoniz.saledistributemobility.view.entity.PathEntity;
 import com.shoniz.saledistributemobility.view.entity.ReasonEntity;
 
-import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -137,6 +134,16 @@ public class OrderRepository implements IOrderRepository {
         orderApi.verify(orderIds, roleId);
         //sync();
     }
+
+    @Override
+    public void cancelVerify(Long orderId, String message) throws BaseException {
+
+    }
+
+    @Override
+    public void rejectVerify(long orderId, String comment) throws BaseException {
+
+    }
 //
 //    @Override
 //    public void cancelVerify(Long orderIds,String message) throws BaseException {
@@ -192,15 +199,11 @@ public class OrderRepository implements IOrderRepository {
 
     private static List<ReasonEntity> reasons = null;
     @Override
-    public List<ReasonEntity> getUnvisitingReasons() {
+    public List<ReasonEntity> getUnvisitedReasons() {
         if(reasons != null)
             return reasons;
         return unvisitedCustomerReasonDao.getUnvisitingReasons();
     }
 
-    @Override
-    public void saveUnvisitingReason(UnvisitedCustomerReasonEntity unvisitedCustomerReasonEntity) {
-        if(unvisitedCustomerReasonEntity != null)
-            unvisitedCustomerReasonDao.insert(unvisitedCustomerReasonEntity);
-    }
+
 }

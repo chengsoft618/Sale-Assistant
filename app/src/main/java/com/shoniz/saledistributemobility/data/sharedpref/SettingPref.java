@@ -7,6 +7,7 @@ import com.shoniz.saledistributemobility.R;
 import com.shoniz.saledistributemobility.data.model.app.BranchEntity;
 import com.shoniz.saledistributemobility.framework.Utility;
 import com.shoniz.saledistributemobility.utility.PersianCalendar;
+import com.shoniz.saledistributemobility.utility.data.pref.AppModel;
 import com.shoniz.saledistributemobility.view.entity.EmployeeInfoEntity;
 
 import java.util.List;
@@ -306,5 +307,25 @@ public class SettingPref implements ISettingPref {
     @Override
     public void setUnchangedOrdersNoInCardindeForEdit(long orderNo) {
         preferences.edit().putLong(context.getString(R.string.pref_key_unchanged_order_no_in_cardinde_for_edit), orderNo).apply();
+    }
+
+    @Override
+    public void setInactiveCustomerChecked(boolean value) {
+        preferences.edit().putBoolean(AppModel.IS_ACTIVE_CUSTOMER_CHECKED, value);
+    }
+
+    @Override
+    public boolean isInactiveCustomerChecked() {
+        return preferences.getString(AppModel.IS_ACTIVE_CUSTOMER_CHECKED,"0").equals("1");
+    }
+
+    @Override
+    public boolean isClassNameBCustomerChecked() {
+        return preferences.getString(AppModel.CUSTOER_CLASS_NAMES,"0").equals("1");
+    }
+
+    @Override
+    public void setClassNameBCustomerCheckboxStatus(boolean value) {
+        preferences.edit().putBoolean(AppModel.CUSTOER_CLASS_NAMES, value);
     }
 }

@@ -6,7 +6,7 @@ import android.arch.persistence.room.DatabaseConfiguration;
 import android.arch.persistence.room.InvalidationTracker;
 import android.arch.persistence.room.RoomDatabase;
 
-import com.shoniz.saledistributemobility.data.database.dao.IPathDao;
+import com.shoniz.saledistributemobility.data.model.path.db.IPathDao;
 import com.shoniz.saledistributemobility.data.model.cardindex.ICardIndexDataDao;
 import com.shoniz.saledistributemobility.data.model.coding.CodingEntity;
 import com.shoniz.saledistributemobility.data.model.coding.ICodingDao;
@@ -30,7 +30,7 @@ import com.shoniz.saledistributemobility.view.entity.CardIndexEntity;
 import com.shoniz.saledistributemobility.view.entity.CategoryEntity;
 import com.shoniz.saledistributemobility.view.entity.FileResourceEntity;
 import com.shoniz.saledistributemobility.view.entity.ImageVersionEntity;
-import com.shoniz.saledistributemobility.view.entity.PathEntity;
+import com.shoniz.saledistributemobility.data.model.path.db.PathEntity;
 import com.shoniz.saledistributemobility.view.entity.ProfileCategoryEntity;
 import com.shoniz.saledistributemobility.view.entity.ReasonEntity;
 import com.shoniz.saledistributemobility.view.entity.SubCategoryDetailEntity;
@@ -44,8 +44,7 @@ import com.shoniz.saledistributemobility.view.entity.SubCategoryEntity;
         , PathEntity.class, UnvisitedCustomerReasonEntity.class
         , ProfileCategoryEntity.class, SubCategoryDetailEntity.class
         , SubCategoryEntity.class, ReasonEntity.class
-        , CustomerAddressEntity.class, ImageVersionEntity.class
-        , FileResourceEntity.class}, version = 1)
+        , CustomerAddressEntity.class}, version = 1, exportSchema = false)
 
 public abstract class SaleDatabase extends RoomDatabase{
 

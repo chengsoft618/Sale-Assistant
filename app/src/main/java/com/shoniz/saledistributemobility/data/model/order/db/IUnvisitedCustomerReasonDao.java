@@ -2,18 +2,13 @@ package com.shoniz.saledistributemobility.data.model.order.db;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
-import android.arch.persistence.room.Update;
 
-import com.shoniz.saledistributemobility.data.model.order.OrderEntity;
 import com.shoniz.saledistributemobility.data.model.order.UnvisitedCustomerReasonEntity;
-import com.shoniz.saledistributemobility.order.unvisited.ReasonDto;
 import com.shoniz.saledistributemobility.view.entity.ReasonEntity;
 
 import java.util.List;
 
-import static android.arch.persistence.room.OnConflictStrategy.IGNORE;
 import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
 @Dao

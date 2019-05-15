@@ -2,12 +2,9 @@ package com.shoniz.saledistributemobility.di;
 
 import android.app.Application;
 
-import com.shoniz.saledistributemobility.data.api.ApiModule;
+
 import com.shoniz.saledistributemobility.data.database.SaleDatabaseModule;
 import com.shoniz.saledistributemobility.data.database.UserDatabaseModule;
-import com.shoniz.saledistributemobility.view.settings.SettingsActivity;
-
-import java.util.Set;
 
 import javax.inject.Singleton;
 

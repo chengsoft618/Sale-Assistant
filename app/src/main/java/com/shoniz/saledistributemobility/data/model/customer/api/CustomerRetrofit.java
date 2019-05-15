@@ -12,8 +12,8 @@ import com.shoniz.saledistributemobility.data.model.location.LocationEntity;
 import com.shoniz.saledistributemobility.data.model.order.OrderDetailEntity;
 import com.shoniz.saledistributemobility.data.model.order.OrderEntity;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
-import com.shoniz.saledistributemobility.framework.InOutError;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
+import com.shoniz.saledistributemobility.data.model.customer.UnvisitedReasonData;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -226,6 +226,23 @@ public class CustomerRetrofit implements ICustomerApi {
             }
         };
         return new RetroManager<List<OrderDetailEntity>, ICustomerRetrofitService>(commonPackage).callOfficeApi(command
+                , ICustomerRetrofitService.class);
+    }
+
+    @Override
+    public void sendUnvisitedCustomerReason(UnvisitedReasonData unvisitedReasonData) throws BaseException {
+        IRetroCommand<Void, ICustomerRetrofitService> command = new IRetroCommand<Void, ICustomerRetrofitService>() {
+            @Override
+            public Void exec(ICustomerRetrofitService service) throws IOException, ApiException {
+                apiParameter.Description = unvisitedReasonData.Description;
+                apiParameter.PersonId = unvisitedReasonData.PersonID;
+                apiParameter.FromDate = unvisitedReasonData.PersianDate;
+                apiParameter.NotSaleReasonId = unvisitedReasonData.NotSallReasonID;
+
+                return RetroManager.execCaller(service.setUnvisitingReason(apiParameter)).body();
+            }
+        };
+        new RetroManager<Void, ICustomerRetrofitService>(commonPackage).callOfficeApi(command
                 , ICustomerRetrofitService.class);
     }
 }

@@ -14,8 +14,6 @@ public class MessageData extends MetaData<Integer> {
     @Embedded
     public MessageEntity messageEntity;
 
-
-
     @Override
     public Integer getId() {
         return messageEntity.SendID;

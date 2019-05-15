@@ -39,9 +39,16 @@ public class CardIndexRepository implements ICardIndexRepository {
     }
 
     @Override
+    public int getCardIndexCount(int personId) {
+        return cardIndexDataDao.getCardIndexCount(personId);
+    }
+
+    @Override
     public List<CardIndexData> getAllCardIndices() {
         return cardIndexDataDao.getAllCardIndices();
     }
+
+
 
 //    public void removeUnchangedCardIndexForEdit() throws IOException {
 //

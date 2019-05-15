@@ -1,23 +1,11 @@
 package com.shoniz.saledistributemobility.data.sharedpref;
 
-import android.content.Context;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.shoniz.saledistributemobility.data.api.retrofit.ApiException;
 import com.shoniz.saledistributemobility.data.model.app.BranchEntity;
 import com.shoniz.saledistributemobility.data.sharedpref.api.ISettingApi;
-import com.shoniz.saledistributemobility.framework.InOutError;
-import com.shoniz.saledistributemobility.framework.StringHelper;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
 import com.shoniz.saledistributemobility.view.entity.EmployeeInfoEntity;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-
-import javax.inject.Inject;
 
 public class SettingRepository implements ISettingRepository {
 
@@ -107,12 +95,12 @@ public class SettingRepository implements ISettingRepository {
     }
 
     @Override
-    public String getLastCompletePathVisitDesc() {
+    public String getEndOfDailyVisitDesc() {
         return  settingPref.getLastCompletePathVisitDesc();
     }
 
     @Override
-    public void setLastCompletePathVisitDesc(String desc) {
+    public void setEndOfDailyWorkDesc(String desc) {
         settingPref.setLastCompletePathVisitDesc(desc);
     }
 
@@ -144,5 +132,22 @@ public class SettingRepository implements ISettingRepository {
     @Override
     public void setUnchangedOrdersNoInCardindeForEdit(Long order) {
         settingPref.setUnchangedOrdersNoInCardindeForEdit(order);
+    }
+
+    @Override
+    public void setInactiveCustomerChecked(boolean value){
+        settingPref.setInactiveCustomerChecked(value);
+    }
+    @Override
+    public boolean isInactiveCustomerChecked(){
+        return settingPref.isInactiveCustomerChecked();
+    }
+    @Override
+    public boolean isClassNameBCustomerChecked(){
+        return settingPref.isClassNameBCustomerChecked();
+    }
+    @Override
+    public void setCustomerClassNameBCheckbox(boolean value){
+        settingPref.setClassNameBCustomerCheckboxStatus(value);
     }
 }

@@ -45,11 +45,7 @@ public abstract class BaseModule {
         return new Device(context);
     }
 
-    @Singleton
-    @Provides
-    public static ApiParameter providesApiParameter(CommonPackage commonPackage) {
-        return new ApiParameter(commonPackage);
-    }
+
 
     @Singleton
     @Provides
@@ -86,14 +82,13 @@ public abstract class BaseModule {
 
     @Singleton
     @Provides
-    ISettingPref providesSettingPref(Context context){
+    public static ISettingPref providesSettingPref(Context context){
         return  new SettingPref(context);
     }
 
     @Singleton
     @Provides
-    BluetoothPrinter providesBluetoothPrinter(CommonPackage commonPackage){
+    public static BluetoothPrinter providesBluetoothPrinter(CommonPackage commonPackage){
         return  new BluetoothPrinter(commonPackage);
     }
-
 }

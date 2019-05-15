@@ -12,9 +12,10 @@ import com.shoniz.saledistributemobility.data.model.customer.CustomerBasicEntity
 import com.shoniz.saledistributemobility.data.model.customer.CustomerBoughtEntity;
 import com.shoniz.saledistributemobility.data.model.customer.CustomerChequeEntity;
 import com.shoniz.saledistributemobility.data.model.customer.CustomerCreditEntity;
+import com.shoniz.saledistributemobility.data.model.customer.CustomerData;
+import com.shoniz.saledistributemobility.data.model.customer.UnvisitedReasonData;
 import com.shoniz.saledistributemobility.data.model.order.OrderDetailEntity;
 import com.shoniz.saledistributemobility.data.model.order.OrderEntity;
-import com.shoniz.saledistributemobility.view.customer.info.basic.CustomerBasicModel;
 
 import java.util.List;
 
@@ -82,13 +83,22 @@ public interface ICustomerDao {
 
     @SkipQueryVerification
     @RawQuery
-    List<CustomerBasicModel> getCustomerBaseInfoByPath(SupportSQLiteQuery quert);
+    List<CustomerData> getCustomerBaseInfoByPath(SupportSQLiteQuery quert);
 
     @Query("SELECT * FROM CustomerCredit Where personID =:personID")
     CustomerCreditEntity getCustomerCredit(int personID);
 
     @Query("Update CustomerBase SET LastVisitDays = 0 WHERE PersonId = :personID")
     void resetCustomerLastVisitingDays(int personID);
+
+//    @Query("SELECT cb.PersonID, p.PersianDate, ifnull(uc.NotSallReasonID, 1) NotSallReasonID " +
+//            " FROM CustomerBase cb" +
+//            " INNER JOIN Path p ON p.PathCode = cb.PathCode" +
+//            " LEFT JOIN UnvisitedCustomerReason uc ON uc.PersonId = cb.PersonID" +
+//            " WHERE p.IsActive = 1 AND cb.PersonId = :personID")
+//    UnvisitedReasonData getUnvisitedCustomerReasons(int personID);
+
+
 
 }
 

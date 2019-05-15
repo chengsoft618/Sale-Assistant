@@ -23,13 +23,12 @@ import java.util.List;
  */
 
 public class CustomerAdapter extends RecyclerView.Adapter<CustomerAdapter.CustomerViewHolder> {
-//    private boolean selectableMode = false;
-//    private boolean allSelectedMode = false;
+
     private List<CustomerBasicModel> list;
     private CustomerListListener listener;
     private Context mContext;
-//    private List<Integer> selectedIds = new LinkedList<>();
-    public Boolean isCustomersOfActivePath = false;
+
+//    public Boolean isActivePathOfPerson = false;
     HashMap<Integer, String> unvisitedReasons=new HashMap<>();
 
     public CustomerAdapter(Context context, List<CustomerBasicModel> model,

@@ -2,7 +2,6 @@ package com.shoniz.saledistributemobility.data.model.message;
 
 import com.shoniz.saledistributemobility.data.model.message.api.IMessageApi;
 import com.shoniz.saledistributemobility.data.model.message.db.IMessageDao;
-import com.shoniz.saledistributemobility.framework.InOutError;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
 
 import java.util.List;
@@ -63,7 +62,7 @@ public class MessageRepository implements IMessageRepository {
     }
 
     @Override
-    public void sendCompletePathVisit(String desc) throws BaseException {
-        messageApi.sendCompletePathVisit(desc);
+    public void sendEndOfDailyVisitMessage(String desc) throws BaseException {
+        messageApi.sendEndOfDailyVisitMessage(desc);
     }
 }

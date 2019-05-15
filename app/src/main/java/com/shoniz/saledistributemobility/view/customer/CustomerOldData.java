@@ -1,10 +1,12 @@
 package com.shoniz.saledistributemobility.view.customer;
 
+import android.accounts.NetworkErrorException;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 
+import com.shoniz.saledistributemobility.framework.InOutError;
 import com.shoniz.saledistributemobility.utility.data.pref.AppPref;
 import com.shoniz.saledistributemobility.utility.data.sqlite.DBHelper;
 import com.shoniz.saledistributemobility.utility.data.sqlite.SqliteConsts;
@@ -28,7 +30,7 @@ import java.util.List;
  * Created by ferdos.s on 6/8/2017.
  */
 
-public class CustomerData {
+public class CustomerOldData {
     public static void createOrderDb(Context context, String dbFileBase64) throws IOException {
         byte[] buffer = StringHelper.getByteFromBase64(dbFileBase64);
         File f = new File(DBHelper.getDatabasePath(context)
@@ -182,7 +184,8 @@ public class CustomerData {
             db = Common.getSaleDataBase(context);
             cursor = db.select("SELECT * FROM CustomerBase Where personID = " + PersonId);
             return cursor.getCount() > 0;
-        } finally {
+        }
+         finally {
             if (cursor != null)
                 cursor.close();
             if (db != null)
@@ -191,58 +194,58 @@ public class CustomerData {
     }
 
 
-    public static List<CustomerBasicModel> getCustomerBaseInfoByPath(Context context, int pathCode) throws IOException {
-        DBHelper db = null;
-        Cursor cursor = null;
-        List<CustomerBasicModel> customerBasicModels = new LinkedList<>();
-        try {
-            db = Common.getSaleDataBase(context);
-            String isActive = " ";
-            String classNames = " ";
-            if (!AppPref.isCustomerClassNameB(context)) {
-                classNames = " AND ClassNames='A'";
-            }
-
-            if (AppPref.isActiveCustomerChecked(context)) {
-                isActive = " AND IsActive=1 ";
-            }
-
-            cursor = db.select("SELECT cb. *, " +
-                    " ifnull((Select OrderNo from \"Order\" o1 Where o1.PersonID = cb.PersonId AND o1.IsIssued = 0 ), 0) AS UnIssuedOrderNo " +
-                    " FROM CustomerBase cb  Where PathCode = " +
-                    pathCode + isActive + classNames);
-            if (cursor.getCount() > 0) {
-                cursor.moveToFirst();
-                do {
-                    CustomerBasicModel model = new CustomerBasicModel();
-                    model.CustomerID = cursor.getInt(cursor.getColumnIndex(CustomerBasicModel.Column.CUSTOMER_ID));
-                    model.PersonID = cursor.getInt(cursor.getColumnIndex(CustomerBasicModel.Column.PERSON_ID));
-                    model.PersonName = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.PERSON_NAME));
-                    model.Address = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.ADDRESS));
-                    model.TelNo = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.TEL_NO));
-                    model.CellNo = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.CELL_NO));
-                    model.OwnerType = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.OWNER_TYPE));
-                    model.CustomerType = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.CUSTOMER_TYPE));
-                    model.MaxCredit = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.MAX_CREDIT));
-                    model.NotSaleReasonDate = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.NOT_SALE_REASON_DATE));
-                    model.PathCode = cursor.getInt(cursor.getColumnIndex(CustomerBasicModel.Column.PATH_CODE));
-                    model.PathName = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.PATH_NAME));
-                    model.IsActive = cursor.getInt(cursor.getColumnIndex(CustomerBasicModel.Column.IS_ACTIVE)) == 1;
-                    model.ClassNames = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.CLASS_NAMES));
-                    model.Latitude = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.LATITUDE));
-                    model.Longitude = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.LONGITUDE));
-                    model.UnIssuedOrderNo = cursor.getLong(cursor.getColumnIndex(CustomerBasicModel.Column.UnIssuedOrderNo));
-                    customerBasicModels.add(model);
-                } while (cursor.moveToNext());
-            }
-        } finally {
-            if (cursor != null)
-                cursor.close();
-            if (db != null)
-                db.close();
-        }
-        return customerBasicModels;
-    }
+//    public static List<CustomerBasicModel> getCustomerBaseInfoByPath(Context context, int pathCode) throws IOException {
+//        DBHelper db = null;
+//        Cursor cursor = null;
+//        List<CustomerBasicModel> customerBasicModels = new LinkedList<>();
+//        try {
+//            db = Common.getSaleDataBase(context);
+//            String isActive = " ";
+//            String classNames = " ";
+//            if (!AppPref.isCustomerClassNameB(context)) {
+//                classNames = " AND ClassNames='A'";
+//            }
+//
+//            if (AppPref.isActiveCustomerChecked(context)) {
+//                isActive = " AND IsActive=1 ";
+//            }
+//
+//            cursor = db.select("SELECT cb. *, " +
+//                    " ifnull((Select OrderNo from \"Order\" o1 Where o1.PersonID = cb.PersonId AND o1.IsIssued = 0 ), 0) AS UnIssuedOrderNo " +
+//                    " FROM CustomerBase cb  Where PathCode = " +
+//                    pathCode + isActive + classNames);
+//            if (cursor.getCount() > 0) {
+//                cursor.moveToFirst();
+//                do {
+//                    CustomerBasicModel model = new CustomerBasicModel();
+//                    model.CustomerID = cursor.getInt(cursor.getColumnIndex(CustomerBasicModel.Column.CUSTOMER_ID));
+//                    model.PersonID = cursor.getInt(cursor.getColumnIndex(CustomerBasicModel.Column.PERSON_ID));
+//                    model.PersonName = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.PERSON_NAME));
+//                    model.Address = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.ADDRESS));
+//                    model.TelNo = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.TEL_NO));
+//                    model.CellNo = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.CELL_NO));
+//                    model.OwnerType = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.OWNER_TYPE));
+//                    model.CustomerType = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.CUSTOMER_TYPE));
+//                    model.MaxCredit = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.MAX_CREDIT));
+//                    model.NotSaleReasonDate = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.NOT_SALE_REASON_DATE));
+//                    model.PathCode = cursor.getInt(cursor.getColumnIndex(CustomerBasicModel.Column.PATH_CODE));
+//                    model.PathName = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.PATH_NAME));
+//                    model.IsActive = cursor.getInt(cursor.getColumnIndex(CustomerBasicModel.Column.IS_ACTIVE)) == 1;
+//                    model.ClassNames = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.CLASS_NAMES));
+//                    model.Latitude = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.LATITUDE));
+//                    model.Longitude = cursor.getString(cursor.getColumnIndex(CustomerBasicModel.Column.LONGITUDE));
+//                    model.UnIssuedOrderNo = cursor.getLong(cursor.getColumnIndex(CustomerBasicModel.Column.UnIssuedOrderNo));
+//                    customerBasicModels.add(model);
+//                } while (cursor.moveToNext());
+//            }
+//        } finally {
+//            if (cursor != null)
+//                cursor.close();
+//            if (db != null)
+//                db.close();
+//        }
+//        return customerBasicModels;
+//    }
     //endregion
 
     //region  CustomerCredit

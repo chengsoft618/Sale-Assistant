@@ -9,6 +9,7 @@ import android.arch.persistence.room.RoomDatabase;
 import com.shoniz.saledistributemobility.data.model.location.db.ILocationDao;
 import com.shoniz.saledistributemobility.data.model.app.BranchEntity;
 import com.shoniz.saledistributemobility.data.model.message.db.IMessageDao;
+import com.shoniz.saledistributemobility.data.model.update.db.IUpdateUserDbDao;
 import com.shoniz.saledistributemobility.view.entity.EmployeeInfoEntity;
 import com.shoniz.saledistributemobility.view.entity.FileResourceEntity;
 import com.shoniz.saledistributemobility.view.entity.ImageVersionEntity;
@@ -22,7 +23,7 @@ import com.shoniz.saledistributemobility.data.model.user.db.IUserDao;
 
 @Database(entities = {EmployeeInfoEntity.class, FileResourceEntity.class
         , LocationEntity.class, MessageEntity.class, BranchEntity.class
-        , ImageVersionEntity.class, UserEntity.class, RoleEntity.class}, version = 1)
+        , ImageVersionEntity.class, UserEntity.class, RoleEntity.class}, version = 1, exportSchema = false)
 public abstract class UserDatabase extends RoomDatabase{
 
     public abstract IUserDao getUserDao();
@@ -30,7 +31,7 @@ public abstract class UserDatabase extends RoomDatabase{
     public abstract IUserDataDao getUserDataDao();
     public abstract ILocationDao getLocationDao();
     public abstract IMessageDao getMessageDao();
-
+    public abstract IUpdateUserDbDao getIUpdateUserDbDao();
 
     @Override
     protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration config) {

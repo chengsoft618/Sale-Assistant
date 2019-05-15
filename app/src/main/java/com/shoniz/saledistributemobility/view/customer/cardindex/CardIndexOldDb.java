@@ -4,8 +4,8 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.shoniz.saledistributemobility.R;
+import com.shoniz.saledistributemobility.data.model.customer.UnvisitedReasonData;
 import com.shoniz.saledistributemobility.utility.data.sqlite.DBHelper;
-import com.shoniz.saledistributemobility.order.unvisited.ReasonDto;
 import com.shoniz.saledistributemobility.utility.Common;
 import com.shoniz.saledistributemobility.utility.StringHelper;
 
@@ -540,62 +540,62 @@ public class CardIndexOldDb {
         }
     }
 
-    public static ReasonDto getReasonDto(Context context, int personId) throws IOException {
-        DBHelper db = null;
-        Cursor cursor = null;
-        try {
-            db = Common.getSaleDataBase(context);
-            String command = StringHelper.GenerateMessage(context, R.string.get_not_sall_reason_id,
-                    personId+"" );
-            cursor = db.select(command);
-            ReasonDto model =  new ReasonDto();
-            if(cursor.getCount() > 0) {
-                cursor.moveToFirst();
-                model.NotSallReasonID = cursor.getInt(cursor.getColumnIndex(ReasonDto.Column.NotSallReasonID));
-                model.PersianDate = cursor.getString(cursor.getColumnIndex(ReasonDto.Column.PersianDate));
-                model.PersonID = cursor.getInt(cursor.getColumnIndex(ReasonDto.Column.PersonID));
-            }
-            return model;
-        }
-        finally {
-            if(cursor != null)
-                cursor.close();
-            if(db != null)
-                db.close();
-        }
-    }
+//    public static UnvisitedReasonData getReasonDto(Context context, int personId) throws IOException {
+//        DBHelper db = null;
+//        Cursor cursor = null;
+//        try {
+//            db = Common.getSaleDataBase(context);
+//            String command = StringHelper.GenerateMessage(context, R.string.get_not_sall_reason_id,
+//                    personId+"" );
+//            cursor = db.select(command);
+//            UnvisitedReasonData model =  new UnvisitedReasonData();
+//            if(cursor.getCount() > 0) {
+//                cursor.moveToFirst();
+//                model.NotSallReasonID = cursor.getInt(cursor.getColumnIndex(UnvisitedReasonData.Column.NotSallReasonID));
+//                model.PersianDate = cursor.getString(cursor.getColumnIndex(UnvisitedReasonData.Column.PersianDate));
+//                model.PersonID = cursor.getInt(cursor.getColumnIndex(UnvisitedReasonData.Column.PersonID));
+//            }
+//            return model;
+//        }
+//        finally {
+//            if(cursor != null)
+//                cursor.close();
+//            if(db != null)
+//                db.close();
+//        }
+//    }
 
-    public static List<ReasonDto> getReasonDto(Context context, List<Integer> personIds) throws IOException {
-        DBHelper db = null;
-        Cursor cursor = null;
-        List<ReasonDto> models = new ArrayList<>();
-        try {
-            db = Common.getSaleDataBase(context);
-
-            String command = StringHelper.GenerateMessage(context, R.string.get_not_sall_reason_ids,
-                    Common.GetNumbersCommaFormat(personIds)+"" );
-            cursor = db.select(command);
-
-            if(cursor.getCount() > 0) {
-                cursor.moveToFirst();
-                do {
-                    ReasonDto model =  new ReasonDto();
-                    model.NotSallReasonID = cursor.getInt(cursor.getColumnIndex(ReasonDto.Column.NotSallReasonID));
-                    model.PersianDate = cursor.getString(cursor.getColumnIndex(ReasonDto.Column.PersianDate));
-                    model.PersonID = cursor.getInt(cursor.getColumnIndex(ReasonDto.Column.PersonID));
-                    models.add(model);
-                } while (cursor.moveToNext());
-
-            }
-            return models;
-        }
-        finally {
-            if(cursor != null)
-                cursor.close();
-            if(db != null)
-                db.close();
-        }
-    }
+//    public static List<UnvisitedReasonData> getReasonDto(Context context, List<Integer> personIds) throws IOException {
+//        DBHelper db = null;
+//        Cursor cursor = null;
+//        List<UnvisitedReasonData> models = new ArrayList<>();
+//        try {
+//            db = Common.getSaleDataBase(context);
+//
+//            String command = StringHelper.GenerateMessage(context, R.string.get_not_sall_reason_ids,
+//                    Common.GetNumbersCommaFormat(personIds)+"" );
+//            cursor = db.select(command);
+//
+//            if(cursor.getCount() > 0) {
+//                cursor.moveToFirst();
+//                do {
+//                    UnvisitedReasonData model =  new UnvisitedReasonData();
+//                    model.NotSallReasonID = cursor.getInt(cursor.getColumnIndex(UnvisitedReasonData.Column.NotSallReasonID));
+//                    model.PersianDate = cursor.getString(cursor.getColumnIndex(UnvisitedReasonData.Column.PersianDate));
+//                    model.PersonID = cursor.getInt(cursor.getColumnIndex(UnvisitedReasonData.Column.PersonID));
+//                    models.add(model);
+//                } while (cursor.moveToNext());
+//
+//            }
+//            return models;
+//        }
+//        finally {
+//            if(cursor != null)
+//                cursor.close();
+//            if(db != null)
+//                db.close();
+//        }
+//    }
 
 
     public static void deleteCardIndex(Context context, int PersonID) throws IOException {
@@ -762,31 +762,31 @@ public class CardIndexOldDb {
         }
     }
 
-    public static boolean isEmptyCardIndex(Context context, int personId) throws IOException {
-        DBHelper db = null;
-        Cursor cursor = null;
-        try {
-            db = Common.getSaleDataBase(context);
-
-            String command = StringHelper.GenerateMessage(context, R.string.is_empty_card_index,
-                    personId+"");
-            cursor = db.select(command);
-            CardIndexModel cardIndexModel = null;
-
-            if(cursor.getCount() > 0) {
-                cursor.moveToFirst();
-                return cursor.getInt(cursor.getColumnIndex("itemCount")) == 0;
-            }
-            return false;
-        }
-        finally {
-            if(cursor != null)
-                cursor.close();
-            if(db != null)
-                db.close();
-        }
-
-    }
+//    public static boolean isEmptyCardIndex(Context context, int personId) throws IOException {
+//        DBHelper db = null;
+//        Cursor cursor = null;
+//
+//            db = Common.getSaleDataBase(context);
+//
+//            String command = StringHelper.GenerateMessage(context, R.string.is_empty_card_index,
+//                    personId+"");
+//            cursor = db.select(command);
+//            CardIndexModel cardIndexModel = null;
+//
+//            if(cursor.getCount() > 0) {
+//                cursor.moveToFirst();
+//                return cursor.getInt(cursor.getColumnIndex("itemCount")) == 0;
+//            }
+//            return false;
+//        }
+//        finally {
+//            if(cursor != null)
+//                cursor.close();
+//            if(db != null)
+//                db.close();
+//        }
+//
+//    }
 
     public static long GetRequestAmount(Context context, int personID) throws IOException {
         DBHelper db = null;

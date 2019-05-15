@@ -1,22 +1,11 @@
 package com.shoniz.saledistributemobility.order;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 
-import com.shoniz.saledistributemobility.R;
-import com.shoniz.saledistributemobility.data.sharedpref.SettingRepository;
-import com.shoniz.saledistributemobility.framework.StringHelper;
-import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexBusiness;
-import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexOldDb;
-import com.shoniz.saledistributemobility.order.detail.OrderDetailData;
-import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexDetailModel;
-import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexModel;
+import com.shoniz.saledistributemobility.order.unvisited__.UnvisitedCustomerModel__;
 import com.shoniz.saledistributemobility.order.sent.SentOrderModel;
 import com.shoniz.saledistributemobility.order.unsent.UnsentOrderModel;
-import com.shoniz.saledistributemobility.order.unvisited.UnvisitedCustomerModel;
 
-import java.io.IOError;
-import java.io.IOException;
 import java.util.List;
 
 
@@ -44,7 +33,7 @@ public class RequestBusiness {
         return RequestListData.getUnsentRequestList(context);
     }
 
-    public static List<UnvisitedCustomerModel> getUnvisitedCustomerList(Context context) throws Exception{
+    public static List<UnvisitedCustomerModel__> getUnvisitedCustomerList(Context context) throws Exception{
         return RequestListData.getUnvisitedCustomerList(context);
     }
 //    public static void makeOrderReadyToEdit(Context context, long orderNo) throws IOException {

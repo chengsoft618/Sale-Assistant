@@ -19,7 +19,6 @@ import com.shoniz.saledistributemobility.view.customer.info.credit.CustomerCredi
 import com.shoniz.saledistributemobility.base.FileContentModel;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -136,19 +135,19 @@ public class CustomerBusiness {
         int allProgress = 4, currentTaskIndex = 1;
 
         onStageListener.OnStageGoing(ProgressStage.UpdateCustomersBaseInfo, currentTaskIndex, allProgress);
-        CustomerData.updateCustomersBaseInfo(context,CustomerBusiness.getBaseInfoByPaths(context,SelectedListIds));
+        CustomerOldData.updateCustomersBaseInfo(context,CustomerBusiness.getBaseInfoByPaths(context,SelectedListIds));
         currentTaskIndex++;
 
         onStageListener.OnStageGoing(ProgressStage.UpdateCustomersBuy, currentTaskIndex, allProgress);
-        CustomerData.updateCustomersBuy(context,CustomerBusiness.getBoughtSummaryByPath(context,SelectedListIds));
+        CustomerOldData.updateCustomersBuy(context,CustomerBusiness.getBoughtSummaryByPath(context,SelectedListIds));
         currentTaskIndex++;
 
         onStageListener.OnStageGoing(ProgressStage.UpdateCustomersCheque, currentTaskIndex, allProgress);
-        CustomerData.updateCustomersCheque(context,CustomerBusiness.getChequeByPath(context,SelectedListIds));
+        CustomerOldData.updateCustomersCheque(context,CustomerBusiness.getChequeByPath(context,SelectedListIds));
         currentTaskIndex++;
 
         onStageListener.OnStageGoing(ProgressStage.UpdateCustomersCredit, currentTaskIndex, allProgress);
-        CustomerData.updateCustomersCredit(context,CustomerBusiness.getCreditByPath(context,SelectedListIds));
+        CustomerOldData.updateCustomersCredit(context,CustomerBusiness.getCreditByPath(context,SelectedListIds));
         currentTaskIndex++;
     }
 

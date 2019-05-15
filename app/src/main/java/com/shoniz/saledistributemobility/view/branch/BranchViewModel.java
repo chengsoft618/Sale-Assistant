@@ -119,7 +119,8 @@ public class BranchViewModel extends RecyclerViewModel<BranchData,
     private void loadBranchList() {
         init();
         Runnable runnablePre = () -> {
-            getNavigator().onBeginAsync();
+            getNavigator().onBeginProgress();
+            getNavigator().setProgressSize(1);
         };
         CommonAsyncTask.RunnableDo<Object, AsyncResult<List<BranchData>>> runnableDo = (param, onProgress) -> {
             AsyncResult result = new AsyncResult<List<BranchData>>();
@@ -142,14 +143,14 @@ public class BranchViewModel extends RecyclerViewModel<BranchData,
             getNavigator().onEndAsync();
         };
         CommonAsyncTask.OnProgress onProgress = objects -> {
-            getNavigator().onAsyncUpdate(commonPackage.getContext().getString(R.string.get_branch));
+            getNavigator().showSimpleProgress(commonPackage.getContext().getString(R.string.get_branch));
         };
         CommonAsyncTask commonAsyncTask = new CommonAsyncTask(runnablePre, runnableDo, postRunnable, onProgress);
         commonAsyncTask.run();
     }
 
     public void btnBranchSelectClicked() {
-        if (!areBranchesListLoadedSuccessfully.getValue()) {
+        if (areBranchesListLoadedSuccessfully == null || !areBranchesListLoadedSuccessfully.getValue()) {
             loadBranchList();
             return;
         }
@@ -159,7 +160,10 @@ public class BranchViewModel extends RecyclerViewModel<BranchData,
             return;
         }
 
-        Runnable runnablePre = () -> getNavigator().onBeginAsync();
+        Runnable runnablePre = () -> {
+            getNavigator().onBeginProgress();
+            getNavigator().setProgressSize(1);
+        };
         UpdateAppData(runnablePre);
     }
 
@@ -190,7 +194,7 @@ public class BranchViewModel extends RecyclerViewModel<BranchData,
         CommonAsyncTask.OnProgress onProgress = new CommonAsyncTask.OnProgress() {
             @Override
             public void onUpdate(Object... objects) {
-                getNavigator().onAsyncUpdate(objects[0].toString());
+                getNavigator().showSimpleProgress(objects[0].toString());
             }
         };
         CommonAsyncTask commonAsyncTask = new CommonAsyncTask(runnablePre, runnableDo, postRunnable, onProgress);

@@ -71,4 +71,9 @@ public interface ISettingPref {
 
     long getUnchangedOrdersNoInCardindeForEdit();
     void setUnchangedOrdersNoInCardindeForEdit(long orderNo);
+
+    void setInactiveCustomerChecked(boolean value);
+    boolean isInactiveCustomerChecked();
+    boolean isClassNameBCustomerChecked();
+    void setClassNameBCustomerCheckboxStatus(boolean value);
 }

@@ -1,11 +1,9 @@
 package com.shoniz.saledistributemobility.data.model.location.api;
 
 import com.shoniz.saledistributemobility.data.api.ApiParameter;
-import com.shoniz.saledistributemobility.data.api.retrofit.ApiException;
 import com.shoniz.saledistributemobility.data.api.retrofit.IRetroCommand;
 import com.shoniz.saledistributemobility.data.api.retrofit.RetroManager;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
-import com.shoniz.saledistributemobility.framework.InOutError;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
 
 public class LocationRetrofit implements ILocationApi {

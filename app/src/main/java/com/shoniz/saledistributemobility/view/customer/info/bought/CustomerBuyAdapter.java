@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.shoniz.saledistributemobility.R;
-import com.shoniz.saledistributemobility.view.path.PathModel;
+import com.shoniz.saledistributemobility.view.path.PathModel__;
 
 import java.util.List;
 
@@ -73,7 +73,7 @@ public class CustomerBuyAdapter extends RecyclerView.Adapter<CustomerBuyAdapter.
     }
 
     public interface OnCustomerBuyListener {
-        void onItemCheck(PathModel pathModel);
+        void onItemCheck(PathModel__ pathModel);
     }
 }
 

@@ -4,20 +4,18 @@ import android.content.Context;
 import android.database.SQLException;
 
 import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderCompleteData;
-import com.shoniz.saledistributemobility.data.model.order.UnvisitedCustomerReasonEntity;
 import com.shoniz.saledistributemobility.framework.exception.OldApiException;
 import com.shoniz.saledistributemobility.framework.exception.ConnectionException;
 import com.shoniz.saledistributemobility.order.sent.SentOrderModel;
 import com.shoniz.saledistributemobility.order.unsent.UnsentOrderModel;
-import com.shoniz.saledistributemobility.order.unvisited.UnvisitedCustomerModel;
+import com.shoniz.saledistributemobility.order.unvisited__.UnvisitedCustomerModel__;
 import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexBusiness;
 import com.shoniz.saledistributemobility.utility.data.api.OfficeApi;
 import com.shoniz.saledistributemobility.order.detail.OrderDetailData;
 import com.shoniz.saledistributemobility.view.customer.SendRequestModel;
 import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexDto;
 import com.shoniz.saledistributemobility.order.detail.OrderCompleteDetailModel;
-import com.shoniz.saledistributemobility.order.unvisited.ReasonDto;
-import com.shoniz.saledistributemobility.order.unvisited.ReasonModel;
+import com.shoniz.saledistributemobility.order.unvisited__.ReasonModel__;
 
 import java.io.IOException;
 import java.util.List;
@@ -42,17 +40,17 @@ public class OrderBusiness {
         }
     }
 
-    public static void sendReasonAll(Context context, int personId) throws IOException, ConnectionException, OldApiException {
-        OfficeApi shonizApi = new OfficeApi(context);
-        ReasonDto reasonDto = CardIndexBusiness.getReasonDto(context, personId);
-        shonizApi.SetReasonAll(reasonDto);
-    }
+//    public static void sendReasonAll(Context context, int personId) throws IOException, ConnectionException, OldApiException {
+//        OfficeApi shonizApi = new OfficeApi(context);
+//        UnvisitedReasonData reasonDto = CardIndexBusiness.getReasonDto(context, personId);
+//        shonizApi.SetReasonAll(reasonDto);
+//    }
 
-    public static List<UnvisitedCustomerReasonEntity> sendReasonAll(Context context, List<Integer> personIds) throws IOException, ConnectionException, OldApiException {
-        OfficeApi shonizApi = new OfficeApi(context);
-        List<ReasonDto> reasonDto = CardIndexBusiness.getReasonDto(context, personIds);
-        return shonizApi.SetReasonAll(reasonDto);
-    }
+//    public static List<UnvisitedCustomerReasonEntity> sendReasonAll(Context context, List<Integer> personIds) throws IOException, ConnectionException, OldApiException {
+//        OfficeApi shonizApi = new OfficeApi(context);
+//        List<UnvisitedReasonData> unvisitedReasonData = CardIndexBusiness.getReasonDto(context, personIds);
+//        return shonizApi.SetReasonAll(unvisitedReasonData);
+//    }
 
     public static void SaveOrderResult(Context context, ResultModel model) throws IOException {
         OrderModel orderModel = new OrderModel();
@@ -92,7 +90,7 @@ public class OrderBusiness {
         return OrderDataOld.getOrderCompleteHeader(context, orderNo);
     }
 
-    public static List<ReasonModel> getUnvisitingReason(Context context) throws IOException, SQLException {
+    public static List<ReasonModel__> getUnvisitingReason(Context context) throws IOException, SQLException {
         return OrderDataOld.getUnvisitingReason(context);
     }
 
@@ -107,7 +105,7 @@ public class OrderBusiness {
         return RequestListData.getUnsentRequestList(context);
     }
 
-    public static List<UnvisitedCustomerModel> getUnvisitedCustomerList(Context context) throws Exception{
+    public static List<UnvisitedCustomerModel__> getUnvisitedCustomerList(Context context) throws Exception{
         return RequestListData.getUnvisitedCustomerList(context);
     }
 }

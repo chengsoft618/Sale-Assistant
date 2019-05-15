@@ -51,7 +51,7 @@ public class BranchActivity extends BaseActivity<BranchViewModel, ActivityBranch
         boolean isReselectBranch =
                 bundle != null &&
                 bundle.getBoolean(RE_SELECT_BRANCH, false);
-       // customerRepository.getCustomerAddress(111);
+        customerRepository.getCustomerAddress(111);
         mViewModel.setNavigator(this);
         mViewModel.load(isReselectBranch);
 
@@ -95,16 +95,11 @@ public class BranchActivity extends BaseActivity<BranchViewModel, ActivityBranch
         return BR.viewModel;
     }
 
-    @Override
-    public void onBeginAsync() {
-        onBeginProgress();
-        setProgressSize(1);
-    }
-
-    @Override
-    public void onAsyncUpdate(String message) {
-        showSimpleProgress(message);
-    }
+//    @Override
+//    public void onBeginAsync() {
+//        onBeginProgress();
+//        setProgressSize(1);
+//    }
 
     @Override
     public void onEndAsync() {

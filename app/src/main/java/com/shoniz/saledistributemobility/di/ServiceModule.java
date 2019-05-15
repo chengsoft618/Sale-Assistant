@@ -7,6 +7,7 @@ import com.shoniz.saledistributemobility.data.sharedpref.ISettingRepository;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
 import com.shoniz.saledistributemobility.framework.repository.update.IBasicUpdateRepository;
 import com.shoniz.saledistributemobility.framework.repository.update.ICategoryUpdateRepository;
+import com.shoniz.saledistributemobility.framework.repository.update.ICustomerUpdateRepository;
 import com.shoniz.saledistributemobility.framework.repository.update.IDatabaseUpdateRepository;
 import com.shoniz.saledistributemobility.framework.repository.update.IOrderUpdateRepository;
 import com.shoniz.saledistributemobility.framework.service.order.ICardIndexService;
@@ -29,8 +30,10 @@ public class ServiceModule {
 
     @Singleton
     @Provides
-    IAppUpdater providesAppUpdater(CommonPackage commonPackage,ICategoryUpdateRepository categoryUpdateRepository, IDatabaseUpdateRepository databaseUpdateRepository,                                   IBasicUpdateRepository basicUpdateRepository,
-                                   IOrderUpdateRepository orderUpdateRepository, IAppRepository appRepository, ISettingRepository settingRepository){
-        return  new AppUpdater(commonPackage, categoryUpdateRepository, databaseUpdateRepository, basicUpdateRepository, orderUpdateRepository, appRepository, settingRepository);
+    IAppUpdater providesAppUpdater(CommonPackage commonPackage, ICategoryUpdateRepository categoryUpdateRepository, IDatabaseUpdateRepository databaseUpdateRepository, IBasicUpdateRepository basicUpdateRepository,
+                                   IOrderUpdateRepository orderUpdateRepository, IAppRepository appRepository,
+                                   ISettingRepository settingRepository, ICustomerUpdateRepository customerUpdateRepository){
+        return  new AppUpdater(commonPackage, categoryUpdateRepository, databaseUpdateRepository,
+                basicUpdateRepository, orderUpdateRepository, appRepository, settingRepository, customerUpdateRepository);
     }
 }

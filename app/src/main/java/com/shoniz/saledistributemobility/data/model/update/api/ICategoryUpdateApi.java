@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface ICategoryUpdateApi {
     List<ProductImageModel> getShortcutChanges(List<ResourceModel> models) throws BaseException;
-    List<ResourceModel> getResourceChanges() throws BaseException;
+    List<ResourceModel> getResourceChanges(List<ResourceModel> models) throws BaseException;
     List<ProfileCategoryEntity> getProfileCategoryAll() throws BaseException;
     List<CategoryEntity> getCategoryAll() throws BaseException;
     List<SubCategoryEntity> getSubCategoryAll() throws BaseException;

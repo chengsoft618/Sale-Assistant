@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 
 import com.shoniz.saledistributemobility.R;
+import com.shoniz.saledistributemobility.data.model.update.db.IUpdateUserDbDao;
 import com.shoniz.saledistributemobility.framework.repository.update.ICategoryUpdateRepository;
 import com.shoniz.saledistributemobility.catalog.ProductImageModel;
 import com.shoniz.saledistributemobility.catalog.ResourceModel;
@@ -30,18 +31,20 @@ public class CategoryUpdateRepository extends UpdateBase implements ICategoryUpd
 
     public CategoryUpdateRepository(CommonPackage commonPackage,
                                     ICategoryUpdateApi updateApi,
-                                    IUpdateDao updateDao) {
+                                    IUpdateDao updateDao,
+                                    IUpdateUserDbDao updateUserDbDao) {
         this.commonPackage = commonPackage;
         this.context = commonPackage.getContext();
         this.updateApi = updateApi;
         this.updateDao = updateDao;
+        this.updateUserDbDao = updateUserDbDao;
     }
 
 
     @Override
     public List<ProductImageModel> getChangedProductImages() throws BaseException {
         setUpdateMessage("در حال دریافت اطلاعات محصولات جدید");
-        List<ImageVersionEntity> updatedImages = updateDao.getUpdatedShortcutsImages();
+        List<ImageVersionEntity> updatedImages = updateUserDbDao.getUpdatedShortcutsImages();
         List<ResourceModel> resourceModels = mapImageEntitiesToResourceModels(updatedImages);
         return updateApi.getShortcutChanges(resourceModels);
     }
@@ -57,17 +60,31 @@ public class CategoryUpdateRepository extends UpdateBase implements ICategoryUpd
         }
         return resourceModels;
     }
+    @NonNull
+    private List<ResourceModel> mapFileResourceEntityToResourceModels(List<FileResourceEntity> updatedresource) {
+        List<ResourceModel> resourceModels = new ArrayList<>(updatedresource.size());
+        for (FileResourceEntity updatedResource: updatedresource) {
+            ResourceModel resourceModel = new ResourceModel();
+            resourceModel.ResourceFileId = updatedResource.ResourceFileId;
+            resourceModel.VersionNo = updatedResource.VersionNo;
+            resourceModels.add(resourceModel);
+        }
+        return resourceModels;
+    }
 
     @Override
     public List<ResourceModel> getResourceChanges() throws BaseException {
-        return updateApi.getResourceChanges();
+        List<FileResourceEntity> updatedImages = updateUserDbDao.getUpdatedResources();
+        List<ResourceModel> resourceModels = mapFileResourceEntityToResourceModels(updatedImages);
+
+        return updateApi.getResourceChanges(resourceModels);
     }
 
     @Override
     public void syncProfileCategoryAll() throws BaseException {
         List<ProfileCategoryEntity> list = updateApi.getProfileCategoryAll();
         for (ProfileCategoryEntity cat : list) {
-            updateDao.deleteProfileCategory(cat.ProfileCategoryId);
+            //updateDao.deleteProfileCategory(cat.ProfileCategoryId);
             updateDao.insertProfileCategory(cat);
         }
     }
@@ -77,7 +94,7 @@ public class CategoryUpdateRepository extends UpdateBase implements ICategoryUpd
         setUpdateMessage("در حال بروزرسانی کاتالوگ ها");
         List<CategoryEntity> list = updateApi.getCategoryAll();
         for (CategoryEntity cat : list) {
-            updateDao.deleteCategory(cat.ProfileCategoryId);
+            //updateDao.deleteCategory(cat.ProfileCategoryId);
             updateDao.insertCategory(cat);
         }
     }
@@ -86,7 +103,7 @@ public class CategoryUpdateRepository extends UpdateBase implements ICategoryUpd
     public void syncSubCategoryAll() throws BaseException {
         List<SubCategoryEntity> list = updateApi.getSubCategoryAll();
         for (SubCategoryEntity cat : list) {
-            updateDao.deleteSubCategory(cat.SubCategoryId);
+            //updateDao.deleteSubCategory(cat.SubCategoryId);
             updateDao.insertSubCategory(cat);
         }
     }
@@ -95,7 +112,7 @@ public class CategoryUpdateRepository extends UpdateBase implements ICategoryUpd
     public void syncSubCategoryDetailAll() throws BaseException {
         List<SubCategoryDetailEntity> list = updateApi.getSubCategoryDetailAll();
         for (SubCategoryDetailEntity cat : list) {
-            updateDao.deleteSubCategoryDetail(cat.SubCategoryDetailId);
+            //updateDao.deleteSubCategoryDetail(cat.SubCategoryDetailId);
             updateDao.insertSubCategoryDetail(cat);
         }
     }
@@ -114,8 +131,8 @@ public class CategoryUpdateRepository extends UpdateBase implements ICategoryUpd
 //                        imagePath,
 //                        "", "");
                 storeProductImages(productImageModel, imagePath);
-                updateDao.deleteImageVersion(productImageModel.Shortcut);
-                updateDao.insertImageVersion(mapToImageVersion(productImageModel));
+                //updateDao.deleteImageVersion(productImageModel.Shortcut);
+                updateUserDbDao.insertImageVersion(mapToImageVersion(productImageModel));
             }
         }
     }
@@ -129,8 +146,8 @@ public class CategoryUpdateRepository extends UpdateBase implements ICategoryUpd
             setUpdateMessage("در حال بروزرسانی منابع " + ++index + " از " + resources.size());
 
             storeResource(resource, FileManager.getImagePath(context));
-            updateDao.deleteFileResource(resource.ResourceFileId);
-            updateDao.insertFileResource(mapToFileResourceEntity(resource));
+            //updateDao.deleteFileResource(resource.ResourceFileId);
+            updateUserDbDao.insertFileResource(mapToFileResourceEntity(resource));
         }
     }
 
@@ -301,4 +318,5 @@ public class CategoryUpdateRepository extends UpdateBase implements ICategoryUpd
     private Context context;
     private ICategoryUpdateApi updateApi;
     private IUpdateDao updateDao;
+    private IUpdateUserDbDao updateUserDbDao;
 }
