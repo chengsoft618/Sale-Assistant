@@ -1,7 +1,7 @@
 package com.shoniz.saledistributemobility.view.customer.info.basic;
 
 
-import com.shoniz.saledistributemobility.order.IsSelectedItem;
+import com.shoniz.saledistributemobility.view.ordering.order.IsSelectedItem;
 
 public class CustomerBasicModel extends IsSelectedItem {
 

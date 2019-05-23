@@ -35,7 +35,7 @@ import com.shoniz.saledistributemobility.framework.exception.newexceptions.Uncau
 import com.shoniz.saledistributemobility.infrastructure.AsyncResult;
 import com.shoniz.saledistributemobility.infrastructure.CommonAsyncTask;
 import com.shoniz.saledistributemobility.message.gcm.GcmApi;
-import com.shoniz.saledistributemobility.order.RequestsListActivity;
+import com.shoniz.saledistributemobility.view.ordering.order.RequestsListActivity;
 import com.shoniz.saledistributemobility.programmer.ProgrammerPanelAccessFragment;
 import com.shoniz.saledistributemobility.utility.Common;
 import com.shoniz.saledistributemobility.utility.Notification;

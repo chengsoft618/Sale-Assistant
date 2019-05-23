@@ -50,7 +50,6 @@ public interface IOrderRepository {
     Hashtable<Integer,Integer> getShortcutsAvailability();
 
     void syncShortcutsAvailability() throws BaseException;
-    List<ReasonEntity> getUnvisitedReasons();
 
 
 }

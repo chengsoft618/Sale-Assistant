@@ -7,7 +7,7 @@ import com.shoniz.saledistributemobility.data.model.ShortcutAvailability;
 import com.shoniz.saledistributemobility.data.model.order.api.IOrderApi;
 import com.shoniz.saledistributemobility.data.model.order.db.IOrderDao;
 import com.shoniz.saledistributemobility.data.model.order.db.IOrderDetailDao;
-import com.shoniz.saledistributemobility.data.model.order.db.IUnvisitedCustomerReasonDao;
+import com.shoniz.saledistributemobility.data.model.customer.db.IUnvisitedCustomerReasonDao;
 import com.shoniz.saledistributemobility.data.model.order.ordercomplete.IOrderCompleteDataDao;
 import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderCompleteData;
 import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderDetailCompleteData;
@@ -197,13 +197,7 @@ public class OrderRepository implements IOrderRepository {
         }
     }
 
-    private static List<ReasonEntity> reasons = null;
-    @Override
-    public List<ReasonEntity> getUnvisitedReasons() {
-        if(reasons != null)
-            return reasons;
-        return unvisitedCustomerReasonDao.getUnvisitingReasons();
-    }
+
 
 
 }

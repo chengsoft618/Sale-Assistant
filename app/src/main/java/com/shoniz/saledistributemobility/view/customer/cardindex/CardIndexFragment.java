@@ -50,7 +50,7 @@ import com.shoniz.saledistributemobility.framework.exception.newexceptions.Uncau
 import com.shoniz.saledistributemobility.infrastructure.AsyncResult;
 import com.shoniz.saledistributemobility.infrastructure.CommonAsyncTask;
 import com.shoniz.saledistributemobility.location.LocationHelper;
-import com.shoniz.saledistributemobility.order.SendOrderService;
+import com.shoniz.saledistributemobility.view.ordering.order.SendOrderService;
 import com.shoniz.saledistributemobility.utility.Common;
 import com.shoniz.saledistributemobility.utility.Notification;
 

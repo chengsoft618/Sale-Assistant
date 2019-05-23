@@ -4,10 +4,10 @@ import android.arch.persistence.db.SimpleSQLiteQuery;
 
 import com.shoniz.saledistributemobility.data.model.customer.api.ICustomerApi;
 import com.shoniz.saledistributemobility.data.model.customer.db.ICustomerDao;
-import com.shoniz.saledistributemobility.data.model.order.UnvisitedCustomerReasonEntity;
-import com.shoniz.saledistributemobility.data.model.order.db.IUnvisitedCustomerReasonDao;
+import com.shoniz.saledistributemobility.data.model.customer.db.IUnvisitedCustomerReasonDao;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
+import com.shoniz.saledistributemobility.view.entity.ReasonEntity;
 
 import java.util.List;
 
@@ -166,6 +166,14 @@ public class CustomerRepository implements ICustomerRepository {
     public void saveUnvisitingReason(UnvisitedCustomerReasonEntity unvisitedCustomerReasonEntity) {
         if(unvisitedCustomerReasonEntity != null)
             unvisitedCustomerReasonDao.insert(unvisitedCustomerReasonEntity);
+    }
+
+    private static List<ReasonEntity> reasons = null;
+    @Override
+    public List<ReasonEntity> getUnvisitedReasons() {
+        if(reasons != null)
+            return reasons;
+        return unvisitedCustomerReasonDao.getUnvisitingReasons();
     }
 
 }

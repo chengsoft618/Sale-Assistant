@@ -1,7 +1,7 @@
 package com.shoniz.saledistributemobility.data.model.customer;
 
-import com.shoniz.saledistributemobility.data.model.order.UnvisitedCustomerReasonEntity;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
+import com.shoniz.saledistributemobility.view.entity.ReasonEntity;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public interface ICustomerRepository {
     CustomerCreditEntity getCustomerCredit(int personID);
     void sendUnvisitedReason(UnvisitedReasonData unvisitedReasonData) throws BaseException;
     void saveUnvisitingReason(UnvisitedCustomerReasonEntity reasonDto);
-
+    List<ReasonEntity> getUnvisitedReasons();
 
 
 

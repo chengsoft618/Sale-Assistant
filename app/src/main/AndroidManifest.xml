@@ -33,11 +33,11 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".order.SendOrderService" />
-        <service
-            android:name=".location.LocationUpdateService"
-            android:enabled="true"
-            android:exported="false" />
+        <service android:name=".view.ordering.order.SendOrderService" />
+        <!--<service-->
+            <!--android:name=".location.LocationUpdateService__"-->
+            <!--android:enabled="true"-->
+            <!--android:exported="false" />-->
 
         <!--<receiver-->
             <!--android:name="com.google.android.gms.gcm.GcmReceiver"-->
@@ -51,21 +51,21 @@
         <!--</receiver>-->
 
         <!--<service-->
-            <!--android:name=".message.gcm.MyGcmListenerService"-->
+            <!--android:name=".message.gcm.MyGcmListenerService__"-->
             <!--android:exported="false">-->
             <!--<intent-filter>-->
                 <!--<action android:name="com.google.android.c2dm.intent.RECEIVE" />-->
             <!--</intent-filter>-->
         <!--</service>-->
         <!--<service-->
-            <!--android:name=".message.gcm.MyInstanceIDListenerService"-->
+            <!--android:name=".message.gcm.MyInstanceIDListenerService__"-->
             <!--android:exported="false">-->
             <!--<intent-filter>-->
                 <!--<action android:name="com.google.android.gms.iid.InstanceID" />-->
             <!--</intent-filter>-->
         <!--</service>-->
         <!--<service-->
-            <!--android:name=".message.gcm.RegistrationIntentService"-->
+            <!--android:name=".message.gcm.RegistrationIntentService__"-->
             <!--android:exported="false" />-->
         <service
             android:name=".framework.exception.newexceptions.ExceptionWorkerService"
@@ -93,19 +93,14 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustNothing" />
         <activity
-            android:name=".order.RequestsListActivity"
+            android:name=".view.ordering.order.RequestsListActivity"
             android:label="@string/request_list_title"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <service android:name=".order.SendOrderService" />
+        <service android:name=".view.ordering.order.SendOrderService" />
 
-        <activity
-            android:name=".order.detail.OrderDetailActivity"
-            android:label="@string/title_activity_order_detail"
-            android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".view.web.WebSiteActivity" />
+
         <activity android:name=".view.ordering.detail.printissue.PrintIssueActivity"/>
         <activity
             android:name=".view.message.MessageActivity"
@@ -113,7 +108,7 @@
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <service android:name=".order.SendOrderService" />
+        <service android:name=".view.ordering.order.SendOrderService" />
         <service
             android:name=".location.LocationManagementService"
             android:enabled="true"

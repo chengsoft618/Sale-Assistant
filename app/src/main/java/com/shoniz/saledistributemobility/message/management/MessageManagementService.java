@@ -16,7 +16,7 @@ import com.shoniz.saledistributemobility.framework.exception.newexceptions.Excep
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.UncaughtException;
 import com.shoniz.saledistributemobility.infrastructure.wialon.WialonWorker;
 import com.shoniz.saledistributemobility.message.MessageTypeEnum;
-import com.shoniz.saledistributemobility.order.ResultModel;
+import com.shoniz.saledistributemobility.view.ordering.order.ResultModel;
 import com.shoniz.saledistributemobility.utility.Notification;
 import com.shoniz.saledistributemobility.utility.SimpleAsyncTask;
 import com.shoniz.saledistributemobility.utility.dialog.OnProgressUpdate;

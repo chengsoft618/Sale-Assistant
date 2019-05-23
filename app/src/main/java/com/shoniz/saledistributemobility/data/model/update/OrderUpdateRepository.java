@@ -5,11 +5,11 @@ import com.shoniz.saledistributemobility.framework.repository.update.IOrderUpdat
 import com.shoniz.saledistributemobility.data.model.path.db.IPathDao;
 import com.shoniz.saledistributemobility.data.model.order.OrderDetailEntity;
 import com.shoniz.saledistributemobility.data.model.order.OrderEntity;
-import com.shoniz.saledistributemobility.data.model.order.UnvisitedCustomerReasonEntity;
+import com.shoniz.saledistributemobility.data.model.customer.UnvisitedCustomerReasonEntity;
 import com.shoniz.saledistributemobility.data.model.order.api.IOrderApi;
 import com.shoniz.saledistributemobility.data.model.order.db.IOrderDao;
 import com.shoniz.saledistributemobility.data.model.order.db.IOrderDetailDao;
-import com.shoniz.saledistributemobility.data.model.order.db.IUnvisitedCustomerReasonDao;
+import com.shoniz.saledistributemobility.data.model.customer.db.IUnvisitedCustomerReasonDao;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
 import com.shoniz.saledistributemobility.data.model.path.db.PathEntity;

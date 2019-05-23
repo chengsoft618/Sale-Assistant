@@ -19,7 +19,7 @@ import com.shoniz.saledistributemobility.R;
 import com.shoniz.saledistributemobility.databinding.FragmentVerifyCancelBinding;
 import com.shoniz.saledistributemobility.infrastructure.recycler.RecyclerHelper;
 import com.shoniz.saledistributemobility.infrastructure.recycler.RecyclerViewModel;
-import com.shoniz.saledistributemobility.order.SendOrderService;
+import com.shoniz.saledistributemobility.view.ordering.order.SendOrderService;
 import com.shoniz.saledistributemobility.utility.dialog.InputDialog;
 import com.shoniz.saledistributemobility.view.base.BaseFragment;
 import com.shoniz.saledistributemobility.view.base.viewpager.PagerViewModel;

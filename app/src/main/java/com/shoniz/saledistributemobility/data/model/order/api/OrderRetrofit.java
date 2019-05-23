@@ -6,15 +6,13 @@ import com.shoniz.saledistributemobility.data.api.retrofit.RetroManager;
 import com.shoniz.saledistributemobility.data.model.ShortcutAvailability;
 import com.shoniz.saledistributemobility.data.model.order.OrderDetailEntity;
 import com.shoniz.saledistributemobility.data.model.order.OrderEntity;
-import com.shoniz.saledistributemobility.data.model.order.UnvisitedCustomerReasonEntity;
+import com.shoniz.saledistributemobility.data.model.customer.UnvisitedCustomerReasonEntity;
 import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderCompleteData;
 import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderDetailCompleteData;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
-import com.shoniz.saledistributemobility.framework.InOutError;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
 
 import java.io.IOException;
-import java.util.Hashtable;
 import java.util.List;
 
 public class OrderRetrofit implements IOrderApi {

@@ -7,7 +7,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import com.shoniz.saledistributemobility.data.model.customer.UnvisitedReasonData;
 import com.shoniz.saledistributemobility.data.model.location.LocationEntity;
-import com.shoniz.saledistributemobility.data.model.order.UnvisitedCustomerReasonEntity;
+import com.shoniz.saledistributemobility.data.model.customer.UnvisitedCustomerReasonEntity;
 import com.shoniz.saledistributemobility.data.model.user.RoleEntity;
 import com.shoniz.saledistributemobility.data.model.user.UserEntity;
 import com.shoniz.saledistributemobility.framework.Device;
@@ -16,8 +16,8 @@ import com.shoniz.saledistributemobility.framework.exception.ConnectionException
 import com.shoniz.saledistributemobility.view.customer.ActionSendType;
 import com.shoniz.saledistributemobility.view.customer.SendRequestModel;
 import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexDto;
-import com.shoniz.saledistributemobility.order.detail.OrderDetailModel;
-import com.shoniz.saledistributemobility.order.OrderModel;
+import com.shoniz.saledistributemobility.view.ordering.order.detail.OrderDetailModel;
+import com.shoniz.saledistributemobility.view.ordering.order.OrderModel;
 import com.shoniz.saledistributemobility.catalog.CategoryModel;
 import com.shoniz.saledistributemobility.catalog.ProductImageModel;
 import com.shoniz.saledistributemobility.view.customer.info.basic.CustomerBasicModel;
@@ -28,7 +28,7 @@ import com.shoniz.saledistributemobility.base.FileContentModel;
 import com.shoniz.saledistributemobility.view.path.PathModel__;
 import com.shoniz.saledistributemobility.catalog.ProfileCategoryModel;
 import com.shoniz.saledistributemobility.catalog.ResourceModel;
-import com.shoniz.saledistributemobility.order.ResultModel;
+import com.shoniz.saledistributemobility.view.ordering.order.ResultModel;
 import com.shoniz.saledistributemobility.view.catalog.subcategory.SubCategoryDetailModel;
 import com.shoniz.saledistributemobility.view.catalog.subcategory.SubCategoryModel;
 import com.shoniz.saledistributemobility.utility.Common;
@@ -36,7 +36,6 @@ import com.shoniz.saledistributemobility.utility.PersianCalendar;
 import com.shoniz.saledistributemobility.utility.device.Connection;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Response;

@@ -9,7 +9,7 @@ import com.shoniz.saledistributemobility.data.model.coding.ICodingDao;
 import com.shoniz.saledistributemobility.data.model.customer.db.ICustomerDao;
 import com.shoniz.saledistributemobility.data.model.order.db.IOrderDao;
 import com.shoniz.saledistributemobility.data.model.order.db.IOrderDetailDao;
-import com.shoniz.saledistributemobility.data.model.order.db.IUnvisitedCustomerReasonDao;
+import com.shoniz.saledistributemobility.data.model.customer.db.IUnvisitedCustomerReasonDao;
 import com.shoniz.saledistributemobility.data.model.order.ordercomplete.IOrderCompleteDataDao;
 import com.shoniz.saledistributemobility.data.model.order.verifying.IOrderDataDao;
 import com.shoniz.saledistributemobility.data.model.update.db.IUpdateDao;

@@ -24,7 +24,7 @@ import com.shoniz.saledistributemobility.databinding.FragmentVerifyBinding;
 import com.shoniz.saledistributemobility.infrastructure.recycler.RecyclerHelper;
 import com.shoniz.saledistributemobility.infrastructure.recycler.RecyclerToolbar;
 import com.shoniz.saledistributemobility.infrastructure.recycler.RecyclerViewModel;
-import com.shoniz.saledistributemobility.order.SendOrderService;
+import com.shoniz.saledistributemobility.view.ordering.order.SendOrderService;
 import com.shoniz.saledistributemobility.utility.dialog.InputDialog;
 import com.shoniz.saledistributemobility.utility.dialog.YesNoDialog;
 import com.shoniz.saledistributemobility.view.base.BaseFragment;

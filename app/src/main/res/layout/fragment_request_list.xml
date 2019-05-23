@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.shoniz.saledistributemobility.order.unsent.UnSentOrderViewModel" />
+            type="com.shoniz.saledistributemobility.view.ordering.unsent.UnSentOrderViewModel" />
     </data>
 
 <android.support.design.widget.CoordinatorLayout
@@ -19,7 +19,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerCustomer"
-        app:layoutManager="LinearLayoutManager"
         tools:listitem="@layout/item_customer"
           />
 

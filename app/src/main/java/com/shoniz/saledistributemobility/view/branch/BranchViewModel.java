@@ -87,7 +87,7 @@ public class BranchViewModel extends RecyclerViewModel<BranchData,
         deviceIMEI.setValue(commonPackage.getDevice().getIMEI() + "");
         commonPackage.getUtility().setDefaultLanguage();
         //TODO GSM REMOVED
-//        RegistrationIntentService.CreateInstance(commonPackage.getContext());
+//        RegistrationIntentService__.CreateInstance(commonPackage.getContext());
         selectedBranch.setValue(null);
         areBranchesListLoadedSuccessfully.setValue(false);
     }
@@ -109,7 +109,7 @@ public class BranchViewModel extends RecyclerViewModel<BranchData,
 //TODO GSM REMOVED
 //    private void sendGoogleTokenToServer() {
 //        if (settingRepository.isTokenCloudMessagingSave())
-//            RegistrationIntentService.sendRegistrationToServer(
+//            RegistrationIntentService__.sendRegistrationToServer(
 //                    commonPackage.getContext(),
 //                    settingRepository.getCloudToken()
 //            );

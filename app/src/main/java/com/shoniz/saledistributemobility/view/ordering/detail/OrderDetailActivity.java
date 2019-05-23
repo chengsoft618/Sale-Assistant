@@ -14,7 +14,7 @@ import com.shoniz.saledistributemobility.framework.CommonPackage;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.UncaughtException;
 import com.shoniz.saledistributemobility.infrastructure.recycler.RecyclerHelper;
 import com.shoniz.saledistributemobility.infrastructure.recycler.RecyclerViewModel;
-import com.shoniz.saledistributemobility.order.SendOrderService;
+import com.shoniz.saledistributemobility.view.ordering.order.SendOrderService;
 import com.shoniz.saledistributemobility.view.base.BaseActivity;
 import com.shoniz.saledistributemobility.view.ordering.detail.printissue.PrintIssueActivity;
 import com.shoniz.saledistributemobility.view.ordering.detail.recycler.OrderDetailItemBindingBuilder;
@@ -72,8 +72,6 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailViewModel, Acti
         }
 
     }
-
-
 
     @Override
     public int getLayoutId() {

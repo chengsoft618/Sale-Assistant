@@ -7,7 +7,7 @@ import com.shoniz.saledistributemobility.data.model.customer.CustomerData;
 import com.shoniz.saledistributemobility.data.model.customer.ICustomerRepository;
 import com.shoniz.saledistributemobility.data.model.customer.UnvisitedReasonData;
 import com.shoniz.saledistributemobility.data.model.order.IOrderRepository;
-import com.shoniz.saledistributemobility.data.model.order.UnvisitedCustomerReasonEntity;
+import com.shoniz.saledistributemobility.data.model.customer.UnvisitedCustomerReasonEntity;
 import com.shoniz.saledistributemobility.data.sharedpref.ISettingRepository;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
@@ -28,32 +28,12 @@ import javax.inject.Inject;
 public class CustomerListViewModel extends RecyclerViewModel<CustomerData, Integer, ICustomerListNavigator>
         implements ICustomerRecyclerListener{
 
-    ICardIndexService cardIndexService;
-    CommonPackage commonPackage;
-    ICustomerRepository customerRepository;
-    IOrderRepository orderRepository;
-    ISettingRepository settingRepository;
-    int pathCode;
-    boolean containClassB = false;
-    boolean containInactiveCustomers = false;
-    Boolean isActivePathOfPerson = false;
-    String persianDate = "";
-    MutableLiveData<List<CustomerData>> customersList = new MutableLiveData<>();
-    private List<CustomerData> searchModels = new ArrayList<>();
-    private List<ReasonEntity> reasonModels = new ArrayList<>();
-
-
-    @Inject
-    public CustomerListViewModel(CommonPackage commonPackage,
-                                 ICardIndexService cardIndexService,
-                                 ICustomerRepository customerRepository,
-                                 IOrderRepository orderRepository,
-                                 ISettingRepository settingRepository) {
-        this.commonPackage = commonPackage;
-        this.cardIndexService = cardIndexService;
-        this.customerRepository = customerRepository;
-        this.orderRepository = orderRepository;
-        this.settingRepository = settingRepository;
+    public void init(int pathCode, boolean isActivePathOfPerson, String persianDate){
+        this.pathCode = pathCode;
+        this.isActivePathOfPerson = isActivePathOfPerson;
+        this.persianDate = persianDate;
+        updateCustomerList();
+        getNavigator().refreshRecycle();
     }
 
     public void startCustomerActivityToEdit(CustomerData customerBasicModel) {
@@ -67,13 +47,7 @@ public class CustomerListViewModel extends RecyclerViewModel<CustomerData, Integ
         getNavigator().startCustomerActivity(customerBasicModel.getId());
     }
 
-    public void init(int pathCode, boolean isActivePathOfPerson, String persianDate){
-        this.pathCode = pathCode;
-        this.isActivePathOfPerson = isActivePathOfPerson;
-        this.persianDate = persianDate;
-        updateCustomerList();
-        getNavigator().refreshRecycle();
-    }
+
 
     void updateCustomerList(){
         customersList.setValue(
@@ -141,7 +115,7 @@ public class CustomerListViewModel extends RecyclerViewModel<CustomerData, Integ
 
     public List<ReasonEntity> getCustomerNotvisitingReasons(){
         if(reasonModels.size() == 0)
-            reasonModels = orderRepository.getUnvisitedReasons();
+            reasonModels = customerRepository.getUnvisitedReasons();
         return reasonModels;
     }
 
@@ -194,4 +168,28 @@ public class CustomerListViewModel extends RecyclerViewModel<CustomerData, Integ
     public boolean getInactiveCustomerCheckboxStatus(){
         return settingRepository.isInactiveCustomerChecked();
     }
+
+    @Inject
+    public CustomerListViewModel(CommonPackage commonPackage,
+                                 ICardIndexService cardIndexService,
+                                 ICustomerRepository customerRepository,
+                                 ISettingRepository settingRepository) {
+        this.commonPackage = commonPackage;
+        this.cardIndexService = cardIndexService;
+        this.customerRepository = customerRepository;
+        this.settingRepository = settingRepository;
+    }
+
+    private ICardIndexService cardIndexService;
+    private CommonPackage commonPackage;
+    private ICustomerRepository customerRepository;
+    private ISettingRepository settingRepository;
+    private int pathCode;
+    private boolean containClassB = false;
+    private boolean containInactiveCustomers = false;
+    private Boolean isActivePathOfPerson = false;
+    private String persianDate = "";
+    private MutableLiveData<List<CustomerData>> customersList = new MutableLiveData<>();
+    private List<CustomerData> searchModels = new ArrayList<>();
+    private List<ReasonEntity> reasonModels = new ArrayList<>();
 }

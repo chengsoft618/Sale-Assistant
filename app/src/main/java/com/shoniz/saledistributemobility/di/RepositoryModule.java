@@ -36,7 +36,7 @@ import com.shoniz.saledistributemobility.data.model.order.OrderRepository;
 import com.shoniz.saledistributemobility.data.model.order.api.IOrderApi;
 import com.shoniz.saledistributemobility.data.model.order.db.IOrderDao;
 import com.shoniz.saledistributemobility.data.model.order.db.IOrderDetailDao;
-import com.shoniz.saledistributemobility.data.model.order.db.IUnvisitedCustomerReasonDao;
+import com.shoniz.saledistributemobility.data.model.customer.db.IUnvisitedCustomerReasonDao;
 import com.shoniz.saledistributemobility.data.model.order.ordercomplete.IOrderCompleteDataDao;
 import com.shoniz.saledistributemobility.data.model.order.verifying.IOrderDataDao;
 import com.shoniz.saledistributemobility.data.model.update.BasicUpdateRepository;

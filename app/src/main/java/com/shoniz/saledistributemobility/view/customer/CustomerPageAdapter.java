@@ -9,8 +9,7 @@ import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexFragme
 import com.shoniz.saledistributemobility.view.customer.info.basic.CustomerBasicFragment;
 import com.shoniz.saledistributemobility.view.customer.info.bought.CustomerBuyFragment;
 import com.shoniz.saledistributemobility.view.customer.info.cheque.CustomerChequeFragment;
-import com.shoniz.saledistributemobility.order.sent.SentOrdersFragment;
-import com.shoniz.saledistributemobility.view.customer.info.basic.CustomerBasicModel;
+import com.shoniz.saledistributemobility.view.ordering.sent.SentOrdersFragment;
 import com.shoniz.saledistributemobility.utility.StringHelper;
 
 import java.util.ArrayList;

@@ -5,10 +5,9 @@ import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderCom
 import com.shoniz.saledistributemobility.data.model.order.OrderDetailEntity;
 import com.shoniz.saledistributemobility.data.model.order.OrderEntity;
 import com.shoniz.saledistributemobility.data.api.ApiParameter;
-import com.shoniz.saledistributemobility.data.model.order.UnvisitedCustomerReasonEntity;
+import com.shoniz.saledistributemobility.data.model.customer.UnvisitedCustomerReasonEntity;
 import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderDetailCompleteData;
 
-import java.util.Hashtable;
 import java.util.List;
 
 import retrofit2.Call;

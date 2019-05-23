@@ -5,11 +5,9 @@ import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderCom
 import com.shoniz.saledistributemobility.data.model.order.OrderDetailEntity;
 import com.shoniz.saledistributemobility.data.model.order.OrderEntity;
 import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderDetailCompleteData;
-import com.shoniz.saledistributemobility.framework.InOutError;
-import com.shoniz.saledistributemobility.data.model.order.UnvisitedCustomerReasonEntity;
+import com.shoniz.saledistributemobility.data.model.customer.UnvisitedCustomerReasonEntity;
 import com.shoniz.saledistributemobility.framework.exception.newexceptions.BaseException;
 
-import java.util.Hashtable;
 import java.util.List;
 
 /**

@@ -1,6 +1,6 @@
 package com.shoniz.saledistributemobility.catalog;
 
-import com.shoniz.saledistributemobility.order.IsSelectedItem;
+import com.shoniz.saledistributemobility.view.ordering.order.IsSelectedItem;
 
 /**
  * Created by ferdos.s on 6/1/2017.

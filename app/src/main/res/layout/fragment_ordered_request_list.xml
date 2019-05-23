@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.shoniz.saledistributemobility.order.sent.SentOrderViewModel" />
+            type="com.shoniz.saledistributemobility.view.ordering.sent.SentOrderViewModel" />
     </data>
 
 

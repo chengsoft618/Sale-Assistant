@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.shoniz.saledistributemobility.order.RequestListViewModel" />
+            type="com.shoniz.saledistributemobility.view.ordering.order.RequestListViewModel" />
     </data>
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"

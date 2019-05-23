@@ -1,6 +1,6 @@
 package com.shoniz.saledistributemobility.view.catalog.subcategory;
 
-import com.shoniz.saledistributemobility.order.IsSelectedItem;
+import com.shoniz.saledistributemobility.view.ordering.order.IsSelectedItem;
 
 /**
  * Created by ferdos.s on 6/1/2017.

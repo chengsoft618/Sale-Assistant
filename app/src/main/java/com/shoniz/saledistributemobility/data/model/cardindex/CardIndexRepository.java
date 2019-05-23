@@ -7,8 +7,8 @@ import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderCom
 import com.shoniz.saledistributemobility.data.model.order.ordercomplete.OrderDetailCompleteData;
 import com.shoniz.saledistributemobility.data.sharedpref.ISettingRepository;
 import com.shoniz.saledistributemobility.framework.CommonPackage;
-import com.shoniz.saledistributemobility.order.OrderDataOld;
-import com.shoniz.saledistributemobility.order.detail.OrderDetailData;
+import com.shoniz.saledistributemobility.view.ordering.order.OrderDataOld;
+import com.shoniz.saledistributemobility.view.ordering.order.detail.OrderDetailData;
 import com.shoniz.saledistributemobility.utility.Common;
 import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexBusiness;
 import com.shoniz.saledistributemobility.view.customer.cardindex.CardIndexDetailModel;
